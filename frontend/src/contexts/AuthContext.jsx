@@ -22,9 +22,7 @@ import {
 
 const AuthContext = createContext();
 const RECAPTCHA_CONTAINER_ID = 'firebase-auth-recaptcha-container';
-const EMAIL_MAGIC_LINK_FEATURE_ENABLED =
-  import.meta.env.VITE_ENABLE_EMAIL_MAGIC_LINK === 'true'
-  || Boolean(import.meta.env.DEV);
+const EMAIL_MAGIC_LINK_FEATURE_ENABLED = true;
 const EMAIL_MAGIC_LINK_V2_ENABLED = import.meta.env.VITE_EMAIL_MAGIC_LINK_V2_ENABLED === 'true';
 const EMAIL_LINK_STORAGE_KEY = 'karga_email_link_state_v1';
 const REFERRAL_CODE_STORAGE_KEY = 'karga_referral_code';
@@ -186,6 +184,11 @@ function buildEmailLinkActionSettings(mode = 'signin') {
     );
   }
   callbackUrl.searchParams.set('emailLinkMode', mode);
+  // include email hint for cross-device fallback (read in completeEmailLinkFromUrl)
+  const pending = readPendingEmailLinkState();
+  if (pending?.email) {
+    callbackUrl.searchParams.set('email_hint', pending.email);
+  }
   return {
     url: callbackUrl.toString(),
     handleCodeInApp: true,
@@ -319,6 +322,8 @@ function formatFirebaseAuthError(error) {
     'auth/network-request-failed':
       'Network request failed while contacting Firebase Authentication. Check internet and CSP/network restrictions.',
     'auth/too-many-requests': 'Too many attempts. Please wait and try again.',
+    'auth/billing-not-enabled':
+      'Phone verification is temporarily unavailable (billing not enabled). Please use email sign-in or recovery code.',
     'auth/invalid-phone-number': 'Invalid phone number format.',
     'auth/invalid-verification-code': 'Incorrect code. Please try again.',
     'auth/code-expired': 'Code expired. Request a new code.',
@@ -1073,9 +1078,10 @@ export function AuthProvider({ children }) {
     return () => safeFirestoreUnsubscribe(unsubWallet, 'wallet listener');
   }, [authUser, userProfile]);
 
+  // Email-only primary sign-in: direct Firebase email link (no billing, no backend eligibility)
   const requestEmailMagicLink = useCallback(async (email) => {
     if (!EMAIL_MAGIC_LINK_FEATURE_ENABLED) {
-      return { success: false, error: 'Email backup login is currently unavailable.' };
+      return { success: false, error: 'Email sign-in is currently unavailable.' };
     }
 
     const normalizedEmail = normalizeEmail(email);
@@ -1086,52 +1092,11 @@ export function AuthProvider({ children }) {
     try {
       setAuthError(null);
       await waitForAppCheckInitialization();
-
-      if (EMAIL_MAGIC_LINK_V2_ENABLED) {
-        writePendingEmailLinkState({ email: normalizedEmail, mode: 'signin' });
-        try {
-          const v2Response = await api.auth.requestEmailMagicLinkSignInV2({ email: normalizedEmail });
-          if (v2Response?.retryAfterSeconds) {
-            clearPendingEmailLinkState();
-            return {
-              success: false,
-              error: `Too many attempts. Please wait ${v2Response.retryAfterSeconds}s and try again.`,
-            };
-          }
-
-          return {
-            success: true,
-            message: v2Response?.message || EMAIL_LINK_GENERIC_MESSAGE,
-          };
-        } catch (error) {
-          if (!shouldFallbackToLegacyMagicLinkRequest(error)) {
-            throw error;
-          }
-          if (import.meta.env.DEV) {
-            console.warn('[auth] Falling back to legacy magic-link request endpoint:', error?.code || error?.message);
-          }
-        }
-      }
-
-      const response = await api.auth.prepareEmailMagicLinkSignIn({ email: normalizedEmail });
-
-      if (response?.retryAfterSeconds) {
-        return {
-          success: false,
-          error: `Too many attempts. Please wait ${response.retryAfterSeconds}s and try again.`,
-        };
-      }
-
-      if (response?.shouldSend) {
-        writePendingEmailLinkState({ email: normalizedEmail, mode: 'signin' });
-        await sendSignInLinkToEmail(auth, normalizedEmail, buildEmailLinkActionSettings('signin'));
-      } else {
-        clearPendingEmailLinkState();
-      }
-
+      writePendingEmailLinkState({ email: normalizedEmail, mode: 'signin' });
+      await sendSignInLinkToEmail(auth, normalizedEmail, buildEmailLinkActionSettings('signin'));
       return {
         success: true,
-        message: response?.message || EMAIL_LINK_GENERIC_MESSAGE,
+        message: 'Check your email for the sign-in link (valid 1 hour).',
       };
     } catch (error) {
       const formattedError = formatFirebaseAuthError(error);
@@ -1197,12 +1162,28 @@ export function AuthProvider({ children }) {
       pendingState?.mode
       || resolveEmailLinkModeFromUrl(targetUrl)
       || 'signin';
-    const normalizedEmail = normalizeEmail(pendingState?.email);
+    // Fallback: extract email from URL if present (cross-device) or prompt via stored state
+    let normalizedEmail = normalizeEmail(pendingState?.email);
+    if (!normalizedEmail) {
+      try {
+        const urlObj = new URL(targetUrl);
+        const emailFromQuery = urlObj.searchParams.get('email') || urlObj.searchParams.get('email_hint');
+        normalizedEmail = normalizeEmail(emailFromQuery);
+      } catch {}
+    }
+    // Still missing: try window.prompt for same-browser recovery (better than dead-end)
+    if (!normalizedEmail && typeof window !== 'undefined') {
+      const prompted = window.prompt('Confirm your email to complete sign-in:');
+      normalizedEmail = normalizeEmail(prompted);
+      if (normalizedEmail) {
+        writePendingEmailLinkState({ email: normalizedEmail, mode: resolvedMode });
+      }
+    }
 
     if (!normalizedEmail) {
       clearPendingEmailLinkState();
       cleanupEmailLinkUrl();
-      return { success: false, error: 'Missing email context. Request a new link and try again.' };
+      return { success: false, error: 'Open the link on the same browser you requested it from, or request a new link.' };
     }
 
     try {
@@ -1248,27 +1229,8 @@ export function AuthProvider({ children }) {
 
       const credential = await signInWithEmailLink(auth, normalizedEmail, targetUrl);
       await credential.user.getIdToken(true);
-
-      if (!credential.user.phoneNumber) {
-        await signOut(auth);
-        throw new Error('Phone-linked account is required for email fallback sign-in.');
-      }
-
-      const userSnap = await getDoc(doc(db, 'users', credential.user.uid));
-      const userData = userSnap.exists() ? (userSnap.data() || {}) : null;
-      const isEligible = Boolean(
-        userData
-        && userData.emailAuthEnabled === true
-        && userData.emailAuthVerified === true
-        && userData.isActive !== false
-        && String(userData.accountStatus || '').toLowerCase() !== 'suspended'
-      );
-
-      if (!isEligible) {
-        await signOut(auth);
-        throw new Error('Email fallback is not enabled for this account.');
-      }
-
+      // Email-only mode: no phone/eligibility gate — any valid link signs in.
+      // isNewUser flow (users/{uid} missing) will show RegisterScreen for first-timers.
       clearPendingEmailLinkState();
       cleanupEmailLinkUrl();
       return { success: true, mode: 'signin' };
@@ -1595,12 +1557,12 @@ export function AuthProvider({ children }) {
 
       const userRef = doc(db, 'users', authUser.uid);
       const userData = {
-        phone: authUser.phoneNumber,
-        email: profileData.email || null,
-        emailAuthEnabled: false,
-        emailAuthVerified: false,
-        emailLinkedAt: null,
-        emailAuthUpdatedAt: null,
+        phone: authUser.phoneNumber || null,
+        email: profileData.email || authUser.email || null,
+        emailAuthEnabled: true,
+        emailAuthVerified: Boolean(authUser.emailVerified),
+        emailLinkedAt: authUser.emailVerified ? serverTimestamp() : null,
+        emailAuthUpdatedAt: serverTimestamp(),
         name: profileData.name,
         role: profileData.role || 'shipper',
         profileImage: null,
@@ -1779,9 +1741,11 @@ export function AuthProvider({ children }) {
     }
   };
 
-  // Logout
+  // Logout — clear pending email link so old magic-link doesn't re-trigger sign-in UI
   const logout = async () => {
     try {
+      clearPendingEmailLinkState();
+      setEmailLinkError(null);
       await signOut(auth);
       return { success: true };
     } catch (error) {

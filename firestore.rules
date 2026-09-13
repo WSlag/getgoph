@@ -284,18 +284,21 @@ service cloud.firestore {
       allow read: if isAuth();
 
       // Users can create their own document but cannot set admin privileges
+      // Email-only: phone optional when email present (billing-not-enabled path)
       allow create: if isOwner(uid)
         && request.resource.data.get('isAdmin', false) == false
         && request.resource.data.get('role', 'shipper') in ['shipper', 'trucker']
-        && request.resource.data.phone is string
-        && request.resource.data.phone.size() > 0
+        && (
+          (request.resource.data.phone is string && request.resource.data.phone.size() > 0)
+          || (request.resource.data.email is string && request.resource.data.email.size() > 0)
+        )
         && request.resource.data.name is string
         && request.resource.data.name.size() > 0
         && !containsContactInfo(request.resource.data.name)
-        && request.resource.data.get('emailAuthEnabled', false) == false
-        && request.resource.data.get('emailAuthVerified', false) == false
-        && request.resource.data.get('emailLinkedAt', null) == null
-        && request.resource.data.get('emailAuthUpdatedAt', null) == null
+        && request.resource.data.get('emailAuthEnabled', false) is bool
+        && request.resource.data.get('emailAuthVerified', false) is bool
+        && (request.resource.data.get('emailLinkedAt', null) == null || request.resource.data.get('emailLinkedAt', null) is timestamp)
+        && (request.resource.data.get('emailAuthUpdatedAt', null) == null || request.resource.data.get('emailAuthUpdatedAt', null) is timestamp)
         && request.resource.data.keys().hasOnly([
           'phone',
           'email',

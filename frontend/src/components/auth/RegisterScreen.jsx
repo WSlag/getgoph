@@ -11,7 +11,7 @@ export default function RegisterScreen({ darkMode }) {
   const showToast = useToast();
   const [name, setName] = useState('');
   const [businessName, setBusinessName] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(() => String(authUser?.email || ''));
   const [referralCode, setReferralCode] = useState(() => {
     if (typeof window === 'undefined') return '';
     return window.localStorage.getItem('karga_referral_code') || '';
@@ -24,6 +24,9 @@ export default function RegisterScreen({ darkMode }) {
   const [showBrokerOnboarding, setShowBrokerOnboarding] = useState(false);
 
   const buildDefaultName = () => {
+    if (authUser?.email) {
+      return String(authUser.email).split('@')[0] || 'User';
+    }
     const digits = String(authUser?.phoneNumber || '').replace(/\D/g, '');
     const suffix = digits.slice(-4) || 'User';
     return `User ${suffix}`;
