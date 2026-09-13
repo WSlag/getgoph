@@ -4,12 +4,15 @@ const HERO_IMAGE_WIDTHS = [480, 768, 1200];
 const HERO_SIZES = '(max-width: 640px) 100vw, (max-width: 1024px) 768px, 1152px';
 
 const HERO_IMAGES = {
-  truckers: { alt: 'Driver in truck cab using GetGo app', base: '/assets/hero/truckers', objectPosition: '68% center' },
-  cargo: { alt: 'Warehouse manager checking cargo bookings on phone', base: '/assets/hero/cargo', objectPosition: '58% center' },
-  network: { alt: 'Truck on highway at sunset representing nationwide coverage', base: '/assets/hero/network', objectPosition: 'center' },
-  manage: { alt: 'Logistics manager coordinating shipments', base: '/assets/hero/manage', objectPosition: '62% center' },
-  solution: { alt: 'Logistics workflow managed in one app', base: '/assets/hero/solution', objectPosition: '65% center' },
-  broker: { alt: 'Broker referral booking workflow', base: '/assets/hero/broker', objectPosition: '55% center' },
+  // Assets are pre-cropped to 16:9 landscape (see scripts/generate-hero-assets.js).
+  // objectPosition keeps the subject clear of the left text overlay and
+  // safe from the extra vertical crop of the 21:9 desktop frame.
+  truckers: { alt: 'Driver in truck cab using GetGo app', base: '/assets/hero/truckers', objectPosition: '62% 42%' },
+  cargo: { alt: 'Warehouse manager checking cargo bookings on phone', base: '/assets/hero/cargo', objectPosition: '50% 50%' },
+  network: { alt: 'Truck on highway at sunset representing nationwide coverage', base: '/assets/hero/network', objectPosition: '50% 65%' },
+  manage: { alt: 'Logistics manager coordinating shipments', base: '/assets/hero/manage', objectPosition: '62% 45%' },
+  solution: { alt: 'Trucks on highway at sunset finding backload routes', base: '/assets/hero/solution', objectPosition: '65% 45%' },
+  broker: { alt: 'Broker referral booking workflow', base: '/assets/hero/broker', objectPosition: '65% 40%' },
 };
 
 const STONE_PLACEHOLDER = 'linear-gradient(135deg, #e7e5e4 0%, #d6d3d1 100%)';
@@ -364,7 +367,7 @@ function Slide({ slide, total, isMobile, isActive, isPriority, cta, prefersReduc
 
   const visiblePills = pills || [];
   const imageMeta = isImage ? HERO_IMAGES[imageKey] : null;
-  const objectPosition = imageMeta?.objectPosition || (isMobile ? '68% center' : 'center');
+  const objectPosition = imageMeta?.objectPosition || '50% 35%';
 
   const backgroundStyle = isImage
     ? { background: placeholderGradient, backgroundSize: 'cover', backgroundPosition: objectPosition }
@@ -393,9 +396,9 @@ function Slide({ slide, total, isMobile, isActive, isPriority, cta, prefersReduc
             loading={isPriority || isActive ? 'eager' : 'lazy'}
             decoding={isPriority ? 'sync' : 'async'}
             fetchPriority={isPriority ? 'high' : 'low'}
-            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+            onError={(e) => { e.currentTarget.style.opacity = '0'; }}
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition, objectFit: 'cover' }}
+            style={{ objectPosition, objectFit: 'cover', background: placeholderGradient }}
           />
         </picture>
       ) : null}
