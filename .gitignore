@@ -59,3 +59,11 @@ emulator-data/
 *.zip
 google-cloud-sdk/
 -Context
+
+# Local tool artifacts (do not commit)
+.playwright-mcp/
+_docs/
+Figma/
+karga-arch*.json
+karga-architecture*.json
+functions/scripts/push-activation-broadcast.cjs
