@@ -6,9 +6,17 @@ import { Button } from '@/components/ui/button';
 import { formatListingPostedAge, formatListingScheduleDate } from '@/utils/listingDateFormatting';
 import { sanitizeMessage, sanitizePublicName } from '@/utils/messageUtils';
 
+function normalizeImageSrc(src) {
+  if (!src) return null;
+  if (typeof src === 'string') return src.trim() || null;
+  if (typeof src === 'object') return src.url || src.preview || src.src || null;
+  return null;
+}
+
 function TruckThumb({ src, alt, onClick }) {
   const [err, setErr] = useState(false);
-  if (err) {
+  const resolvedSrc = normalizeImageSrc(src);
+  if (err || !resolvedSrc) {
     return (
       <div className="size-16 rounded-xl bg-muted dark:bg-stone-800 flex items-center justify-center border border-border">
         <TruckIcon className="size-6 text-muted-foreground" />
@@ -23,7 +31,7 @@ function TruckThumb({ src, alt, onClick }) {
       className="relative size-16 rounded-xl overflow-hidden group/img border border-border hover:border-primary focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-all duration-200 cursor-pointer"
     >
       <img
-        src={src}
+        src={resolvedSrc}
         alt={alt}
         loading="lazy"
         decoding="async"
@@ -105,6 +113,7 @@ export function TruckCard({
 
   // Format capacity display
   const displayCapacity = capacity ? `${capacity}` : '';
+  const displayPhotos = (Array.isArray(truckPhotos) ? truckPhotos : []).map(normalizeImageSrc).filter(Boolean);
 
   // Compact status badge styles for mobile
   const compactStatusStyles = {
@@ -192,6 +201,25 @@ export function TruckCard({
               {distance && <span className="shrink-0">{distance}</span>}
               {estimatedTime && <span className="shrink-0">• {estimatedTime}</span>}
             </div>
+
+            {/* Compact Images */}
+            {displayPhotos.length > 0 && (
+              <div className="flex gap-2 mt-3">
+                {displayPhotos.slice(0, 4).map((photo, idx) => (
+                  <TruckThumb
+                    key={idx}
+                    src={photo}
+                    alt={`${displayTrucker} truck ${displayOrigin}→${displayDestination} image ${idx + 1}`}
+                    onClick={() => onViewDetails?.()}
+                  />
+                ))}
+                {displayPhotos.length > 4 && (
+                  <div className="size-16 rounded-xl bg-muted dark:bg-stone-800 flex items-center justify-center text-muted-foreground text-xs font-medium border border-border">
+                    +{displayPhotos.length - 4}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </button>
 
@@ -349,9 +377,9 @@ export function TruckCard({
         )}
 
         {/* Images */}
-        {truckPhotos.length > 0 && (
+        {displayPhotos.length > 0 && (
           <div className="flex gap-2 mb-4">
-            {truckPhotos.slice(0, 4).map((photo, idx) => (
+            {displayPhotos.slice(0, 4).map((photo, idx) => (
               <TruckThumb
                 key={idx}
                 src={photo}
@@ -359,9 +387,9 @@ export function TruckCard({
                 onClick={() => onViewDetails?.()}
               />
             ))}
-            {truckPhotos.length > 4 && (
+            {displayPhotos.length > 4 && (
               <div className="size-16 rounded-xl bg-muted dark:bg-stone-800 flex items-center justify-center text-muted-foreground text-xs font-medium border border-border">
-                +{truckPhotos.length - 4}
+                +{displayPhotos.length - 4}
               </div>
             )}
           </div>

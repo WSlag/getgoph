@@ -93,6 +93,10 @@ export function useTruckListings(options = {}) {
           const postedAtDisplay = formatListingPostedAge(postedAtSource, docData.timeAgo);
           const availableDateDisplay = formatListingScheduleDate(docData.availableDate);
 
+            const rawPhotos = Array.isArray(docData.photos) ? docData.photos
+              : Array.isArray(docData.truckPhotos) ? docData.truckPhotos
+              : Array.isArray(docData.images) ? docData.images
+              : [];
             return {
               id: doc.id,
               type: 'truck',
@@ -109,7 +113,7 @@ export function useTruckListings(options = {}) {
               postedAt: createdAt.timestamp,
               postedAtDisplay,
               timeAgo: postedAtDisplay,
-              truckPhotos: docData.photos || [],
+              truckPhotos: rawPhotos,
               capacity: docData.capacity ? `${docData.capacity} ${docData.capacityUnit || 'tons'}` : null,
               askingRate: docData.askingPrice,
               distance: distance ? `${distance} km` : null,

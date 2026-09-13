@@ -6,9 +6,17 @@ import { Button } from '@/components/ui/button';
 import { formatListingPostedAge, formatListingScheduleDate } from '@/utils/listingDateFormatting';
 import { sanitizeMessage, sanitizePublicName } from '@/utils/messageUtils';
 
+function normalizeImageSrc(src) {
+  if (!src) return null;
+  if (typeof src === 'string') return src.trim() || null;
+  if (typeof src === 'object') return src.url || src.preview || src.src || null;
+  return null;
+}
+
 function CargoThumb({ src, alt, onClick }) {
   const [err, setErr] = useState(false);
-  if (err) {
+  const resolvedSrc = normalizeImageSrc(src);
+  if (err || !resolvedSrc) {
     return (
       <div className="size-16 rounded-xl bg-muted dark:bg-stone-800 flex items-center justify-center border border-border">
         <Package className="size-6 text-muted-foreground" />
@@ -23,7 +31,7 @@ function CargoThumb({ src, alt, onClick }) {
       className="relative size-16 rounded-xl overflow-hidden group/img border border-border hover:border-primary focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-all duration-200 cursor-pointer"
     >
       <img
-        src={src}
+        src={resolvedSrc}
         alt={alt}
         loading="lazy"
         decoding="async"
@@ -97,7 +105,8 @@ export function CargoCard({
   const displayPrice = price || askingPrice;
   const displayTimeAgo = postedAtDisplay || timeAgo || formatListingPostedAge(postedAt, timeAgo);
   const displayTime = time || estimatedTime;
-  const displayImages = images.length > 0 ? images : cargoPhotos;
+  const rawDisplayImages = (Array.isArray(images) && images.length > 0 ? images : cargoPhotos) || [];
+  const displayImages = rawDisplayImages.map(normalizeImageSrc).filter(Boolean);
   const displayWeight = weight ? (unit && unit !== 'kg' ? `${weight} ${unit}` : `${weight} tons`) : '';
   const displayPickupDate = pickupDateDisplay || formatListingScheduleDate(pickupDate);
   const displayOrigin = sanitizeMessage(origin || '');
@@ -177,6 +186,25 @@ export function CargoCard({
                 <span className="text-orange-600 dark:text-orange-400 font-semibold shrink-0">• {bidCount} {bidCount === 1 ? 'bid' : 'bids'}</span>
               )}
             </div>
+
+            {/* Compact Images */}
+            {displayImages.length > 0 && (
+              <div className="flex gap-2 mt-3">
+                {displayImages.slice(0, 4).map((image, idx) => (
+                  <CargoThumb
+                    key={idx}
+                    src={image}
+                    alt={`${displayCompany} cargo ${displayOrigin}→${displayDestination} image ${idx + 1}`}
+                    onClick={() => onViewDetails?.()}
+                  />
+                ))}
+                {displayImages.length > 4 && (
+                  <div className="size-16 rounded-xl bg-muted dark:bg-stone-800 flex items-center justify-center text-muted-foreground text-xs font-medium border border-border">
+                    +{displayImages.length - 4}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </button>
 

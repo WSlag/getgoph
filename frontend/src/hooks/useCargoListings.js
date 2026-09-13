@@ -92,6 +92,10 @@ export function useCargoListings(options = {}) {
           const postedAtDisplay = formatListingPostedAge(postedAtSource, docData.timeAgo);
           const pickupDateDisplay = formatListingScheduleDate(docData.pickupDate);
 
+            const rawPhotos = Array.isArray(docData.photos) ? docData.photos
+              : Array.isArray(docData.cargoPhotos) ? docData.cargoPhotos
+              : Array.isArray(docData.images) ? docData.images
+              : [];
             return {
               id: doc.id,
               type: 'cargo',
@@ -107,8 +111,8 @@ export function useCargoListings(options = {}) {
               postedAt: createdAt.timestamp,
               postedAtDisplay,
               timeAgo: postedAtDisplay,
-              cargoPhotos: docData.photos || [],
-              images: docData.photos || [],
+              cargoPhotos: rawPhotos,
+              images: rawPhotos,
               unit: docData.weightUnit || 'tons',
               distance: distance ? `${distance} km` : null,
               estimatedTime: estimatedTime,
