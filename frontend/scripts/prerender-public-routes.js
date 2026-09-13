@@ -63,7 +63,7 @@ function buildFallbackContent(route) {
       <h1 style="margin:0 0 12px;font-size:clamp(1.9rem,3vw,2.8rem);font-weight:800;color:#111827;">${route.heading || route.title}</h1>
       <p style="margin:0 0 20px;color:#374151;font-size:1.05rem;">${route.subheading || route.description}</p>
       <ul style="margin:0 0 24px;padding-left:20px;color:#4b5563;display:grid;gap:8px;">${highlightMarkup}</ul>
-      <a href="/" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:#f97316;color:#fff;text-decoration:none;font-weight:700;">Open GetGo App</a>
+      <a href="/" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:#c2410c;color:#fff;text-decoration:none;font-weight:700;">Open GetGo App</a>
     </main>
   `.trim();
 }

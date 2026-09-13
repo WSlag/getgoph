@@ -25,31 +25,31 @@ export function Sidebar({
   onPaymentReviewClick,
   className,
 }) {
-  // Account type display configuration
+  // Account type display — single ember brand, neutral icon (no rainbow per role)
   const accountConfig = {
     shipper: {
       icon: Ship,
       label: 'Shipper Account',
-      bgGradient: 'from-blue-500 to-blue-600',
-      shadowColor: 'shadow-blue-500/30',
-      badgeBg: 'bg-blue-100 dark:bg-blue-900/50',
-      badgeText: 'text-blue-600 dark:text-blue-400',
+      bgGradient: 'from-primary to-[var(--primary-hover)]',
+      shadowColor: 'shadow-primary/20',
+      badgeBg: 'bg-white/20',
+      badgeText: 'text-white',
     },
     trucker: {
       icon: Truck,
       label: 'Trucker Account',
-      bgGradient: 'from-emerald-500 to-emerald-600',
-      shadowColor: 'shadow-emerald-500/30',
-      badgeBg: 'bg-emerald-100 dark:bg-emerald-900/50',
-      badgeText: 'text-emerald-600 dark:text-emerald-400',
+      bgGradient: 'from-primary to-[var(--primary-hover)]',
+      shadowColor: 'shadow-primary/20',
+      badgeBg: 'bg-white/20',
+      badgeText: 'text-white',
     },
     broker: {
       icon: Users,
       label: 'Broker Workspace',
-      bgGradient: 'from-orange-500 to-orange-600',
-      shadowColor: 'shadow-orange-500/30',
-      badgeBg: 'bg-orange-100 dark:bg-orange-900/50',
-      badgeText: 'text-orange-600 dark:text-orange-400',
+      bgGradient: 'from-primary to-[var(--primary-hover)]',
+      shadowColor: 'shadow-primary/20',
+      badgeBg: 'bg-white/20',
+      badgeText: 'text-white',
     },
   };
 
@@ -60,12 +60,12 @@ export function Sidebar({
   return (
     <aside
       className={cn(
-        "w-72 h-[calc(100vh-73px)] sticky top-[73px] bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 border-r border-gray-200/50 dark:border-gray-800 flex flex-col",
+        "w-72 h-[calc(100vh-73px)] sticky top-[73px] bg-card dark:bg-stone-950 border-r border-border flex flex-col",
         className
       )}
     >
       {/* Account Type Display (Read-only) */}
-      <div className="border-b border-gray-200/50 dark:border-gray-800/50" style={{ padding: '24px' }}>
+      <div className="border-b border-border" style={{ padding: '24px' }}>
         <div className={cn(
           "flex items-center gap-3 p-4 rounded-xl bg-gradient-to-br",
           config.bgGradient,
@@ -83,16 +83,16 @@ export function Sidebar({
       </div>
 
       {/* Browse Section */}
-      <div className="border-b border-gray-200/50 dark:border-gray-800/50" style={{ padding: '24px' }}>
-        <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide" style={{ marginBottom: '10px' }}>Browse</p>
+      <div className="border-b border-border" style={{ padding: '24px' }}>
+        <p className="text-xs text-muted-foreground uppercase tracking-wide" style={{ marginBottom: '10px' }}>Browse</p>
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <button
             onClick={() => onMarketChange?.('cargo')}
             className={cn(
-              "w-full flex items-center gap-3 px-4 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 group",
+              "w-full flex items-center gap-3 px-4 rounded-xl transition-all duration-300 hover:scale-[1.01] active:scale-95 group border",
               activeMarket === 'cargo'
-                ? "bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 text-orange-600 dark:text-orange-400 hover:shadow-md"
-                : "text-gray-600 dark:text-gray-400 hover:bg-white dark:hover:bg-gray-800 hover:shadow-md"
+                ? "bg-primary-soft dark:bg-orange-950/30 text-primary border-primary/20"
+                : "text-muted-foreground hover:bg-accent hover:text-foreground border-transparent hover:border-border"
             )}
             style={{ paddingTop: '12px', paddingBottom: '12px', paddingLeft: '16px', paddingRight: '16px' }}
           >
@@ -101,8 +101,8 @@ export function Sidebar({
             <span className={cn(
               "text-xs px-2 py-0.5 rounded-full",
               activeMarket === 'cargo'
-                ? "bg-orange-200/70 dark:bg-orange-800/40"
-                : "bg-gray-200/70 dark:bg-gray-700"
+                ? "bg-primary text-primary-foreground"
+                : "bg-muted text-muted-foreground"
             )}>
               {cargoCount}
             </span>
@@ -111,10 +111,10 @@ export function Sidebar({
           <button
             onClick={() => onMarketChange?.('trucks')}
             className={cn(
-              "w-full flex items-center gap-3 px-4 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 group",
+              "w-full flex items-center gap-3 px-4 rounded-xl transition-all duration-300 hover:scale-[1.01] active:scale-95 group border",
               activeMarket === 'trucks'
-                ? "bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 text-blue-600 dark:text-blue-400 hover:shadow-md"
-                : "text-gray-600 dark:text-gray-400 hover:bg-white dark:hover:bg-gray-800 hover:shadow-md"
+                ? "bg-primary-soft dark:bg-orange-950/30 text-primary border-primary/20"
+                : "text-muted-foreground hover:bg-accent hover:text-foreground border-transparent hover:border-border"
             )}
             style={{ paddingTop: '12px', paddingBottom: '12px', paddingLeft: '16px', paddingRight: '16px' }}
           >
@@ -123,8 +123,8 @@ export function Sidebar({
             <span className={cn(
               "text-xs px-2 py-0.5 rounded-full",
               activeMarket === 'trucks'
-                ? "bg-blue-200/70 dark:bg-blue-800/40"
-                : "bg-gray-200/70 dark:bg-gray-700"
+                ? "bg-primary text-primary-foreground"
+                : "bg-muted text-muted-foreground"
             )}>
               {truckCount}
             </span>
@@ -134,13 +134,13 @@ export function Sidebar({
           {displayRole === 'trucker' && (
             <button
               onClick={onMyBidsClick}
-              className="w-full flex items-center gap-3 px-4 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 group text-gray-600 dark:text-gray-400 hover:bg-white dark:hover:bg-gray-800 hover:shadow-md"
+              className="w-full flex items-center gap-3 px-4 rounded-xl transition-all duration-300 hover:scale-[1.01] active:scale-95 group text-muted-foreground hover:bg-accent hover:text-foreground border border-transparent hover:border-border"
               style={{ paddingTop: '12px', paddingBottom: '12px', paddingLeft: '16px', paddingRight: '16px' }}
             >
-              <FileText className="size-5 text-green-500" />
+              <FileText className="size-5 text-muted-foreground" />
               <span className="font-medium flex-1 text-left">My Bids</span>
               {myBidsCount > 0 && (
-                <span className="text-xs px-2 py-0.5 rounded-full bg-green-200/70 dark:bg-green-800/40 text-green-700 dark:text-green-300">
+                <span className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground border border-border">
                   {myBidsCount}
                 </span>
               )}
@@ -151,13 +151,13 @@ export function Sidebar({
           {displayRole === 'shipper' && (
             <button
               onClick={onMyBidsClick}
-              className="w-full flex items-center gap-3 px-4 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 group text-gray-600 dark:text-gray-400 hover:bg-white dark:hover:bg-gray-800 hover:shadow-md"
+              className="w-full flex items-center gap-3 px-4 rounded-xl transition-all duration-300 hover:scale-[1.01] active:scale-95 group text-muted-foreground hover:bg-accent hover:text-foreground border border-transparent hover:border-border"
               style={{ paddingTop: '12px', paddingBottom: '12px', paddingLeft: '16px', paddingRight: '16px' }}
             >
-              <FileText className="size-5 text-purple-500" />
+              <FileText className="size-5 text-muted-foreground" />
               <span className="font-medium flex-1 text-left">My Bookings</span>
               {myBidsCount > 0 && (
-                <span className="text-xs px-2 py-0.5 rounded-full bg-purple-200/70 dark:bg-purple-800/40 text-purple-700 dark:text-purple-300">
+                <span className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground border border-border">
                   {myBidsCount}
                 </span>
               )}
@@ -167,18 +167,18 @@ export function Sidebar({
           {/* Contracts - For All Users */}
           <button
             onClick={onContractsClick}
-            className="w-full flex items-center gap-3 px-4 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 group text-gray-600 dark:text-gray-400 hover:bg-white dark:hover:bg-gray-800 hover:shadow-md"
+            className="w-full flex items-center gap-3 px-4 rounded-xl transition-all duration-300 hover:scale-[1.01] active:scale-95 group text-muted-foreground hover:bg-accent hover:text-foreground border border-transparent hover:border-border"
             style={{ paddingTop: '12px', paddingBottom: '12px', paddingLeft: '16px', paddingRight: '16px' }}
           >
-            <FileText className="size-5 text-indigo-500" />
+            <FileText className="size-5 text-muted-foreground" />
             <span className="font-medium flex-1 text-left">My Contracts</span>
             {pendingContractsCount > 0 && (
-              <span className="text-xs px-2 py-0.5 rounded-full bg-yellow-200/70 dark:bg-yellow-800/40 text-yellow-700 dark:text-yellow-300 animate-pulse">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 border border-amber-200 animate-pulse">
                 {pendingContractsCount}
               </span>
             )}
             {pendingContractsCount === 0 && activeContractsCount > 0 && (
-              <span className="text-xs px-2 py-0.5 rounded-full bg-indigo-200/70 dark:bg-indigo-800/40 text-indigo-700 dark:text-indigo-300">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground border border-border">
                 {activeContractsCount}
               </span>
             )}
@@ -187,10 +187,10 @@ export function Sidebar({
           {/* Broker Hub */}
           <button
             onClick={onBrokerClick}
-            className="w-full flex items-center gap-3 px-4 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 group text-gray-600 dark:text-gray-400 hover:bg-white dark:hover:bg-gray-800 hover:shadow-md"
+            className="w-full flex items-center gap-3 px-4 rounded-xl transition-all duration-300 hover:scale-[1.01] active:scale-95 group text-muted-foreground hover:bg-accent hover:text-foreground border border-transparent hover:border-border"
             style={{ paddingTop: '12px', paddingBottom: '12px', paddingLeft: '16px', paddingRight: '16px' }}
           >
-            <Users className="size-5 text-emerald-500" />
+            <Users className="size-5 text-muted-foreground" />
             <span className="font-medium flex-1 text-left">{isBroker ? 'Broker Dashboard' : 'Broker Program'}</span>
           </button>
 
@@ -198,13 +198,13 @@ export function Sidebar({
           {isAdmin && onPaymentReviewClick && (
             <button
               onClick={onPaymentReviewClick}
-              className="w-full flex items-center gap-3 px-4 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 group bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 text-amber-700 dark:text-amber-400 hover:shadow-md border border-amber-200/50 dark:border-amber-800/50"
+              className="w-full flex items-center gap-3 px-4 rounded-xl transition-all duration-300 hover:scale-[1.01] active:scale-95 group bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900"
               style={{ paddingTop: '12px', paddingBottom: '12px', paddingLeft: '16px', paddingRight: '16px' }}
             >
               <Shield className="size-5" />
               <span className="font-medium flex-1 text-left">Admin Dashboard</span>
               {pendingPaymentsCount > 0 && (
-                <span className="text-xs px-2 py-0.5 rounded-full bg-red-500 text-white animate-pulse">
+                <span className="text-xs px-2 py-0.5 rounded-full bg-red-600 text-white animate-pulse">
                   {pendingPaymentsCount}
                 </span>
               )}
@@ -217,7 +217,7 @@ export function Sidebar({
       <div style={{ padding: '24px' }}>
         <button
           onClick={onPostClick}
-          className="w-full px-6 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 transition-all duration-300 hover:scale-105 active:scale-95 group"
+          className="w-full px-6 rounded-xl bg-primary text-primary-foreground shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-[1.01] active:scale-95 group"
           style={{ paddingTop: '15px', paddingBottom: '15px' }}
         >
           <div className="flex items-center justify-center gap-2">
@@ -232,10 +232,10 @@ export function Sidebar({
         {displayRole === 'trucker' && onRouteOptimizerClick && (
           <button
             onClick={onRouteOptimizerClick}
-            className="w-full rounded-xl bg-white/80 dark:bg-gray-800/80 text-gray-600 dark:text-gray-300 font-medium hover:shadow-md transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 border border-gray-200/50 dark:border-gray-700/50"
+            className="w-full rounded-xl bg-card dark:bg-stone-900 text-muted-foreground font-medium hover:bg-accent hover:text-foreground border border-border transition-all duration-300 hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-2"
             style={{ marginTop: '12px', paddingTop: '12px', paddingBottom: '12px' }}
           >
-            <Route className="size-5 text-purple-500" />
+            <Route className="size-5 text-muted-foreground" />
             <span>Route Optimizer</span>
           </button>
         )}
@@ -245,36 +245,36 @@ export function Sidebar({
       <div className="flex-1" />
 
       {/* Quick Stats */}
-      <div className="border-t border-gray-200/50 dark:border-gray-800/50 mt-auto" style={{ padding: '24px' }}>
-        <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide" style={{ marginBottom: '15px' }}>Quick Stats</p>
+      <div className="border-t border-border mt-auto" style={{ padding: '24px' }}>
+        <p className="text-xs text-muted-foreground uppercase tracking-wide" style={{ marginBottom: '15px' }}>Quick Stats</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 hover:shadow-md transition-all duration-300 cursor-pointer group">
-            <div className="size-10 rounded-lg bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg shadow-green-500/30">
-              <CheckCircle className="size-5 text-white" />
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-muted border border-border hover:shadow-sm transition-all duration-300 cursor-pointer group">
+            <div className="size-10 rounded-lg bg-card border border-border flex items-center justify-center">
+              <CheckCircle className="size-5 text-muted-foreground" />
             </div>
             <div className="flex-1">
-              <p className="text-xs text-gray-500 dark:text-gray-400">Open Cargo</p>
-              <p className="font-bold text-gray-900 dark:text-white">{openCargoCount}</p>
+              <p className="text-xs text-muted-foreground">Open Cargo</p>
+              <p className="font-bold text-foreground">{openCargoCount}</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 hover:shadow-md transition-all duration-300 cursor-pointer group">
-            <div className="size-10 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
-              <Truck className="size-5 text-white" />
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-muted border border-border hover:shadow-sm transition-all duration-300 cursor-pointer group">
+            <div className="size-10 rounded-lg bg-card border border-border flex items-center justify-center">
+              <Truck className="size-5 text-muted-foreground" />
             </div>
             <div className="flex-1">
-              <p className="text-xs text-gray-500 dark:text-gray-400">Available Trucks</p>
-              <p className="font-bold text-gray-900 dark:text-white">{availableTrucksCount}</p>
+              <p className="text-xs text-muted-foreground">Available Trucks</p>
+              <p className="font-bold text-foreground">{availableTrucksCount}</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-br from-pink-50 to-purple-50 dark:from-pink-900/20 dark:to-purple-900/20 hover:shadow-md transition-all duration-300 cursor-pointer group">
-            <div className="size-10 rounded-lg bg-gradient-to-br from-pink-400 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/30">
-              <Navigation className="size-5 text-white" />
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-muted border border-border hover:shadow-sm transition-all duration-300 cursor-pointer group">
+            <div className="size-10 rounded-lg bg-card border border-border flex items-center justify-center">
+              <Navigation className="size-5 text-muted-foreground" />
             </div>
             <div className="flex-1">
-              <p className="text-xs text-gray-500 dark:text-gray-400">Active Shipments</p>
-              <p className="font-bold text-gray-900 dark:text-white">{activeShipmentsCount}</p>
+              <p className="text-xs text-muted-foreground">Active Shipments</p>
+              <p className="font-bold text-foreground">{activeShipmentsCount}</p>
             </div>
           </div>
         </div>

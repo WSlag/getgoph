@@ -3,17 +3,17 @@ import { cn } from "@/lib/cn";
 
 const variants = {
   primary:
-    "bg-orange-500 text-white hover:bg-orange-600 shadow-[0_6px_12px_rgba(0,0,0,0.10)]",
+    "bg-primary text-primary-foreground hover:bg-[var(--primary-hover)] shadow-[0_6px_12px_rgba(28,25,23,0.10)]",
   secondary:
-    "border border-slate-200 bg-slate-100 text-slate-900 hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700",
+    "border border-border bg-secondary text-secondary-foreground hover:bg-accent dark:border-stone-700 dark:bg-stone-800 dark:text-white dark:hover:bg-stone-700",
   outline:
-    "border border-orange-500 bg-transparent text-orange-600 hover:bg-orange-50 dark:text-orange-400 dark:hover:bg-orange-950/30",
+    "border border-primary bg-transparent text-primary hover:bg-primary-soft dark:text-primary dark:hover:bg-orange-950/20",
   success:
-    "bg-emerald-500 text-white hover:bg-emerald-600 shadow-[0_6px_12px_rgba(0,0,0,0.10)]",
+    "bg-[var(--success)] text-white hover:brightness-95 shadow-[0_6px_12px_rgba(28,25,23,0.10)]",
   danger:
-    "bg-red-500 text-white hover:bg-red-600 shadow-[0_6px_12px_rgba(0,0,0,0.10)]",
+    "bg-destructive text-white hover:bg-destructive/90 shadow-[0_6px_12px_rgba(28,25,23,0.10)]",
   ghost:
-    "bg-transparent text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800",
+    "bg-transparent text-muted-foreground hover:bg-accent hover:text-foreground dark:text-stone-300 dark:hover:bg-stone-800",
 };
 
 const sizes = {

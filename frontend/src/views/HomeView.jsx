@@ -356,7 +356,7 @@ export function HomeView({
     <main
       ref={scrollContainerRef}
       data-testid="home-scroll-container"
-      className={cn("flex-1 bg-gray-50 dark:bg-gray-950 overflow-y-auto", className)}
+      className={cn("flex-1 bg-background dark:bg-stone-950 overflow-y-auto", className)}
       style={{
         padding: isMobile ? '0' : '24px',
         paddingTop: isMobile ? '0' : '24px',
@@ -398,7 +398,7 @@ export function HomeView({
         data-testid="home-sticky-controls"
         className={cn(
           "lg:relative lg:z-auto mx-auto w-full max-w-7xl",
-          "max-lg:fixed max-lg:left-0 max-lg:right-0 max-lg:z-40 max-lg:bg-gray-50 max-lg:dark:bg-gray-950"
+          "max-lg:fixed max-lg:left-0 max-lg:right-0 max-lg:z-40 max-lg:bg-background/80 max-lg:backdrop-blur-md max-lg:border-b max-lg:border-border"
         )}
         style={{
           padding: isMobile ? `${mobileStickyPaddingTop}px 16px 16px` : '0',
@@ -412,10 +412,10 @@ export function HomeView({
           <button
             onClick={() => onMarketChange?.('cargo')}
             className={cn(
-              "flex-1 rounded-full font-medium text-sm transition-all active:scale-95",
+              "flex-1 rounded-full font-medium text-sm transition-all active:scale-95 border",
               activeMarket === 'cargo'
-                ? "bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg shadow-orange-500/30"
-                : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700"
+                ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
+                : "bg-card dark:bg-stone-900 text-muted-foreground border-border hover:bg-accent"
             )}
             style={{ padding: '12px 16px' }}
           >
@@ -424,10 +424,10 @@ export function HomeView({
           <button
             onClick={() => onMarketChange?.('trucks')}
             className={cn(
-              "flex-1 rounded-full font-medium text-sm transition-all active:scale-95",
+              "flex-1 rounded-full font-medium text-sm transition-all active:scale-95 border",
               activeMarket === 'trucks'
-                ? "bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg shadow-blue-500/30"
-                : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700"
+                ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
+                : "bg-card dark:bg-stone-900 text-muted-foreground border-border hover:bg-accent"
             )}
             style={{ padding: '12px 16px' }}
           >
@@ -450,12 +450,12 @@ export function HomeView({
                 ? "Search by shipper, route, or cargo type..."
                 : "Search by trucker, route, or vehicle type..."}
               className={cn(
-                "w-full rounded-full border border-gray-200 dark:border-gray-700",
-                "bg-white dark:bg-gray-800 text-gray-900 dark:text-white",
+                "w-full rounded-full border border-border",
+                "bg-card dark:bg-stone-900 text-foreground",
                 isMobile ? "text-sm" : "text-lg",
-                "placeholder:text-gray-400 dark:placeholder:text-gray-500",
+                "placeholder:text-muted-foreground",
                 isMobile ? "placeholder:text-sm" : "placeholder:text-lg",
-                "focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500",
+                "focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring",
                 "transition-all duration-200"
               )}
               style={{ padding: isMobile ? '12px 16px' : '15px 16px' }}
@@ -506,10 +506,10 @@ export function HomeView({
 
       {/* Saved Searches */}
       {showSavedSearchesCard && (
-      <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900" style={{ padding: isMobile ? '12px' : '16px', marginBottom: isMobile ? '12px' : '16px' }}>
+      <div className="rounded-xl border border-border bg-card" style={{ padding: isMobile ? '12px' : '16px', marginBottom: isMobile ? '12px' : '16px' }}>
         <div className="flex items-center justify-between" style={{ marginBottom: '10px' }}>
           <div className="flex items-center gap-2">
-            <Bookmark className="size-4 text-orange-500" />
+            <Bookmark className="size-4 text-primary" />
             <p style={{ fontSize: isMobile ? '12px' : '13px', fontWeight: '600', color: darkMode ? '#d1d5db' : '#374151' }}>
               Saved Searches
             </p>
@@ -530,7 +530,7 @@ export function HomeView({
             {savedSearches.map((savedSearch) => (
               <div
                 key={savedSearch.id}
-                className="flex items-center rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
+                className="flex items-center rounded-full border border-border bg-muted"
                 style={{ padding: '4px 10px', gap: '6px' }}
               >
                 <button
@@ -585,13 +585,13 @@ export function HomeView({
               display: 'flex',
               alignItems: 'center',
               gap: '14px',
-              backgroundColor: darkMode ? '#1f1b2e' : '#fff',
+              backgroundColor: darkMode ? '#1c1917' : '#fff',
               borderRadius: '14px',
-              border: `1.5px dashed ${darkMode ? '#7c3aed' : '#8b5cf6'}`,
+              border: `1px solid ${darkMode ? '#44403c' : '#e7e5e4'}`,
               padding: '16px',
               cursor: 'pointer',
               transition: 'all 0.2s',
-              boxShadow: '0 2px 8px rgba(139, 92, 246, 0.12)',
+              boxShadow: '0 1px 3px rgba(28,25,23,0.06)',
               textAlign: 'left',
             }}
           >
@@ -599,13 +599,13 @@ export function HomeView({
               width: '40px',
               height: '40px',
               borderRadius: '12px',
-              background: 'linear-gradient(135deg, #f3e8ff, #ede9fe)',
+              background: darkMode ? '#292524' : '#f5f5f4',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               flexShrink: 0,
             }}>
-              <Route style={{ width: '20px', height: '20px', color: '#8b5cf6' }} />
+              <Route style={{ width: '20px', height: '20px', color: '#78716c' }} />
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
               <p style={{
@@ -623,7 +623,7 @@ export function HomeView({
                 Find backloads &amp; optimize your route
               </p>
             </div>
-            <ChevronRight style={{ width: '20px', height: '20px', color: '#8b5cf6', flexShrink: 0 }} />
+            <ChevronRight style={{ width: '20px', height: '20px', color: '#78716c', flexShrink: 0 }} />
           </button>
         </div>
       )}
@@ -639,7 +639,7 @@ export function HomeView({
         <p className={cn(
           "text-gray-600 dark:text-gray-400 text-sm"
         )}>
-          <span className="font-semibold text-orange-500">
+          <span className="font-semibold text-primary">
             {listingCount} {listingCountLabel}
           </span>{' '}
           available
@@ -771,8 +771,8 @@ export function HomeView({
         </>
       ) : (
         <div className="flex flex-col items-center justify-center py-16 text-center rounded-2xl border border-dashed border-border bg-card/50 px-6">
-          <div className="size-16 rounded-2xl bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900/30 dark:to-orange-800/20 flex items-center justify-center mb-4 shadow-sm">
-            <Filter className="size-8 text-orange-500" />
+          <div className="size-16 rounded-2xl bg-muted border border-border flex items-center justify-center mb-4">
+            <Filter className="size-8 text-muted-foreground" />
           </div>
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
             No {activeMarket === 'cargo' ? 'cargo' : 'trucks'} found

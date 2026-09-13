@@ -41,7 +41,7 @@ export function Header({
       ref={headerRef}
       data-testid="app-header"
       className={cn(
-        "z-50 backdrop-blur-xl bg-white/70 dark:bg-gray-900/70 border-b border-gray-200/50 dark:border-gray-800/50",
+        "z-50 backdrop-blur-xl bg-card/80 dark:bg-stone-900/80 border-b border-border",
         // Desktop: sticky, stays in layout flow
         "lg:sticky lg:top-0 lg:shrink-0",
         // Mobile: fixed overlay, never affects layout
@@ -49,7 +49,7 @@ export function Header({
         "max-lg:duration-300 max-lg:ease-out",
         "max-lg:transition-[opacity,border-color,transform]",
         mobileVisible
-          ? "max-lg:opacity-100 max-lg:pointer-events-auto max-lg:border-gray-200/50 dark:max-lg:border-gray-800/50 max-lg:translate-y-0"
+          ? "max-lg:opacity-100 max-lg:pointer-events-auto max-lg:border-border max-lg:translate-y-0"
           : "max-lg:opacity-0 max-lg:pointer-events-none max-lg:border-transparent max-lg:-translate-y-full"
       )}
     >
@@ -83,10 +83,10 @@ export function Header({
                     }
                   }}
                   className={cn(
-                    "group relative rounded-xl transition-all duration-300 hover:scale-105 active:scale-95",
+                    "group relative rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 border",
                     isActive
-                      ? "bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40"
-                      : "bg-white/50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-800 hover:shadow-md backdrop-blur-sm"
+                      ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
+                      : "bg-muted/50 dark:bg-stone-800/50 text-muted-foreground dark:text-stone-300 border-transparent hover:bg-accent hover:text-foreground hover:border-border backdrop-blur-sm"
                   )}
                   style={{ paddingTop: '10px', paddingBottom: '10px', paddingLeft: '20px', paddingRight: '20px' }}
                 >
@@ -111,9 +111,9 @@ export function Header({
               onClick={onNotificationClick}
               aria-label="Open notifications"
               title="Notifications"
-              className="relative size-9 rounded-xl bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800 flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105 active:scale-95 backdrop-blur-sm"
+              className="relative size-9 rounded-xl bg-muted/50 dark:bg-stone-800/50 hover:bg-accent border border-transparent hover:border-border flex items-center justify-center transition-all duration-300 hover:shadow-sm hover:scale-105 active:scale-95 backdrop-blur-sm"
             >
-              <Bell className="size-5 text-gray-700 dark:text-gray-400" />
+              <Bell className="size-5 text-muted-foreground" />
               {unreadNotifications > 0 && (
                 <span className="absolute -top-1 -right-1 size-5 flex items-center justify-center bg-red-500 text-white text-xs font-bold rounded-full border-2 border-white dark:border-gray-900">
                   {unreadNotifications > 9 ? '9+' : unreadNotifications}
@@ -126,7 +126,7 @@ export function Header({
               onClick={onToggleDarkMode}
               aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
               title={darkMode ? 'Light mode' : 'Dark mode'}
-              className="size-8 rounded-lg bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800 flex items-center justify-center transition-all duration-300 hover:shadow-md hover:scale-105 active:scale-95 backdrop-blur-sm"
+              className="size-8 rounded-lg bg-muted/50 dark:bg-stone-800/50 hover:bg-accent border border-transparent hover:border-border flex items-center justify-center transition-all duration-300 hover:shadow-sm hover:scale-105 active:scale-95 backdrop-blur-sm"
             >
               {darkMode ? (
                 <Sun className="size-5 text-amber-500" />
@@ -156,10 +156,7 @@ export function Header({
             >
               <button
                 className={cn(
-                  "size-9 rounded-full flex items-center justify-center text-white text-sm font-semibold shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-all duration-200 border-2",
-                  currentRole === 'trucker'
-                    ? "bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-emerald-500/30 border-emerald-300"
-                    : "bg-gradient-to-br from-blue-400 to-blue-600 shadow-blue-500/30 border-blue-300"
+                  "size-9 rounded-full flex items-center justify-center text-white text-sm font-semibold shadow-md shadow-primary/20 cursor-pointer hover:scale-110 active:scale-95 transition-all duration-200 border-2 border-primary/20 bg-primary"
                 )}
               >
                 <span>{userInitial}</span>

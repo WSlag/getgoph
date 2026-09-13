@@ -22,14 +22,8 @@ export function Logo({ className = "", showText = true, size = "default" }) {
         <div className="flex flex-col">
           <div className="flex items-center gap-0.5">
             <span
-              className={cn("font-black tracking-tight", currentSize.text)}
-              style={{
-                fontFamily: 'Outfit, sans-serif',
-                background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 50%, #FF5722 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
+              className={cn("font-black tracking-tight text-primary", currentSize.text)}
+              style={{ fontFamily: 'Outfit, sans-serif' }}
             >
               Get
             </span>

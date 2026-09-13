@@ -24,7 +24,7 @@ export const MobileNav = React.forwardRef(function MobileNav({
       ref={ref}
       data-testid="mobile-nav"
       className={cn(
-        "fixed bottom-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-t border-gray-200/50 dark:border-gray-800/50 px-2 pb-safe lg:hidden",
+        "fixed bottom-0 left-0 right-0 z-50 bg-card/90 dark:bg-stone-900/90 backdrop-blur-xl border-t border-border px-2 pb-safe lg:hidden",
         className
       )}
     >
@@ -42,10 +42,10 @@ export const MobileNav = React.forwardRef(function MobileNav({
                 className="relative flex flex-col items-center justify-center group"
                 style={{ marginTop: '-18px' }}
               >
-                <div className="size-14 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/40 hover:shadow-xl hover:shadow-orange-500/50 hover:scale-105 active:scale-95 transition-all duration-300">
+                <div className="size-14 rounded-2xl bg-primary flex items-center justify-center shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/25 hover:scale-105 active:scale-95 transition-all duration-300">
                   <Icon className="size-6 text-white group-hover:rotate-90 transition-transform duration-300" />
                 </div>
-                <span className="text-[10px] font-medium text-orange-600 dark:text-orange-400" style={{ marginTop: '4px' }}>
+                <span className="text-[10px] font-medium text-primary" style={{ marginTop: '4px' }}>
                   {item.label}
                 </span>
               </button>
@@ -61,8 +61,8 @@ export const MobileNav = React.forwardRef(function MobileNav({
               className={cn(
                 "flex flex-col items-center justify-center rounded-xl transition-all duration-300 relative hover:scale-105 active:scale-95 min-h-[44px]",
                 isActive
-                  ? "text-orange-600 dark:text-orange-400"
-                  : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
               )}
               style={{ padding: '8px 12px' }}
             >
@@ -78,7 +78,7 @@ export const MobileNav = React.forwardRef(function MobileNav({
                 {item.label}
               </span>
               {isActive && (
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 shadow-sm shadow-orange-500/50" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary" />
               )}
             </button>
           );

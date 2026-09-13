@@ -10,8 +10,8 @@ function TruckThumb({ src, alt, onClick }) {
   const [err, setErr] = useState(false);
   if (err) {
     return (
-      <div className="size-16 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center border-2 border-gray-200 dark:border-gray-700">
-        <TruckIcon className="size-6 text-gray-400" />
+      <div className="size-16 rounded-xl bg-muted dark:bg-stone-800 flex items-center justify-center border border-border">
+        <TruckIcon className="size-6 text-muted-foreground" />
       </div>
     );
   }
@@ -20,7 +20,7 @@ function TruckThumb({ src, alt, onClick }) {
       type="button"
       onClick={onClick}
       aria-label={alt}
-      className="relative size-16 rounded-xl overflow-hidden group/img border-2 border-gray-200 dark:border-gray-700 hover:border-purple-400 focus-visible:border-purple-400 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 transition-all duration-200 cursor-pointer"
+      className="relative size-16 rounded-xl overflow-hidden group/img border border-border hover:border-primary focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-all duration-200 cursor-pointer"
     >
       <img
         src={src}
@@ -74,12 +74,12 @@ export function TruckCard({
 }) {
   const displayStatus = uiStatus || status;
 
-  // Status badge styles - professional muted palette
+  // Status badge styles — flat semantic on warm neutral
   const statusStyles = {
-    available: 'bg-green-50 text-green-700 border border-green-200 dark:bg-green-950/50 dark:text-green-300 dark:border-green-800',
-    'in-transit': 'bg-orange-50 text-orange-700 border border-orange-200 dark:bg-orange-950/50 dark:text-orange-300 dark:border-orange-800',
-    booked: 'bg-blue-50 text-blue-700 border border-blue-200 dark:bg-blue-950/50 dark:text-blue-300 dark:border-blue-800',
-    offline: 'bg-gray-50 text-gray-700 border border-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700',
+    available: 'bg-green-50 text-green-700 border border-green-200 dark:bg-green-950/40 dark:text-green-300 dark:border-green-900',
+    'in-transit': 'bg-blue-50 text-blue-700 border border-blue-200 dark:bg-blue-950/40 dark:text-blue-300 dark:border-blue-900',
+    booked: 'bg-amber-50 text-amber-700 border border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-900',
+    offline: 'bg-stone-100 text-stone-600 border border-stone-200 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-700',
   };
 
   // Status labels
@@ -90,12 +90,12 @@ export function TruckCard({
     offline: 'OFFLINE',
   };
 
-  // Gradient colors for price pill and buttons based on status — keep primary orange for cohesion
+  // Price pill — single ember solid (no rainbow)
   const gradientColors = {
-    available: 'bg-gradient-to-r from-orange-500 to-orange-600',
-    'in-transit': 'bg-gradient-to-r from-orange-500 to-orange-600',
-    booked: 'bg-gradient-to-r from-blue-500 to-blue-600',
-    offline: 'bg-gradient-to-r from-gray-400 to-gray-600',
+    available: 'bg-primary',
+    'in-transit': 'bg-primary',
+    booked: 'bg-primary',
+    offline: 'bg-stone-500',
   };
 
   const currentGradient = gradientColors[displayStatus] || gradientColors.available;
@@ -117,11 +117,11 @@ export function TruckCard({
 
   // Compact status badge styles for mobile
   const compactStatusStyles = {
-    available: 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400',
-    open: 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400',
-    'in-transit': 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-400',
-    booked: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-400',
-    offline: 'bg-gray-100 text-gray-700 dark:bg-gray-900/40 dark:text-gray-400',
+    available: 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300',
+    open: 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300',
+    'in-transit': 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
+    booked: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
+    offline: 'bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-400',
   };
 
   // Compact card variant for mobile
@@ -131,13 +131,13 @@ export function TruckCard({
     return (
       <article
         className={cn(
-          "group relative bg-card text-card-foreground rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200 hover:scale-[1.01] border border-border",
+          "group relative bg-card text-card-foreground rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.01] border border-border",
           className
         )}
         data-testid="truck-compact-card"
       >
-        {/* Gradient Accent Bar */}
-        <div className={cn("h-1.5", currentGradient)} />
+        {/* Accent Bar — neutral */}
+        <div className="h-1 bg-border" />
 
         <button
           type="button"
@@ -161,7 +161,7 @@ export function TruckCard({
                   </Badge>
                 )}
               </div>
-              <div className={cn("shrink-0 ml-2 rounded-lg px-3.5 py-1", currentGradient)}>
+              <div className="shrink-0 ml-2 rounded-lg bg-primary px-3.5 py-1">
                 <span className="text-sm font-bold text-white">{formatPrice(askingRate)}</span>
               </div>
             </div>
@@ -211,7 +211,7 @@ export function TruckCard({
                 variant="default"
                 size="sm"
                 onClick={onBook}
-                className="flex-1 min-h-9 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 border-0"
+                className="flex-1 min-h-9"
                 data-testid="truck-compact-book-now"
               >
                 Book Now
@@ -234,12 +234,12 @@ export function TruckCard({
   return (
     <div
       className={cn(
-        "group relative bg-card text-card-foreground rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200 hover:scale-[1.01] hover:-translate-y-0.5 border border-border",
+        "group relative bg-card text-card-foreground rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.01] hover:-translate-y-0.5 border border-border",
         className
       )}
     >
-      {/* Gradient Accent Bar */}
-      <div className={cn("h-1.5", currentGradient)} />
+      {/* Accent Bar — neutral */}
+      <div className="h-1 bg-border" />
 
       <div className="p-5 lg:p-6">
         {/* Header Row - Status badges and Price */}
@@ -276,7 +276,7 @@ export function TruckCard({
               )}
             </div>
           </div>
-          <div className={cn("shrink-0 rounded-xl shadow-lg px-3.5 py-2.5", currentGradient)}>
+          <div className="shrink-0 rounded-xl bg-primary px-3.5 py-2.5 shadow-sm">
             <p className="text-2xl font-bold text-white">{formatPrice(askingRate)}</p>
           </div>
         </div>
@@ -284,69 +284,69 @@ export function TruckCard({
         {/* Booking Request Count Indicator - Only for owner */}
         {isOwner && bidCount > 0 && (
           <div
-            className="flex items-center gap-2 bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 border border-purple-200 dark:border-purple-800 rounded-xl cursor-pointer hover:from-purple-100 hover:to-indigo-100 dark:hover:from-purple-900/30 dark:hover:to-indigo-900/30 transition-all p-3 px-4 mb-4"
+            className="flex items-center gap-2 bg-violet-50 dark:bg-violet-950/30 border border-violet-200 dark:border-violet-900 rounded-xl cursor-pointer hover:bg-violet-100 dark:hover:bg-violet-900/40 transition-colors p-3 px-4 mb-4"
             onClick={onViewDetails}
           >
-            <div className="size-8 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/30">
+            <div className="size-8 rounded-full bg-violet-600 flex items-center justify-center">
               <Users className="size-4 text-white" />
             </div>
             <div className="flex-1">
-              <p className="font-semibold text-purple-700 dark:text-purple-400">
+              <p className="font-semibold text-violet-700 dark:text-violet-300">
                 {bidCount} Booking {bidCount === 1 ? 'Request' : 'Requests'}
               </p>
-              <p className="text-xs text-purple-600 dark:text-purple-500">Click to view details</p>
+              <p className="text-xs text-violet-600 dark:text-violet-400">Click to view details</p>
             </div>
-            <div className="size-6 rounded-full bg-purple-500 flex items-center justify-center animate-pulse">
+            <div className="size-6 rounded-full bg-violet-600 flex items-center justify-center">
               <span className="text-white text-xs font-bold">{bidCount}</span>
             </div>
           </div>
         )}
 
         {/* Route Section */}
-        <div className="flex items-center rounded-xl bg-gray-100 dark:bg-gray-800/60 gap-3 mb-4 p-4">
+        <div className="flex items-center rounded-xl bg-muted dark:bg-stone-800/60 border border-border/50 gap-3 mb-4 p-4">
           <div className="flex items-center gap-2 flex-1">
-            <div className="size-8 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg shadow-green-500/30">
-              <MapPin className="size-4 text-white" />
+            <div className="size-8 rounded-full bg-white dark:bg-stone-700 border border-border flex items-center justify-center">
+              <MapPin className="size-4 text-muted-foreground" />
             </div>
             <div>
-              <p className="text-xs text-gray-500">From</p>
-              <p className="font-medium text-sm text-gray-900 dark:text-white">{displayOrigin}</p>
+              <p className="text-xs text-muted-foreground">From</p>
+              <p className="font-medium text-sm text-foreground">{displayOrigin}</p>
             </div>
           </div>
 
           <div className="flex flex-col items-center gap-1 px-3">
-            <Navigation className="size-4 text-orange-500 animate-pulse" />
-            <div className="h-0.5 w-12 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full" />
+            <Navigation className="size-4 text-muted-foreground" />
+            <div className="h-0.5 w-12 bg-border rounded-full" />
           </div>
 
           <div className="flex items-center gap-2 flex-1">
-            <div className="size-8 rounded-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center shadow-lg shadow-red-500/30">
-              <MapPin className="size-4 text-white" />
+            <div className="size-8 rounded-full bg-white dark:bg-stone-700 border border-border flex items-center justify-center">
+              <MapPin className="size-4 text-muted-foreground" />
             </div>
             <div>
-              <p className="text-xs text-gray-500">To</p>
-              <p className="font-medium text-sm text-gray-900 dark:text-white">{displayDestination}</p>
+              <p className="text-xs text-muted-foreground">To</p>
+              <p className="font-medium text-sm text-foreground">{displayDestination}</p>
             </div>
           </div>
         </div>
 
         {/* Distance & Time Details */}
-        <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 gap-4 mb-4">
+        <div className="flex items-center text-sm text-muted-foreground gap-4 mb-4">
           {distance && (
             <div className="flex items-center gap-1.5">
-              <Navigation className="size-4 text-blue-500" />
+              <Navigation className="size-4 text-muted-foreground" />
               <span>{distance}</span>
             </div>
           )}
           {estimatedTime && (
             <div className="flex items-center gap-1.5">
-              <Clock className="size-4 text-purple-500" />
+              <Clock className="size-4 text-muted-foreground" />
               <span>{estimatedTime}</span>
             </div>
           )}
           {displayAvailableDate && (
             <div className="flex items-center gap-1.5">
-              <Calendar className="size-4 text-green-500" />
+              <Calendar className="size-4 text-muted-foreground" />
               <span>Available: {displayAvailableDate}</span>
             </div>
           )}
@@ -369,7 +369,7 @@ export function TruckCard({
               />
             ))}
             {truckPhotos.length > 4 && (
-              <div className="size-16 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 text-xs font-medium border-2 border-gray-200 dark:border-gray-700">
+              <div className="size-16 rounded-xl bg-muted dark:bg-stone-800 flex items-center justify-center text-muted-foreground text-xs font-medium border border-border">
                 +{truckPhotos.length - 4}
               </div>
             )}
@@ -379,23 +379,23 @@ export function TruckCard({
         {/* Deferred Map Preview */}
         <button
           type="button"
-          className="relative w-full rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30 text-left h-[140px] mb-4 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className="relative w-full rounded-xl overflow-hidden bg-muted dark:bg-stone-800/60 border border-border text-left h-[140px] mb-4 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           onClick={onViewMap}
           aria-label={`View route map from ${displayOrigin} to ${displayDestination}`}
         >
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
-              <MapPin className="size-12 text-blue-400 mx-auto mb-2 animate-bounce" />
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <MapPin className="size-12 text-muted-foreground mx-auto mb-2" />
+              <p className="text-sm text-muted-foreground">
                 {originCoords && destCoords ? 'Open Interactive Route' : 'Map Preview Unavailable'}
               </p>
-              <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+              <p className="text-xs text-muted-foreground/70 mt-1">
                 {displayOrigin} to {displayDestination}
               </p>
             </div>
           </div>
           <div className="absolute bottom-4 right-4">
-            <span className="px-4 py-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg shadow-lg text-sm font-medium text-blue-600 dark:text-blue-400">
+            <span className="px-4 py-2 bg-card/90 dark:bg-stone-900/90 backdrop-blur-sm rounded-lg border border-border shadow-sm text-sm font-medium text-foreground">
               View Map
             </span>
           </div>
@@ -404,12 +404,12 @@ export function TruckCard({
         {/* Action Buttons */}
         <div className="flex gap-3">
           {isOwner ? (
-            <Button onClick={onViewDetails} className={cn("flex-1 min-h-11 text-white", currentGradient)}>
+            <Button onClick={onViewDetails} className="flex-1 min-h-11">
               View Details
             </Button>
           ) : canBook ? (
             <>
-              <Button onClick={onBook} className="flex-1 min-h-11 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white border-0">
+              <Button onClick={onBook} className="flex-1 min-h-11">
                 Book Now
               </Button>
               <Button onClick={onViewDetails} variant="outline" className="min-h-11" title="Details">
@@ -425,11 +425,11 @@ export function TruckCard({
             </>
           ) : (
             <>
-              <Button onClick={onViewDetails} className={cn("flex-1 min-h-11 text-white", currentGradient)}>
+              <Button onClick={onViewDetails} className="flex-1 min-h-11">
                 View Details
               </Button>
               {canRefer && onRefer && (
-                <Button onClick={onRefer} variant="outline" className="min-h-11 border-orange-200 text-orange-700 hover:bg-orange-50 dark:border-orange-800 dark:text-orange-300" title="Refer">
+                <Button onClick={onRefer} variant="outline" className="min-h-11" title="Refer">
                   <Share2 className="size-4 sm:hidden" />
                   <span className="hidden sm:inline">Refer</span>
                 </Button>
