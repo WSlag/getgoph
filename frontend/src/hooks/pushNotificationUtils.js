@@ -68,8 +68,8 @@ function decodeBase64UrlSegment(segment) {
     return atob(padded);
   }
 
-  if (typeof Buffer !== 'undefined') {
-    return Buffer.from(padded, 'base64').toString('utf8');
+  if (typeof globalThis.Buffer !== 'undefined') {
+    return globalThis.Buffer.from(padded, 'base64').toString('utf8');
   }
 
   return '';
@@ -312,7 +312,7 @@ export function shouldShortCircuitForAppCheck({
   appCheckRequired,
   appCheckReady,
 } = {}) {
-  return Boolean(appCheckRequired) && !Boolean(appCheckReady);
+  return Boolean(appCheckRequired && !appCheckReady);
 }
 
 export function migrateLegacyKeysForUid(uid, storageLike = globalThis?.localStorage) {

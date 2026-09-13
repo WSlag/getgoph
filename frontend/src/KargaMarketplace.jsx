@@ -1,3 +1,4 @@
+/* eslint-disable no-undef -- legacy marketplace gated, to be removed in Phase 2 (see plans/ui-early-wins-spec.md Q1) */
 import React, { useState, useEffect } from 'react';
 import { Truck, Package, MessageSquare, FileText, Users, Plus, Send, Check, X, MapPin, Weight, Calendar, ChevronDown, ChevronUp, Star, Filter, ArrowRight, Shield, CheckCircle2, Eye, Bell, Home, User, Phone, Mail, Lock, Navigation, Route, Maximize2, TrendingUp, TrendingDown, Minus, Clock, Box, Award, Crown, Gem, Medal, Trophy, ThumbsUp, ThumbsDown, MapPinned, Radio, Circle, Zap, BadgeCheck, Timer, Moon, Sun, Camera, Image, Upload, RotateCcw, Fuel, GitBranch, Waypoints, CircleDot, LogOut } from 'lucide-react';
 import { PesoIcon } from '@/components/ui/PesoIcon';

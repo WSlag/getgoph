@@ -1,11 +1,15 @@
 import React from "react";
 import { cn } from "@/lib/cn";
 
+/**
+ * @deprecated Use Card from @/components/ui/card instead.
+ * Kept for backwards compatibility — migrates to token-based styling.
+ */
 export function AppCard({ className, children, ...props }) {
   return (
     <div
       className={cn(
-        "rounded-[14px] border border-slate-200 bg-white p-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)] dark:border-slate-800 dark:bg-slate-900",
+        "bg-card text-card-foreground rounded-2xl border border-border shadow-sm hover:shadow-lg transition-all duration-200 p-4",
         className
       )}
       {...props}
@@ -19,7 +23,7 @@ export function StatCard({ className, label, value, valueClassName, icon, ...pro
   return (
     <div
       className={cn(
-        "rounded-[14px] border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900",
+        "bg-card text-card-foreground rounded-2xl border border-border shadow-sm p-4",
         className
       )}
       {...props}

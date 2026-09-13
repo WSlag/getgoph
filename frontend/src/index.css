@@ -18,10 +18,8 @@
   animation: shake 0.5s ease-in-out;
 }
 
-/* Base Resets */
-* {
-  margin: 0;
-  padding: 0;
+/* Base Resets — keep box-sizing globally, do not zero margin/padding here (breaks Tailwind utilities) */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -29,6 +27,7 @@ html, body, #root {
   height: 100%;
   width: 100%;
 }
+html, body { margin: 0; padding: 0; }
 
 /* Only hide horizontal overflow on mobile for PWA feel */
 @media (max-width: 1023px) {

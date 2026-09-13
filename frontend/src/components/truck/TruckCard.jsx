@@ -1,9 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MapPin, Clock, Navigation, Star, Calendar, Users, Truck as TruckIcon, Eye, Share2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { formatListingPostedAge, formatListingScheduleDate } from '@/utils/listingDateFormatting';
 import { sanitizeMessage, sanitizePublicName } from '@/utils/messageUtils';
+
+function TruckThumb({ src, alt, onClick }) {
+  const [err, setErr] = useState(false);
+  if (err) {
+    return (
+      <div className="size-16 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center border-2 border-gray-200 dark:border-gray-700">
+        <TruckIcon className="size-6 text-gray-400" />
+      </div>
+    );
+  }
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={alt}
+      className="relative size-16 rounded-xl overflow-hidden group/img border-2 border-gray-200 dark:border-gray-700 hover:border-purple-400 focus-visible:border-purple-400 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 transition-all duration-200 cursor-pointer"
+    >
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        sizes="(max-width:640px) 50vw, 33vw"
+        className="size-full object-cover group-hover/img:scale-110 group-focus-visible:scale-110 transition-transform duration-300"
+        onError={() => setErr(true)}
+      />
+      <span className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover/img:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-200" aria-hidden="true" />
+    </button>
+  );
+}
 
 export function TruckCard({
   id,
@@ -43,12 +74,12 @@ export function TruckCard({
 }) {
   const displayStatus = uiStatus || status;
 
-  // Status badge styles - Figma gradient style with shadows (matching CargoCard)
+  // Status badge styles - professional muted palette
   const statusStyles = {
-    available: 'bg-gradient-to-br from-green-400 to-green-600 text-white shadow-lg',
-    'in-transit': 'bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg',
-    booked: 'bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg',
-    offline: 'bg-gradient-to-br from-gray-400 to-gray-600 text-white shadow-lg',
+    available: 'bg-green-50 text-green-700 border border-green-200 dark:bg-green-950/50 dark:text-green-300 dark:border-green-800',
+    'in-transit': 'bg-orange-50 text-orange-700 border border-orange-200 dark:bg-orange-950/50 dark:text-orange-300 dark:border-orange-800',
+    booked: 'bg-blue-50 text-blue-700 border border-blue-200 dark:bg-blue-950/50 dark:text-blue-300 dark:border-blue-800',
+    offline: 'bg-gray-50 text-gray-700 border border-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700',
   };
 
   // Status labels
@@ -59,11 +90,11 @@ export function TruckCard({
     offline: 'OFFLINE',
   };
 
-  // Gradient colors for price pill and buttons based on status (aligned with CargoCard)
+  // Gradient colors for price pill and buttons based on status — keep primary orange for cohesion
   const gradientColors = {
-    available: 'bg-gradient-to-r from-orange-400 to-orange-600',
-    'in-transit': 'bg-gradient-to-r from-orange-400 to-orange-600',
-    booked: 'bg-gradient-to-r from-blue-400 to-blue-600',
+    available: 'bg-gradient-to-r from-orange-500 to-orange-600',
+    'in-transit': 'bg-gradient-to-r from-orange-500 to-orange-600',
+    booked: 'bg-gradient-to-r from-blue-500 to-blue-600',
     offline: 'bg-gradient-to-r from-gray-400 to-gray-600',
   };
 
@@ -93,29 +124,29 @@ export function TruckCard({
     offline: 'bg-gray-100 text-gray-700 dark:bg-gray-900/40 dark:text-gray-400',
   };
 
-  // Compact card variant for mobile - ~100px height
+  // Compact card variant for mobile
   if (compact) {
     const canShowBookAction = Boolean(canBook && !isOwner && onBook);
 
     return (
       <article
         className={cn(
-          "group relative bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200/50 dark:border-gray-800/50",
+          "group relative bg-card text-card-foreground rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200 hover:scale-[1.01] border border-border",
           className
         )}
         data-testid="truck-compact-card"
       >
         {/* Gradient Accent Bar */}
-        <div className={cn("h-1", currentGradient)} />
+        <div className={cn("h-1.5", currentGradient)} />
 
         <button
           type="button"
-          className="w-full text-left active:scale-[0.995] transition-transform duration-150"
+          className="w-full text-left active:scale-[0.995] transition-transform duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-xl"
           onClick={onViewDetails}
           aria-label={`View truck route from ${displayOrigin} to ${displayDestination}`}
           data-testid="truck-compact-body"
         >
-          <div style={{ padding: '16px 20px' }}>
+          <div className="p-4 px-5">
             {/* Row 1: Status Badge + Vehicle Type + Rate */}
             <div className="flex items-start justify-between mb-2">
               <div className="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
@@ -130,7 +161,7 @@ export function TruckCard({
                   </Badge>
                 )}
               </div>
-              <div className={cn("shrink-0 ml-2 rounded-lg", currentGradient)} style={{ padding: '4px 14px' }}>
+              <div className={cn("shrink-0 ml-2 rounded-lg px-3.5 py-1", currentGradient)}>
                 <span className="text-sm font-bold text-white">{formatPrice(askingRate)}</span>
               </div>
             </div>
@@ -176,67 +207,55 @@ export function TruckCard({
         <div className="flex items-center gap-2 px-5 pb-4 -mt-2">
           {canShowBookAction ? (
             <>
-              <button
-                type="button"
+              <Button
+                variant="default"
+                size="sm"
                 onClick={onBook}
-                className="flex-1 rounded-lg bg-gradient-to-r from-blue-400 to-blue-600 text-white shadow-lg shadow-blue-500/25 text-sm font-bold transition-all duration-200 active:scale-95"
-                style={{ padding: '4px 14px' }}
+                className="flex-1 min-h-9 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 border-0"
                 data-testid="truck-compact-book-now"
               >
                 Book Now
-              </button>
-              <button
-                type="button"
-                onClick={onViewDetails}
-                className="rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-100 text-sm font-bold transition-all duration-200 active:scale-95"
-                style={{ padding: '4px 14px' }}
-                data-testid="truck-compact-details"
-              >
+              </Button>
+              <Button variant="outline" size="sm" onClick={onViewDetails} className="min-h-9" data-testid="truck-compact-details">
                 Details
-              </button>
+              </Button>
             </>
           ) : (
-            <button
-              type="button"
-              onClick={onViewDetails}
-              className="rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-100 text-sm font-bold transition-all duration-200 active:scale-95"
-              style={{ padding: '4px 14px' }}
-              data-testid="truck-compact-details"
-            >
+            <Button variant="outline" size="sm" onClick={onViewDetails} className="min-h-9" data-testid="truck-compact-details">
               Details
-            </button>
+            </Button>
           )}
         </div>
       </article>
     );
   }
 
-  // Full card view (original)
+  // Full card view
   return (
     <div
       className={cn(
-        "group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 border border-gray-200/50 dark:border-gray-800/50",
+        "group relative bg-card text-card-foreground rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200 hover:scale-[1.01] hover:-translate-y-0.5 border border-border",
         className
       )}
     >
-      {/* Gradient Accent Bar - Figma style solid gradient */}
+      {/* Gradient Accent Bar */}
       <div className={cn("h-1.5", currentGradient)} />
 
-      <div style={{ padding: '24px' }}>
+      <div className="p-5 lg:p-6">
         {/* Header Row - Status badges and Price */}
-        <div className="flex items-start justify-between" style={{ marginBottom: '16px' }}>
+        <div className="flex items-start justify-between mb-4 gap-4">
           <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center" style={{ gap: '8px', marginBottom: '8px' }}>
-              <Badge className={cn("shrink-0 uppercase tracking-wide", statusStyles[displayStatus] || statusStyles.available)} style={{ padding: '5px 10px', fontSize: '10px' }}>
+            <div className="flex flex-wrap items-center gap-2 mb-2">
+              <Badge className={cn("shrink-0 uppercase tracking-wide px-2.5 py-1 text-[10px]", statusStyles[displayStatus] || statusStyles.available)}>
                 {statusLabels[displayStatus] || 'AVAILABLE'}
               </Badge>
-              <Badge className="!whitespace-normal bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 uppercase" style={{ padding: '5px 10px', fontSize: '10px' }}>
+              <Badge className="!whitespace-normal bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 uppercase px-2.5 py-1 text-[10px]">
                 {vehicleType || 'TRUCK'}
               </Badge>
               <span className="text-xs text-gray-500">{displayTimeAgo}</span>
             </div>
-            <h3 className="font-bold text-gray-900 dark:text-white text-base" style={{ marginBottom: '4px' }}>{displayTrucker}</h3>
-            <div className="flex items-center text-sm text-gray-600 dark:text-gray-400" style={{ gap: '8px' }}>
+            <h3 className="font-bold text-gray-900 dark:text-white text-base mb-1">{displayTrucker}</h3>
+            <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 gap-2">
               {truckerRating > 0 && (
                 <div className="flex items-center gap-1">
                   <Star className="size-4 text-yellow-500 fill-yellow-500" />
@@ -257,7 +276,7 @@ export function TruckCard({
               )}
             </div>
           </div>
-          <div className={cn("shrink-0 rounded-xl shadow-lg", currentGradient)} style={{ padding: '10px 15px' }}>
+          <div className={cn("shrink-0 rounded-xl shadow-lg px-3.5 py-2.5", currentGradient)}>
             <p className="text-2xl font-bold text-white">{formatPrice(askingRate)}</p>
           </div>
         </div>
@@ -265,8 +284,7 @@ export function TruckCard({
         {/* Booking Request Count Indicator - Only for owner */}
         {isOwner && bidCount > 0 && (
           <div
-            className="flex items-center gap-2 bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 border border-purple-200 dark:border-purple-800 rounded-xl cursor-pointer hover:from-purple-100 hover:to-indigo-100 dark:hover:from-purple-900/30 dark:hover:to-indigo-900/30 transition-all"
-            style={{ padding: '12px 16px', marginBottom: '16px' }}
+            className="flex items-center gap-2 bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 border border-purple-200 dark:border-purple-800 rounded-xl cursor-pointer hover:from-purple-100 hover:to-indigo-100 dark:hover:from-purple-900/30 dark:hover:to-indigo-900/30 transition-all p-3 px-4 mb-4"
             onClick={onViewDetails}
           >
             <div className="size-8 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/30">
@@ -284,8 +302,8 @@ export function TruckCard({
           </div>
         )}
 
-        {/* Route Section - Figma style with visible gray background */}
-        <div className="flex items-center rounded-xl bg-gray-100 dark:bg-gray-800/60" style={{ gap: '12px', marginBottom: '16px', padding: '16px' }}>
+        {/* Route Section */}
+        <div className="flex items-center rounded-xl bg-gray-100 dark:bg-gray-800/60 gap-3 mb-4 p-4">
           <div className="flex items-center gap-2 flex-1">
             <div className="size-8 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg shadow-green-500/30">
               <MapPin className="size-4 text-white" />
@@ -312,8 +330,8 @@ export function TruckCard({
           </div>
         </div>
 
-        {/* Distance & Time Details - Figma colored icons */}
-        <div className="flex items-center text-sm text-gray-600 dark:text-gray-400" style={{ gap: '16px', marginBottom: '16px' }}>
+        {/* Distance & Time Details */}
+        <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 gap-4 mb-4">
           {distance && (
             <div className="flex items-center gap-1.5">
               <Navigation className="size-4 text-blue-500" />
@@ -336,36 +354,19 @@ export function TruckCard({
 
         {/* Description */}
         {displayDescription && (
-          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed" style={{ marginBottom: '16px' }}>{displayDescription}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{displayDescription}</p>
         )}
 
-        {/* Images - Figma style larger with hover overlay */}
+        {/* Images */}
         {truckPhotos.length > 0 && (
-          <div className="flex" style={{ gap: '8px', marginBottom: '16px' }}>
+          <div className="flex gap-2 mb-4">
             {truckPhotos.slice(0, 4).map((photo, idx) => (
-              <button
-                type="button"
+              <TruckThumb
                 key={idx}
-                className="relative size-16 rounded-xl overflow-hidden group/img border-2 border-gray-200 dark:border-gray-700 hover:border-purple-400 transition-all duration-300 cursor-pointer"
+                src={photo}
+                alt={`${displayTrucker} truck ${displayOrigin}→${displayDestination} image ${idx + 1}`}
                 onClick={() => onViewDetails?.()}
-                aria-label={`Open truck image ${idx + 1}`}
-              >
-                <img
-                  src={photo}
-                  alt={`Truck ${idx + 1}`}
-                  loading="lazy"
-                  decoding="async"
-                  className="size-full object-cover group-hover/img:scale-110 transition-transform duration-300"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextElementSibling?.classList.remove('hidden');
-                  }}
-                />
-                <div className="hidden absolute inset-0 bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-                  <TruckIcon className="size-6 text-gray-400" />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300" />
-              </button>
+              />
             ))}
             {truckPhotos.length > 4 && (
               <div className="size-16 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 text-xs font-medium border-2 border-gray-200 dark:border-gray-700">
@@ -378,8 +379,7 @@ export function TruckCard({
         {/* Deferred Map Preview */}
         <button
           type="button"
-          className="relative w-full rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30 text-left"
-          style={{ height: '140px', marginBottom: '16px' }}
+          className="relative w-full rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30 text-left h-[140px] mb-4 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           onClick={onViewMap}
           aria-label={`View route map from ${displayOrigin} to ${displayDestination}`}
         >
@@ -401,77 +401,38 @@ export function TruckCard({
           </div>
         </button>
 
-        {/* Action Buttons - Role-based rendering */}
-        <div className="flex" style={{ gap: '12px' }}>
+        {/* Action Buttons */}
+        <div className="flex gap-3">
           {isOwner ? (
-            // Owner sees View Details button
-            <button
-              onClick={onViewDetails}
-              className={cn(
-                "flex-1 rounded-xl text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 font-medium",
-                currentGradient
-              )}
-              style={{ padding: '14px 20px' }}
-            >
+            <Button onClick={onViewDetails} className={cn("flex-1 min-h-11 text-white", currentGradient)}>
               View Details
-            </button>
+            </Button>
           ) : canBook ? (
-            // Shipper sees Book button + Details
             <>
-              <button
-                onClick={onBook}
-                className={cn(
-                  "flex-1 rounded-xl text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 font-medium",
-                  "bg-gradient-to-r from-blue-400 to-blue-600"
-                )}
-                style={{ padding: '14px 20px' }}
-              >
+              <Button onClick={onBook} className="flex-1 min-h-11 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white border-0">
                 Book Now
-              </button>
-              <button
-                onClick={onViewDetails}
-                className="rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-200 hover:from-gray-200 hover:to-gray-300 dark:hover:from-gray-600 dark:hover:to-gray-700 transition-all duration-300 hover:scale-105 active:scale-95 font-medium"
-                style={{ padding: '14px 20px' }}
-                title="Details"
-              >
+              </Button>
+              <Button onClick={onViewDetails} variant="outline" className="min-h-11" title="Details">
                 <Eye className="size-4 sm:hidden" />
                 <span className="hidden sm:inline">Details</span>
-              </button>
+              </Button>
               {canRefer && onRefer && (
-                <button
-                  onClick={onRefer}
-                  className="rounded-xl bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900/40 dark:to-orange-800/40 text-orange-700 dark:text-orange-200 hover:from-orange-200 hover:to-orange-300 dark:hover:from-orange-800/60 dark:hover:to-orange-700/60 transition-all duration-300 hover:scale-105 active:scale-95 font-medium"
-                  style={{ padding: '14px 20px' }}
-                  title="Refer"
-                >
+                <Button onClick={onRefer} variant="outline" className="min-h-11 border-orange-200 text-orange-700 hover:bg-orange-50 dark:border-orange-800 dark:text-orange-300" title="Refer">
                   <Share2 className="size-4 sm:hidden" />
                   <span className="hidden sm:inline">Refer</span>
-                </button>
+                </Button>
               )}
             </>
           ) : (
-            // Trucker viewing others' trucks sees View Details
             <>
-              <button
-                onClick={onViewDetails}
-                className={cn(
-                  "flex-1 rounded-xl text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 font-medium",
-                  currentGradient
-                )}
-                style={{ padding: '14px 20px' }}
-              >
+              <Button onClick={onViewDetails} className={cn("flex-1 min-h-11 text-white", currentGradient)}>
                 View Details
-              </button>
+              </Button>
               {canRefer && onRefer && (
-                <button
-                  onClick={onRefer}
-                  className="rounded-xl bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900/40 dark:to-orange-800/40 text-orange-700 dark:text-orange-200 hover:from-orange-200 hover:to-orange-300 dark:hover:from-orange-800/60 dark:hover:to-orange-700/60 transition-all duration-300 hover:scale-105 active:scale-95 font-medium"
-                  style={{ padding: '14px 20px' }}
-                  title="Refer"
-                >
+                <Button onClick={onRefer} variant="outline" className="min-h-11 border-orange-200 text-orange-700 hover:bg-orange-50 dark:border-orange-800 dark:text-orange-300" title="Refer">
                   <Share2 className="size-4 sm:hidden" />
                   <span className="hidden sm:inline">Refer</span>
-                </button>
+                </Button>
               )}
             </>
           )}

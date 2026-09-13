@@ -9,6 +9,7 @@ import { canBidCargoStatus, canBookTruckStatus } from '@/utils/listingStatus';
 import BrokerHomeCard from '@/components/broker/BrokerHomeCard';
 import { getWorkspaceLabel } from '@/utils/workspace';
 import { HeroCarousel } from '@/components/HeroCarousel';
+import { SkeletonGrid } from '@/components/ui/skeleton';
 import { trackAnalyticsEvent } from '@/services/analyticsService';
 
 const ITEMS_PER_PAGE = 20;
@@ -60,6 +61,7 @@ export function HomeView({
   mobileHeaderHeight = 74,
   mobileNavHeight = MOBILE_NAV_FALLBACK_HEIGHT,
   roleKpis = [],
+  isLoading = false,
 }) {
   const activeWorkspace = workspaceRole || currentRole;
   const listings = activeMarket === 'cargo' ? cargoListings : truckListings;
@@ -395,7 +397,7 @@ export function HomeView({
         ref={stickyControlsRef}
         data-testid="home-sticky-controls"
         className={cn(
-          "lg:relative lg:z-auto",
+          "lg:relative lg:z-auto mx-auto w-full max-w-7xl",
           "max-lg:fixed max-lg:left-0 max-lg:right-0 max-lg:z-40 max-lg:bg-gray-50 max-lg:dark:bg-gray-950"
         )}
         style={{
@@ -485,17 +487,17 @@ export function HomeView({
         />
       )}
 
-      {/* Scrollable Content */}
-      <div data-testid="home-scroll-content" style={{ padding: isMobile ? '8px 16px 0' : '0' }}>
+      {/* Scrollable Content - professional gutters: max-w-7xl centered, 16px mobile / 24px desktop */}
+      <div data-testid="home-scroll-content" className="mx-auto w-full max-w-7xl" style={{ padding: isMobile ? '16px 16px 0' : '0' }}>
       {/* Hero Carousel */}
       <HeroCarousel isMobile={isMobile} onEarnAsBrokerClick={onActivateBroker} />
-      <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900" style={{ padding: isMobile ? '12px' : '16px', marginBottom: isMobile ? '12px' : '16px' }}>
+      <div className="rounded-2xl border border-border bg-card" style={{ padding: isMobile ? '16px' : '20px', marginBottom: isMobile ? '16px' : '20px' }}>
         {roleKpis.length > 0 && (
-          <div className="grid grid-cols-3 gap-2 mt-3">
+          <div className="grid grid-cols-3 gap-3 mt-3">
             {roleKpis.map((kpi) => (
-              <div key={kpi.id} className="rounded-lg bg-gray-50 dark:bg-gray-800/70" style={{ padding: isMobile ? '8px 10px' : '10px 12px' }}>
-                <p className="text-[11px] text-gray-500 dark:text-gray-400 truncate">{kpi.label}</p>
-                <p className="text-base font-bold text-gray-900 dark:text-white">{Number(kpi.value || 0).toLocaleString()}</p>
+              <div key={kpi.id} className="rounded-xl bg-muted/50 border border-border/50" style={{ padding: isMobile ? '12px' : '14px 16px' }}>
+                <p className="text-[11px] font-medium tracking-wide uppercase text-muted-foreground truncate">{kpi.label}</p>
+                <p className="text-lg font-bold tracking-tight text-foreground mt-1">{Number(kpi.value || 0).toLocaleString()}</p>
               </div>
             ))}
           </div>
@@ -645,11 +647,11 @@ export function HomeView({
       </div>
       )}
 
-      {/* Filter Pills */}
+      {/* Filter Pills - professional rounded-full */}
       {!isMobile && (
       <div
         data-testid="home-filter-pills"
-        className="flex gap-3 mb-5"
+        className="flex gap-2.5 mb-6"
       >
         {filterOptions.map((option) => (
           <button
@@ -657,11 +659,11 @@ export function HomeView({
             data-testid={`home-filter-pill-${option.id}`}
             onClick={() => onFilterChange?.(option.id)}
             className={cn(
-              "rounded-xl font-medium transition-all duration-300 active:scale-95 min-h-11 border flex items-center justify-center text-center",
-              "whitespace-nowrap text-sm px-6 py-2.5 hover:scale-105",
+              "rounded-full font-medium transition-all duration-200 active:scale-95 min-h-10 border flex items-center justify-center text-center",
+              "whitespace-nowrap text-[13px] px-5 py-2 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
               filterStatus === option.id
-                ? "bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg shadow-orange-500/30 border-transparent"
-                : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
+                ? "bg-[var(--primary)] text-white shadow-md shadow-primary/20 border-transparent"
+                : "bg-card text-muted-foreground hover:bg-accent hover:text-accent-foreground border border-border"
             )}
           >
             {option.label}
@@ -670,12 +672,14 @@ export function HomeView({
       </div>
       )}
 
-      {/* Listings Grid - Compact on mobile (12px gap), full on desktop (32px gap) */}
-      {listings.length > 0 ? (
+      {/* Listings Grid */}
+      {isLoading ? (
+        <SkeletonGrid count={6} />
+      ) : listings.length > 0 ? (
         <>
           <div className={cn(
             "grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3",
-            isMobile ? "gap-2" : "gap-8"
+            isMobile ? "gap-3" : "gap-6"
           )} data-testid="home-listings-grid">
             {activeMarket === 'cargo'
               ? visibleListings.map((cargo) => (
@@ -766,21 +770,21 @@ export function HomeView({
           )}
         </>
       ) : (
-        <div className="flex flex-col items-center justify-center py-20 text-center">
-          <div className="size-16 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center mb-4 shadow-lg">
-            <Filter className="size-8 text-gray-400" />
+        <div className="flex flex-col items-center justify-center py-16 text-center rounded-2xl border border-dashed border-border bg-card/50 px-6">
+          <div className="size-16 rounded-2xl bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900/30 dark:to-orange-800/20 flex items-center justify-center mb-4 shadow-sm">
+            <Filter className="size-8 text-orange-500" />
           </div>
-          <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-1">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
             No {activeMarket === 'cargo' ? 'cargo' : 'trucks'} found
           </h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400 max-w-sm">
+          <p className="text-sm text-gray-500 dark:text-gray-400 max-w-sm mb-4">
             {searchQuery
               ? `No ${activeMarket} found matching "${searchQuery}". Try a different search term.`
               : filterStatus !== 'all'
                 ? `No ${activeMarket} with "${filterStatus}" status. Try changing the filter.`
                 : `There are currently no ${activeMarket === 'cargo' ? 'cargo listings' : 'available trucks'} for ${workspaceLabel} workspace.`}
           </p>
-          <div className="flex flex-col sm:flex-row gap-2 mt-4">
+          <div className="flex flex-col sm:flex-row gap-2">
             {(searchQuery || filterStatus !== 'all') && (
               <Button
                 variant="outline"
@@ -789,8 +793,9 @@ export function HomeView({
                   onSearchChange?.('');
                   onFilterChange?.('all');
                 }}
+                data-testid="clear-filters-btn"
               >
-                Clear Search & Filters
+                Clear filters
               </Button>
             )}
             <Button

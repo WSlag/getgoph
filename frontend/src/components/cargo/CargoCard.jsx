@@ -1,9 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MapPin, Clock, Navigation, Gavel, Package, Eye, Share2, Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { formatListingPostedAge, formatListingScheduleDate } from '@/utils/listingDateFormatting';
 import { sanitizeMessage, sanitizePublicName } from '@/utils/messageUtils';
+
+function CargoThumb({ src, alt, onClick }) {
+  const [err, setErr] = useState(false);
+  if (err) {
+    return (
+      <div className="size-16 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center border-2 border-gray-200 dark:border-gray-700">
+        <Package className="size-6 text-gray-400" />
+      </div>
+    );
+  }
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={alt}
+      className="relative size-16 rounded-xl overflow-hidden group/img border-2 border-gray-200 dark:border-gray-700 hover:border-orange-400 focus-visible:border-orange-400 focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 transition-all duration-200 cursor-pointer"
+    >
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        sizes="(max-width:640px) 50vw, 33vw"
+        className="size-full object-cover group-hover/img:scale-110 group-focus-visible:scale-110 transition-transform duration-300"
+        onError={() => setErr(true)}
+      />
+      <span className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover/img:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-200" aria-hidden="true" />
+    </button>
+  );
+}
 
 export function CargoCard({
   id,
@@ -47,22 +78,22 @@ export function CargoCard({
   className,
   compact = false, // New prop for condensed mobile view
 }) {
-  // Status badge styles - Figma gradient style with shadows
+  // Status badge styles - professional muted palette (not neon gradients)
   const statusStyles = {
-    open: 'bg-gradient-to-br from-green-400 to-green-600 text-white shadow-lg',
-    waiting: 'bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg',
-    negotiating: 'bg-gradient-to-br from-yellow-400 to-yellow-600 text-white shadow-lg',
-    'in-progress': 'bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg',
-    delivered: 'bg-gradient-to-br from-purple-400 to-purple-600 text-white shadow-lg',
+    open: 'bg-green-50 text-green-700 border border-green-200 dark:bg-green-950/50 dark:text-green-300 dark:border-green-800',
+    waiting: 'bg-amber-50 text-amber-700 border border-amber-200 dark:bg-amber-950/50 dark:text-amber-300 dark:border-amber-800',
+    negotiating: 'bg-orange-50 text-orange-700 border border-orange-200 dark:bg-orange-950/50 dark:text-orange-300 dark:border-orange-800',
+    'in-progress': 'bg-blue-50 text-blue-700 border border-blue-200 dark:bg-blue-950/50 dark:text-blue-300 dark:border-blue-800',
+    delivered: 'bg-violet-50 text-violet-700 border border-violet-200 dark:bg-violet-950/50 dark:text-violet-300 dark:border-violet-800',
   };
 
-  // Gradient classes for price pill and buttons based on status
+  // Gradient classes for price pill and buttons based on status — keep primary orange for cohesion
   const gradientColors = {
-    open: 'bg-gradient-to-r from-orange-400 to-orange-600',
-    waiting: 'bg-gradient-to-r from-yellow-400 to-orange-500',
-    negotiating: 'bg-gradient-to-r from-yellow-400 to-yellow-600',
-    'in-progress': 'bg-gradient-to-r from-blue-400 to-blue-600',
-    delivered: 'bg-gradient-to-r from-purple-400 to-purple-600',
+    open: 'bg-gradient-to-r from-orange-500 to-orange-600',
+    waiting: 'bg-gradient-to-r from-orange-500 to-orange-600',
+    negotiating: 'bg-gradient-to-r from-orange-500 to-orange-600',
+    'in-progress': 'bg-gradient-to-r from-blue-500 to-blue-600',
+    delivered: 'bg-gradient-to-r from-violet-500 to-violet-600',
   };
 
   const formatPrice = (priceValue) => {
@@ -93,29 +124,29 @@ export function CargoCard({
     delivered: 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-400',
   };
 
-  // Compact card variant for mobile - ~100px height
+  // Compact card variant for mobile
   if (compact) {
     const canShowBidAction = Boolean(canBid && !isOwner && onBid);
 
     return (
       <article
         className={cn(
-          "group relative bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200/50 dark:border-gray-800/50",
+          "group relative bg-card text-card-foreground rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200 hover:scale-[1.01] border border-border",
           className
         )}
         data-testid="cargo-compact-card"
       >
         {/* Gradient Accent Bar */}
-        <div className={cn("h-1", currentGradient)} />
+        <div className={cn("h-1.5", currentGradient)} />
 
         <button
           type="button"
-          className="w-full text-left active:scale-[0.995] transition-transform duration-150"
+          className="w-full text-left active:scale-[0.995] transition-transform duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-xl"
           onClick={onViewDetails}
           aria-label={`View cargo from ${displayOrigin} to ${displayDestination}`}
           data-testid="cargo-compact-body"
         >
-          <div style={{ padding: '16px 20px' }}>
+          <div className="p-4 px-5">
             {/* Row 1: Status Badge + Price */}
             <div className="flex min-w-0 items-center justify-between mb-2">
               <Badge
@@ -123,7 +154,7 @@ export function CargoCard({
               >
                 {status === 'negotiating' ? 'NEGOTIATING' : status.toUpperCase()}
               </Badge>
-              <div className={cn("ml-2 shrink-0 rounded-lg", currentGradient)} style={{ padding: '4px 14px' }}>
+              <div className={cn("ml-2 shrink-0 rounded-lg px-3.5 py-1", currentGradient)}>
                 <span className="text-sm font-bold text-white">{formatPrice(displayPrice)}</span>
               </div>
             </div>
@@ -163,69 +194,69 @@ export function CargoCard({
         <div className="flex items-center gap-2 px-5 pb-4 -mt-2">
           {canShowBidAction ? (
             <>
-              <button
-                type="button"
+              <Button
+                variant="default"
+                size="sm"
                 onClick={onBid}
-                className="flex-1 rounded-lg bg-gradient-to-r from-green-400 to-green-600 text-white shadow-lg shadow-green-500/25 text-sm font-bold transition-all duration-200 active:scale-95"
-                style={{ padding: '4px 14px' }}
+                className="flex-1 min-h-9 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-0"
                 data-testid="cargo-compact-bid-now"
               >
                 Bid Now
-              </button>
-              <button
-                type="button"
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
                 onClick={onViewDetails}
-                className="rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-100 text-sm font-bold transition-all duration-200 active:scale-95"
-                style={{ padding: '4px 14px' }}
+                className="min-h-9"
                 data-testid="cargo-compact-details"
               >
                 Details
-              </button>
+              </Button>
             </>
           ) : (
-            <button
-              type="button"
+            <Button
+              variant="outline"
+              size="sm"
               onClick={onViewDetails}
-              className="rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-100 text-sm font-bold transition-all duration-200 active:scale-95"
-              style={{ padding: '4px 14px' }}
+              className="min-h-9"
               data-testid="cargo-compact-details"
             >
               Details
-            </button>
+            </Button>
           )}
         </div>
       </article>
     );
   }
 
-  // Full card view (original)
+  // Full card view
   return (
     <div
       className={cn(
-        "group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 border border-gray-200/50 dark:border-gray-800/50",
+        "group relative bg-card text-card-foreground rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200 hover:scale-[1.01] hover:-translate-y-0.5 border border-border",
         className
       )}
     >
-      {/* Gradient Accent Bar - Figma style solid gradient */}
+      {/* Gradient Accent Bar */}
       <div className={cn("h-1.5", currentGradient)} />
 
-      <div style={{ padding: '24px' }}>
+      <div className="p-5 lg:p-6">
         {/* Header Row - Status badges and Price */}
-        <div className="flex items-start justify-between" style={{ marginBottom: '16px' }}>
+        <div className="flex items-start justify-between mb-4 gap-4">
           <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center" style={{ gap: '8px', marginBottom: '8px' }}>
-              <Badge className={cn("shrink-0 uppercase tracking-wide", statusStyles[status])} style={{ padding: '5px 10px', fontSize: '10px' }}>
+            <div className="flex flex-wrap items-center gap-2 mb-2">
+              <Badge className={cn("shrink-0 uppercase tracking-wide px-2.5 py-1 text-[10px]", statusStyles[status])}>
                 {status}
               </Badge>
-              <Badge className="!whitespace-normal bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 uppercase" style={{ padding: '5px 10px', fontSize: '10px' }}>
+              <Badge className="!whitespace-normal bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 uppercase px-2.5 py-1 text-[10px]">
                 {category}
               </Badge>
               <span className="text-xs text-gray-500">{displayTimeAgo}</span>
             </div>
-            <h3 className="font-bold text-gray-900 dark:text-white text-base" style={{ marginBottom: '4px' }}>{displayCompany}</h3>
+            <h3 className="font-bold text-gray-900 dark:text-white text-base mb-1">{displayCompany}</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">{displayWeight}</p>
           </div>
-          <div className={cn("shrink-0 rounded-xl shadow-lg", currentGradient)} style={{ padding: '10px 15px' }}>
+          <div className={cn("shrink-0 rounded-xl shadow-lg px-3.5 py-2.5", currentGradient)}>
             <p className="text-2xl font-bold text-white">{formatPrice(displayPrice)}</p>
           </div>
         </div>
@@ -233,8 +264,7 @@ export function CargoCard({
         {/* Bid Count Indicator - Only for owner */}
         {isOwner && bidCount > 0 && (
           <div
-            className="flex items-center gap-2 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-xl cursor-pointer hover:from-green-100 hover:to-emerald-100 dark:hover:from-green-900/30 dark:hover:to-emerald-900/30 transition-all"
-            style={{ padding: '12px 16px', marginBottom: '16px' }}
+            className="flex items-center gap-2 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-xl cursor-pointer hover:from-green-100 hover:to-emerald-100 dark:hover:from-green-900/30 dark:hover:to-emerald-900/30 transition-all p-3 px-4 mb-4"
             onClick={onViewDetails}
           >
             <div className="size-8 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg shadow-green-500/30">
@@ -252,8 +282,8 @@ export function CargoCard({
           </div>
         )}
 
-        {/* Route Section - Figma style with visible gray background */}
-        <div className="flex items-center rounded-xl bg-gray-100 dark:bg-gray-800/60" style={{ gap: '12px', marginBottom: '16px', padding: '16px' }}>
+        {/* Route Section */}
+        <div className="flex items-center rounded-xl bg-gray-100 dark:bg-gray-800/60 gap-3 mb-4 p-4">
           <div className="flex items-center gap-2 flex-1">
             <div className="size-8 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg shadow-green-500/30">
               <MapPin className="size-4 text-white" />
@@ -280,8 +310,8 @@ export function CargoCard({
           </div>
         </div>
 
-        {/* Distance & Time Details - Figma colored icons */}
-        <div className="flex items-center text-sm text-gray-600 dark:text-gray-400" style={{ gap: '16px', marginBottom: '16px' }}>
+        {/* Distance & Time Details */}
+        <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 gap-4 mb-4">
           {distance && (
             <div className="flex items-center gap-1.5">
               <Navigation className="size-4 text-blue-500" />
@@ -304,36 +334,19 @@ export function CargoCard({
 
         {/* Description */}
         {displayDescription && (
-          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed" style={{ marginBottom: '16px' }}>{displayDescription}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{displayDescription}</p>
         )}
 
-        {/* Images - Figma style larger with hover overlay */}
+        {/* Images */}
         {displayImages.length > 0 && (
-          <div className="flex" style={{ gap: '8px', marginBottom: '16px' }}>
+          <div className="flex gap-2 mb-4">
             {displayImages.slice(0, 4).map((image, idx) => (
-              <button
-                type="button"
+              <CargoThumb
                 key={idx}
-                className="relative size-16 rounded-xl overflow-hidden group/img border-2 border-gray-200 dark:border-gray-700 hover:border-orange-400 transition-all duration-300 cursor-pointer"
+                src={image}
+                alt={`${displayCompany} cargo ${displayOrigin}→${displayDestination} image ${idx + 1}`}
                 onClick={() => onViewDetails?.()}
-                aria-label={`Open cargo image ${idx + 1}`}
-              >
-                <img
-                  src={image}
-                  alt={`Cargo ${idx + 1}`}
-                  loading="lazy"
-                  decoding="async"
-                  className="size-full object-cover group-hover/img:scale-110 transition-transform duration-300"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextElementSibling?.classList.remove('hidden');
-                  }}
-                />
-                <div className="hidden absolute inset-0 bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-                  <Package className="size-6 text-gray-400" />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300" />
-              </button>
+              />
             ))}
             {displayImages.length > 4 && (
               <div className="size-16 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 text-xs font-medium border-2 border-gray-200 dark:border-gray-700">
@@ -346,8 +359,7 @@ export function CargoCard({
         {/* Deferred Map Preview */}
         <button
           type="button"
-          className="relative w-full rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30 text-left"
-          style={{ height: '140px', marginBottom: '16px' }}
+          className="relative w-full rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30 text-left h-[140px] mb-4 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           onClick={onViewMap}
           aria-label={`View route map from ${displayOrigin} to ${displayDestination}`}
         >
@@ -371,7 +383,7 @@ export function CargoCard({
 
         {/* Bids Info */}
         {bids.length > 0 && (
-          <div className="flex items-center justify-between bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-100 dark:border-orange-800/30" style={{ marginBottom: '16px', padding: '8px 12px' }}>
+          <div className="flex items-center justify-between bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-100 dark:border-orange-800/30 mb-4 px-3 py-2">
             <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
               {bids.length} bid{bids.length > 1 ? 's' : ''}
             </span>
@@ -381,77 +393,44 @@ export function CargoCard({
           </div>
         )}
 
-        {/* Action Buttons - Role-based rendering */}
-        <div className="flex" style={{ gap: '12px' }}>
+        {/* Action Buttons */}
+        <div className="flex gap-3">
           {isOwner ? (
-            // Owner sees View Details button
-            <button
+            <Button
               onClick={onViewDetails}
-              className={cn(
-                "flex-1 rounded-xl text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 font-medium",
-                currentGradient
-              )}
-              style={{ padding: '14px 20px' }}
+              className={cn("flex-1 min-h-11 text-white", currentGradient)}
             >
               View Details
-            </button>
+            </Button>
           ) : canBid ? (
-            // Trucker sees Bid button + Details
             <>
-              <button
+              <Button
                 onClick={onBid}
-                className={cn(
-                  "flex-1 rounded-xl text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 font-medium",
-                  "bg-gradient-to-r from-green-400 to-green-600"
-                )}
-                style={{ padding: '14px 20px' }}
+                className="flex-1 min-h-11 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white border-0"
               >
                 Bid Now
-              </button>
-              <button
-                onClick={onViewDetails}
-                className="rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-200 hover:from-gray-200 hover:to-gray-300 dark:hover:from-gray-600 dark:hover:to-gray-700 transition-all duration-300 hover:scale-105 active:scale-95 font-medium"
-                style={{ padding: '14px 20px' }}
-                title="Details"
-              >
+              </Button>
+              <Button onClick={onViewDetails} variant="outline" className="min-h-11" title="Details">
                 <Eye className="size-4 sm:hidden" />
                 <span className="hidden sm:inline">Details</span>
-              </button>
+              </Button>
               {canRefer && onRefer && (
-                <button
-                  onClick={onRefer}
-                  className="rounded-xl bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900/40 dark:to-orange-800/40 text-orange-700 dark:text-orange-200 hover:from-orange-200 hover:to-orange-300 dark:hover:from-orange-800/60 dark:hover:to-orange-700/60 transition-all duration-300 hover:scale-105 active:scale-95 font-medium"
-                  style={{ padding: '14px 20px' }}
-                  title="Refer"
-                >
+                <Button onClick={onRefer} variant="outline" className="min-h-11 border-orange-200 text-orange-700 hover:bg-orange-50 dark:border-orange-800 dark:text-orange-300" title="Refer">
                   <Share2 className="size-4 sm:hidden" />
                   <span className="hidden sm:inline">Refer</span>
-                </button>
+                </Button>
               )}
             </>
           ) : (
-            // Shipper viewing others' cargo sees View Details
             <>
-              <button
-                onClick={onViewDetails}
-                className={cn(
-                  "flex-1 rounded-xl text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 font-medium",
-                  currentGradient
-                )}
-                style={{ padding: '14px 20px' }}
-              >
+              <Button onClick={onViewDetails} className={cn("flex-1 min-h-11 text-white", currentGradient)}>
                 View Details
-              </button>
+              </Button>
               {canRefer && onRefer && (
-                <button
-                  onClick={onRefer}
-                  className="rounded-xl bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900/40 dark:to-orange-800/40 text-orange-700 dark:text-orange-200 hover:from-orange-200 hover:to-orange-300 dark:hover:from-orange-800/60 dark:hover:to-orange-700/60 transition-all duration-300 hover:scale-105 active:scale-95 font-medium"
-                  style={{ padding: '14px 20px' }}
-                  title="Refer"
-                >
+                <Button onClick={onRefer} variant="outline" className="min-h-11 border-orange-200 text-orange-700 hover:bg-orange-50 dark:border-orange-800 dark:text-orange-300" title="Refer">
                   <Share2 className="size-4 sm:hidden" />
                   <span className="hidden sm:inline">Refer</span>
-                </button>
+                </Button>
               )}
             </>
           )}
