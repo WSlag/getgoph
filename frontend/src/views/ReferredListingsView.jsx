@@ -121,16 +121,16 @@ export function ReferredListingsView({
   };
 
   return (
-    <div>
+    <div className="mx-auto w-full max-w-7xl px-4 lg:px-6">
       <div className="flex flex-wrap gap-2 mb-4">
         {filters.map((filter) => (
           <button
             key={filter.id}
             onClick={() => setStatusFilter(filter.id)}
-            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+            className={`rounded-full text-[13px] px-5 min-h-10 inline-flex items-center justify-center font-medium transition-colors ${
               statusFilter === filter.id
-                ? 'bg-orange-500 text-white'
-                : 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-300'
+                ? 'bg-[var(--primary)] bg-orange-500 text-white border border-transparent'
+                : 'bg-white dark:bg-gray-900 border border-border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-300'
             }`}
           >
             {filter.label}
@@ -154,7 +154,7 @@ export function ReferredListingsView({
           description="Listings you refer will appear here. Share cargo or truck listings to earn referral commissions."
         />
       ) : (
-        <div className="space-y-3">
+        <div className="grid gap-3 lg:gap-6">
           {items.map((item) => {
             const expiresAt = toDate(item.expiresAt);
             const remainingMs = expiresAt ? (expiresAt.getTime() - Date.now()) : null;
@@ -163,7 +163,7 @@ export function ReferredListingsView({
             return (
               <div
                 key={item.id}
-                className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4"
+                className="rounded-2xl border border-border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-sm"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>

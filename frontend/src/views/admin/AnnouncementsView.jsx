@@ -357,11 +357,11 @@ export function AnnouncementsView() {
   );
 
   return (
-    <div className="flex flex-col gap-5 lg:gap-7">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 lg:gap-6 lg:px-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex-1">
           {settingsError ? (
-            <div className="rounded-[14px] border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
+            <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
               {settingsError}
             </div>
           ) : (
@@ -393,7 +393,7 @@ export function AnnouncementsView() {
 
       <AppCard className="p-4 lg:p-6">
         <div className="flex items-start gap-4">
-          <div className="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-orange-100 dark:bg-orange-900/30">
+          <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-orange-100 dark:bg-orange-900/30">
             <Megaphone className="size-6 text-orange-600 dark:text-orange-400" />
           </div>
           <div className="flex-1">
@@ -403,18 +403,18 @@ export function AnnouncementsView() {
             </p>
 
             {!broadcastEnabled && (
-              <div className="mb-4 rounded-[12px] border border-yellow-200 bg-yellow-50 px-4 py-3 text-sm text-yellow-700 dark:border-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300">
+              <div className="mb-4 rounded-2xl border border-yellow-200 bg-yellow-50 px-4 py-3 text-sm text-yellow-700 dark:border-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300">
                 Broadcast messaging is currently disabled.
               </div>
             )}
 
             {broadcastError && (
-              <div className="mb-4 rounded-[12px] border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
+              <div className="mb-4 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
                 {broadcastError}
               </div>
             )}
             {broadcastSuccess && (
-              <div className="mb-4 rounded-[12px] border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300">
+              <div className="mb-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300">
                 {broadcastSuccess}
               </div>
             )}
@@ -450,7 +450,7 @@ export function AnnouncementsView() {
               </p>
             </div>
 
-            <div className="mb-4 rounded-[12px] border border-gray-200 px-4 py-3 dark:border-gray-700">
+            <div className="mb-4 rounded-2xl border border-gray-200 px-4 py-3 dark:border-gray-700">
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-sm font-medium text-gray-900 dark:text-white">Send SMS too</p>
@@ -482,7 +482,7 @@ export function AnnouncementsView() {
             </div>
 
             {sendSmsToo && (
-              <div className="mb-4 rounded-[12px] border border-gray-200 px-4 py-3 dark:border-gray-700">
+              <div className="mb-4 rounded-2xl border border-gray-200 px-4 py-3 dark:border-gray-700">
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <p className="text-sm font-medium text-gray-900 dark:text-white">Filter SMS recipients</p>
@@ -518,7 +518,7 @@ export function AnnouncementsView() {
             )}
 
             {sendSmsToo && (
-              <div className="mb-4 rounded-[12px] border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-300">
+              <div className="mb-4 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-300">
                 SMS recipients will receive this from your configured SIM sender. Your personal number may be visible.
               </div>
             )}
@@ -560,45 +560,45 @@ export function AnnouncementsView() {
         <AppCard className="p-4 lg:p-6">
           <div className="flex items-center justify-between gap-3 mb-4">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Latest Broadcast Job</h3>
-            <span className={cn('inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold', statusBadgeClass(activeJob.status))}>
+            <span className={cn('inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-semibold', statusBadgeClass(activeJob.status))}>
               {statusLabel(activeJob.status)}
             </span>
           </div>
 
           <div className="mb-3 grid grid-cols-2 gap-3 md:grid-cols-5">
-            <div className="rounded-[12px] border border-gray-200 bg-gray-50 px-3 py-2 dark:border-gray-700 dark:bg-gray-800/60">
+            <div className="rounded-2xl border border-gray-200 bg-gray-50 px-3 py-2 dark:border-gray-700 dark:bg-gray-800/60">
               <p className="text-xs text-gray-500 dark:text-gray-400">Total</p>
               <p className="text-base font-semibold text-gray-900 dark:text-white">{totalUsers}</p>
             </div>
-            <div className="rounded-[12px] border border-gray-200 bg-gray-50 px-3 py-2 dark:border-gray-700 dark:bg-gray-800/60">
+            <div className="rounded-2xl border border-gray-200 bg-gray-50 px-3 py-2 dark:border-gray-700 dark:bg-gray-800/60">
               <p className="text-xs text-gray-500 dark:text-gray-400">Processed</p>
               <p className="text-base font-semibold text-gray-900 dark:text-white">{processedUsers}</p>
             </div>
-            <div className="rounded-[12px] border border-emerald-200 bg-emerald-50 px-3 py-2 dark:border-emerald-800 dark:bg-emerald-900/20">
+            <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-3 py-2 dark:border-emerald-800 dark:bg-emerald-900/20">
               <p className="text-xs text-emerald-700 dark:text-emerald-300">Delivered</p>
               <p className="text-base font-semibold text-emerald-800 dark:text-emerald-200">{deliveredUsers}</p>
             </div>
-            <div className="rounded-[12px] border border-yellow-200 bg-yellow-50 px-3 py-2 dark:border-yellow-800 dark:bg-yellow-900/20">
+            <div className="rounded-2xl border border-yellow-200 bg-yellow-50 px-3 py-2 dark:border-yellow-800 dark:bg-yellow-900/20">
               <p className="text-xs text-yellow-700 dark:text-yellow-300">Skipped</p>
               <p className="text-base font-semibold text-yellow-800 dark:text-yellow-200">{skippedUsers}</p>
             </div>
-            <div className="rounded-[12px] border border-red-200 bg-red-50 px-3 py-2 dark:border-red-800 dark:bg-red-900/20">
+            <div className="rounded-2xl border border-red-200 bg-red-50 px-3 py-2 dark:border-red-800 dark:bg-red-900/20">
               <p className="text-xs text-red-700 dark:text-red-300">Failed</p>
               <p className="text-base font-semibold text-red-800 dark:text-red-200">{failedUsers}</p>
             </div>
           </div>
 
           {activeJob?.error && (
-            <div className="rounded-[12px] border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
+            <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
               {activeJob.error}
             </div>
           )}
 
           {smsEnabledForJob && (
-            <div className="mt-4 rounded-[12px] border border-orange-200 bg-orange-50/70 p-4 dark:border-orange-800 dark:bg-orange-900/20">
+            <div className="mt-4 rounded-2xl border border-orange-200 bg-orange-50/70 p-4 dark:border-orange-800 dark:bg-orange-900/20">
               <div className="mb-3 flex items-center justify-between gap-2">
                 <p className="text-sm font-semibold text-orange-800 dark:text-orange-200">SMS Delivery</p>
-                <span className={cn('inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold', statusBadgeClass(activeJob?.smsStatus || 'processing'))}>
+                <span className={cn('inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-semibold', statusBadgeClass(activeJob?.smsStatus || 'processing'))}>
                   {statusLabel(activeJob?.smsStatus || 'processing')}
                 </span>
               </div>
@@ -609,39 +609,39 @@ export function AnnouncementsView() {
                   : 'All authenticated users'}
               </p>
               <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-                <div className="rounded-[12px] border border-gray-200 bg-white px-3 py-2 dark:border-gray-700 dark:bg-gray-900/70">
+                <div className="rounded-2xl border border-gray-200 bg-white px-3 py-2 dark:border-gray-700 dark:bg-gray-900/70">
                   <p className="text-xs text-gray-500 dark:text-gray-400">Audience</p>
                   <p className="text-base font-semibold text-gray-900 dark:text-white">{smsTotalUsers}</p>
                 </div>
-                <div className="rounded-[12px] border border-gray-200 bg-white px-3 py-2 dark:border-gray-700 dark:bg-gray-900/70">
+                <div className="rounded-2xl border border-gray-200 bg-white px-3 py-2 dark:border-gray-700 dark:bg-gray-900/70">
                   <p className="text-xs text-gray-500 dark:text-gray-400">Queued</p>
                   <p className="text-base font-semibold text-gray-900 dark:text-white">{smsQueuedUsers}</p>
                 </div>
-                <div className="rounded-[12px] border border-emerald-200 bg-emerald-50 px-3 py-2 dark:border-emerald-800 dark:bg-emerald-900/20">
+                <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-3 py-2 dark:border-emerald-800 dark:bg-emerald-900/20">
                   <p className="text-xs text-emerald-700 dark:text-emerald-300">Sent</p>
                   <p className="text-base font-semibold text-emerald-800 dark:text-emerald-200">{smsSentUsers}</p>
                 </div>
-                <div className="rounded-[12px] border border-red-200 bg-red-50 px-3 py-2 dark:border-red-800 dark:bg-red-900/20">
+                <div className="rounded-2xl border border-red-200 bg-red-50 px-3 py-2 dark:border-red-800 dark:bg-red-900/20">
                   <p className="text-xs text-red-700 dark:text-red-300">Failed</p>
                   <p className="text-base font-semibold text-red-800 dark:text-red-200">{smsFailedUsers}</p>
                 </div>
-                <div className="rounded-[12px] border border-gray-200 bg-white px-3 py-2 dark:border-gray-700 dark:bg-gray-900/70">
+                <div className="rounded-2xl border border-gray-200 bg-white px-3 py-2 dark:border-gray-700 dark:bg-gray-900/70">
                   <p className="text-xs text-gray-500 dark:text-gray-400">Processed</p>
                   <p className="text-base font-semibold text-gray-900 dark:text-white">{smsProcessedUsers}</p>
                 </div>
-                <div className="rounded-[12px] border border-yellow-200 bg-yellow-50 px-3 py-2 dark:border-yellow-800 dark:bg-yellow-900/20">
+                <div className="rounded-2xl border border-yellow-200 bg-yellow-50 px-3 py-2 dark:border-yellow-800 dark:bg-yellow-900/20">
                   <p className="text-xs text-yellow-700 dark:text-yellow-300">No Phone</p>
                   <p className="text-base font-semibold text-yellow-800 dark:text-yellow-200">{smsNoPhoneUsers}</p>
                 </div>
-                <div className="rounded-[12px] border border-orange-200 bg-orange-50 px-3 py-2 dark:border-orange-800 dark:bg-orange-900/20">
+                <div className="rounded-2xl border border-orange-200 bg-orange-50 px-3 py-2 dark:border-orange-800 dark:bg-orange-900/20">
                   <p className="text-xs text-orange-700 dark:text-orange-300">Retries</p>
                   <p className="text-base font-semibold text-orange-800 dark:text-orange-200">{smsRetryAttempts}</p>
                 </div>
-                <div className="rounded-[12px] border border-sky-200 bg-sky-50 px-3 py-2 dark:border-sky-800 dark:bg-sky-900/20">
+                <div className="rounded-2xl border border-sky-200 bg-sky-50 px-3 py-2 dark:border-sky-800 dark:bg-sky-900/20">
                   <p className="text-xs text-sky-700 dark:text-sky-300">Filtered Out</p>
                   <p className="text-base font-semibold text-sky-800 dark:text-sky-200">{smsFilteredOutUsers}</p>
                 </div>
-                <div className="rounded-[12px] border border-indigo-200 bg-indigo-50 px-3 py-2 dark:border-indigo-800 dark:bg-indigo-900/20">
+                <div className="rounded-2xl border border-indigo-200 bg-indigo-50 px-3 py-2 dark:border-indigo-800 dark:bg-indigo-900/20">
                   <p className="text-xs text-indigo-700 dark:text-indigo-300">Unmatched Phones</p>
                   <p className="text-base font-semibold text-indigo-800 dark:text-indigo-200">{smsUnmatchedAllowlistPhones}</p>
                 </div>
@@ -660,7 +660,7 @@ export function AnnouncementsView() {
         </div>
 
         <div className="space-y-3 mb-5">
-          <div className="flex items-center justify-between rounded-[12px] border border-gray-200 px-4 py-3 dark:border-gray-700">
+          <div className="flex items-center justify-between rounded-2xl border border-gray-200 px-4 py-3 dark:border-gray-700">
             <div>
               <p className="text-sm font-medium text-gray-900 dark:text-white">Broadcast Messaging</p>
               <p className="text-xs text-gray-500 dark:text-gray-400">Allow admins to send app-wide announcements.</p>
@@ -676,7 +676,7 @@ export function AnnouncementsView() {
             />
           </div>
 
-          <div className="flex items-center justify-between rounded-[12px] border border-gray-200 px-4 py-3 dark:border-gray-700">
+          <div className="flex items-center justify-between rounded-2xl border border-gray-200 px-4 py-3 dark:border-gray-700">
             <div>
               <p className="text-sm font-medium text-gray-900 dark:text-white">SMS Broadcast</p>
               <p className="text-xs text-gray-500 dark:text-gray-400">Allow admins to append SMS delivery to announcements.</p>
@@ -696,7 +696,7 @@ export function AnnouncementsView() {
             />
           </div>
 
-          <div className="flex items-center justify-between rounded-[12px] border border-gray-200 px-4 py-3 dark:border-gray-700">
+          <div className="flex items-center justify-between rounded-2xl border border-gray-200 px-4 py-3 dark:border-gray-700">
             <div>
               <p className="text-sm font-medium text-gray-900 dark:text-white">Welcome Message</p>
               <p className="text-xs text-gray-500 dark:text-gray-400">Send the template below when a new user account is created.</p>
@@ -743,7 +743,7 @@ export function AnnouncementsView() {
         </div>
 
         {welcomeEnabled && !normalizeTrimmedText(welcomeMessage) && (
-          <div className="mt-4 flex items-center gap-2 rounded-[12px] border border-yellow-200 bg-yellow-50 px-4 py-3 text-sm text-yellow-700 dark:border-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300">
+          <div className="mt-4 flex items-center gap-2 rounded-2xl border border-yellow-200 bg-yellow-50 px-4 py-3 text-sm text-yellow-700 dark:border-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300">
             <AlertCircle className="size-4" />
             Welcome message is enabled but empty.
           </div>

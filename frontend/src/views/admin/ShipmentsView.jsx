@@ -57,7 +57,7 @@ function StatusBadge({ status }) {
   const label = normalizedStatus?.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase()) || 'In Transit';
 
   return (
-    <span className={cn('inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium', bg, text)}>
+    <span className={cn('inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold', bg, text)}>
       <Icon className="size-3.5" />
       {label}
     </span>
@@ -257,9 +257,9 @@ export function ShipmentsView() {
   );
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: isDesktop ? '28px' : '20px' }}>
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 lg:gap-6 lg:px-6">
       {/* Stats */}
-      <div className="grid grid-cols-1 lg:grid-cols-3" style={{ gap: isDesktop ? '24px' : '12px' }}>
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-3 lg:gap-6">
         <StatCard
           title="Total Shipments"
           value={stats.total}
@@ -281,9 +281,9 @@ export function ShipmentsView() {
       </div>
 
       {/* Map placeholder */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm" style={{ padding: isDesktop ? '24px' : '16px' }}>
+      <div className="rounded-2xl border border-border bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700" style={{ padding: isDesktop ? '24px' : '16px' }}>
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Active Shipments Map</h3>
-        <div className="h-64 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center">
+        <div className="h-64 rounded-2xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
           <div className="text-center">
             <MapPin className="size-12 text-gray-400 mx-auto mb-2" />
             <p className="text-gray-500 dark:text-gray-400">Live tracking map</p>

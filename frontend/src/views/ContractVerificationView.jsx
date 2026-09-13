@@ -175,7 +175,7 @@ export function ContractVerificationView() {
       }}
     >
       {/* Header */}
-      <div className="max-w-6xl mx-auto">
+      <div className="mx-auto w-full max-w-7xl px-4 lg:px-6">
         <div className="mb-8">
           <h1 className={cn("font-bold text-gray-900 dark:text-white mb-2", isMobile ? "text-xl" : "text-3xl")}>
             Contract Creation Verification

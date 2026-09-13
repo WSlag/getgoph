@@ -152,7 +152,7 @@ export function RatingsManagement() {
             {row.comment || 'No comment'}
           </p>
           {row.flagged && (
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-br from-red-400 to-red-600 shadow-red-500/30 rounded text-xs mt-1">
+            <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-br px-2 py-0.5 text-[11px] font-semibold text-white from-red-400 to-red-600 shadow-red-500/30 mt-1">
               <Flag className="size-3" />
               Flagged
             </span>
@@ -192,9 +192,9 @@ export function RatingsManagement() {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: isDesktop ? '28px' : '20px' }}>
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 lg:gap-6 lg:px-6">
       {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4" style={{ gap: isDesktop ? '24px' : '12px' }}>
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-6">
         <StatCard
           title="Total Ratings"
           value={stats.total}
@@ -225,7 +225,7 @@ export function RatingsManagement() {
       </p>
 
       {/* Rating Distribution */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm" style={{ padding: isDesktop ? '24px' : '16px' }}>
+      <div className="rounded-2xl border border-border bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700" style={{ padding: isDesktop ? '24px' : '16px' }}>
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Rating Distribution</h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           {[5, 4, 3, 2, 1].map((star) => {

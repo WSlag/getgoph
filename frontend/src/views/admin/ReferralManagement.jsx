@@ -301,7 +301,7 @@ export function ReferralManagement() {
   ];
 
   return (
-    <div className="flex flex-col gap-5 lg:gap-7">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 lg:gap-6 lg:px-6">
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-6">
         <StatCard
           title="Total Brokers"
@@ -373,22 +373,22 @@ export function ReferralManagement() {
           titleClassName="text-lg font-semibold tracking-normal"
         />
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
-          <div className="rounded-[14px] bg-slate-50 p-4 text-center dark:bg-slate-800/50">
+          <div className="rounded-2xl bg-slate-50 p-4 text-center dark:bg-slate-800/50">
             <TierChip tier="STARTER" className="mx-auto" />
             <p className="mt-2 text-2xl font-bold text-gray-900 dark:text-white">3%</p>
             <p className="text-xs text-gray-500 dark:text-gray-400">0-10 referrals</p>
           </div>
-          <div className="p-4 rounded-[14px] bg-slate-50 dark:bg-slate-900/50 text-center">
+          <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 text-center">
             <TierChip tier="SILVER" className="mx-auto" />
             <p className="text-2xl font-bold text-gray-900 dark:text-white mt-2">4%</p>
             <p className="text-xs text-gray-500 dark:text-gray-400">11-25 referrals</p>
           </div>
-          <div className="p-4 rounded-[14px] bg-yellow-50 dark:bg-yellow-900/20 text-center">
+          <div className="p-4 rounded-2xl bg-yellow-50 dark:bg-yellow-900/20 text-center">
             <TierChip tier="GOLD" className="mx-auto" />
             <p className="text-2xl font-bold text-gray-900 dark:text-white mt-2">5%</p>
             <p className="text-xs text-gray-500 dark:text-gray-400">26-50 referrals</p>
           </div>
-          <div className="p-4 rounded-[14px] bg-purple-50 dark:bg-purple-900/20 text-center">
+          <div className="p-4 rounded-2xl bg-purple-50 dark:bg-purple-900/20 text-center">
             <TierChip tier="PLATINUM" className="mx-auto" />
             <p className="text-2xl font-bold text-gray-900 dark:text-white mt-2">6%</p>
             <p className="text-xs text-gray-500 dark:text-gray-400">50+ referrals</p>

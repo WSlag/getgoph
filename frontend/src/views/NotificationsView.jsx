@@ -63,19 +63,20 @@ export function NotificationsView({
 
   return (
     <main className="flex-1 bg-gray-50 dark:bg-gray-950 overflow-y-auto" style={{ padding: isMobile ? '16px' : '24px', paddingBottom: isMobile ? 'calc(100px + env(safe-area-inset-bottom, 0px))' : '24px' }}>
+      <div className="mx-auto w-full max-w-7xl px-4 lg:px-6">
       {/* Header */}
       <div style={{ marginBottom: isMobile ? '24px' : '32px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-          <div className="size-12 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
+          <div className="size-12 rounded-2xl bg-primary flex items-center justify-center shadow-sm shadow-primary/20">
             <Bell className="size-6 text-white" />
           </div>
           <div>
-            <h1 style={{
-              fontWeight: 'bold',
+            <h1 className="font-bold tracking-tight" style={{
               color: darkMode ? '#fff' : '#111827',
               fontSize: isMobile ? '20px' : '24px',
               marginBottom: '4px',
-              lineHeight: '1.2'
+              lineHeight: '1.2',
+              letterSpacing: '-0.025em'
             }}>Notifications</h1>
             <p style={{
               color: darkMode ? '#9ca3af' : '#6b7280',
@@ -173,7 +174,7 @@ export function NotificationsView({
           </div>
         </div>
       ) : (
-        <div style={{ display: 'grid', gap: isMobile ? '12px' : '16px' }}>
+        <div className="grid gap-3 lg:gap-6">
           {notifications.map((notification) => {
             const unread = !isNotificationRead(notification);
             const normalizedType = String(notification.type || '').toUpperCase();
@@ -196,9 +197,9 @@ export function NotificationsView({
               <div
                 key={notification.id}
                 className={cn(
-                  'rounded-xl border bg-white dark:bg-gray-900 cursor-pointer transition-all hover:shadow-lg',
+                  'rounded-2xl border border-border bg-white dark:bg-gray-900 cursor-pointer transition-all hover:shadow-md shadow-sm',
                   unread
-                    ? 'border-orange-200 dark:border-orange-700 shadow-sm'
+                    ? 'border-orange-200 dark:border-orange-700'
                     : 'border-gray-200 dark:border-gray-800'
                 )}
                 style={{ padding: isMobile ? '16px' : '20px' }}
@@ -317,6 +318,7 @@ export function NotificationsView({
           })}
         </div>
       )}
+      </div>
     </main>
   );
 }

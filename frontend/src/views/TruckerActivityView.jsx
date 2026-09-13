@@ -381,7 +381,7 @@ export function TruckerActivityView({
   ];
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="mx-auto w-full max-w-7xl px-4 lg:px-6 flex flex-col gap-6">
       {/* Filters */}
       <div className="flex items-center gap-3">
         <Select value={activeTypeFilter} onValueChange={setTypeFilter}>
@@ -454,7 +454,7 @@ export function TruckerActivityView({
                     Due Payment
                   </p>
                   {duePaymentSummary.hasOverdue && (
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300">
+                    <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300">
                       OVERDUE
                     </span>
                   )}
@@ -471,7 +471,7 @@ export function TruckerActivityView({
             {/* Pay Now Button */}
             <button
               type="button"
-              className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-bold text-white transition-all active:scale-95 hover:opacity-90 shrink-0"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-bold text-white transition-all active:scale-95 hover:opacity-90 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               style={{
                 background: duePaymentSummary.hasOverdue
                   ? 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)'
@@ -506,7 +506,7 @@ export function TruckerActivityView({
             <div className={`size-6 rounded-lg ${iconBg} flex items-center justify-center mb-1.5 shrink-0`}>
               {iconEl}
             </div>
-            <p className="text-[10px] font-medium text-gray-400 dark:text-gray-500 leading-tight truncate mb-0.5">{label}</p>
+            <p className="text-[11px] font-medium text-gray-400 dark:text-gray-500 leading-tight truncate mb-0.5">{label}</p>
             <p className="text-[18px] font-black text-gray-900 dark:text-white leading-none" style={{ fontFamily: 'Outfit, sans-serif' }}>{value}</p>
           </div>
         ))}
@@ -540,16 +540,16 @@ export function TruckerActivityView({
             </div>
             <div className="flex flex-wrap justify-center gap-2">
               <button type="button" onClick={onBrowseMarketplace}
-                className="h-9 px-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-semibold text-gray-600 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700">
+                className="h-9 px-4 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-semibold text-gray-600 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 Browse Cargo
               </button>
               <button type="button" onClick={onCreateListing}
-                className="h-9 px-4 rounded-xl text-sm font-bold text-white transition-all active:scale-95 hover:opacity-90"
+                className="h-9 px-4 rounded-full text-sm font-bold text-white transition-all active:scale-95 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 style={{ background: '#c2410c', boxShadow: '0 4px 12px rgba(249,115,22,0.35)' }}>
                 Post Truck
               </button>
               <button type="button" onClick={onOpenMessages}
-                className="h-9 px-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-semibold text-gray-600 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700">
+                className="h-9 px-4 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-semibold text-gray-600 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 Open Messages
               </button>
             </div>
@@ -572,7 +572,7 @@ export function TruckerActivityView({
                     userName: item.listingOwnerName,
                   });
                 }}
-                className="w-full text-left p-4 rounded-2xl bg-white dark:bg-gray-800/80 border border-gray-100 dark:border-gray-700/60 transition-all duration-150 hover:border-orange-200 dark:hover:border-orange-800/60 hover:shadow-md active:scale-[0.99]"
+                className="w-full text-left p-4 rounded-2xl bg-white dark:bg-gray-800/80 border border-border dark:border-gray-700/60 shadow-sm transition-all duration-150 hover:border-orange-200 dark:hover:border-orange-800/60 hover:shadow-md active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}
               >
                 {/* Row 1: icon + label + status badge */}

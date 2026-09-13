@@ -269,7 +269,7 @@ export function TrackingView({
     return (
       <div
         className={cn(
-          'bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300',
+          'bg-white dark:bg-gray-900 rounded-2xl border border-border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300',
           selectedShipmentId === shipment.id && 'ring-2 ring-orange-500'
         )}
       >
@@ -417,7 +417,7 @@ export function TrackingView({
             {/* Parties */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '10px' }}>
               <div>
-                <p style={{ fontSize: '10px', color: '#9ca3af', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '3px' }}>
+                <p style={{ fontSize: '11px', color: '#9ca3af', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '3px' }}>
                   <User style={{ width: '10px', height: '10px' }} /> Shipper
                 </p>
                 <p style={{ fontSize: isMobile ? '12px' : '13px', fontWeight: '600', color: darkMode ? '#f3f4f6' : '#111827' }}>
@@ -425,7 +425,7 @@ export function TrackingView({
                 </p>
               </div>
               <div>
-                <p style={{ fontSize: '10px', color: '#9ca3af', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '3px' }}>
+                <p style={{ fontSize: '11px', color: '#9ca3af', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '3px' }}>
                   <Truck style={{ width: '10px', height: '10px' }} /> Trucker
                 </p>
                 <p style={{ fontSize: isMobile ? '12px' : '13px', fontWeight: '600', color: darkMode ? '#f3f4f6' : '#111827' }}>
@@ -519,13 +519,14 @@ export function TrackingView({
         paddingBottom: isMobile ? 'calc(100px + env(safe-area-inset-bottom, 0px))' : '24px',
       }}
     >
+      <div className="mx-auto w-full max-w-7xl px-4 lg:px-6">
       <div style={{ marginBottom: isMobile ? '24px' : '32px' }}>
-        <h1 style={{
-          fontWeight: 'bold',
+        <h1 className="font-bold tracking-tight" style={{
           color: darkMode ? '#fff' : '#111827',
           fontSize: isMobile ? '20px' : '24px',
           marginBottom: '8px',
           lineHeight: '1.2',
+          letterSpacing: '-0.025em',
         }}>
           Shipment Tracking
         </h1>
@@ -542,19 +543,17 @@ export function TrackingView({
           <div className="animate-spin rounded-full h-12 w-12 border-4 border-orange-500 border-t-transparent" />
         </div>
       ) : scopedActiveShipments.length > 0 || scopedDeliveredShipments.length > 0 ? (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '24px' : '32px' }}>
+        <div className="flex flex-col gap-3 lg:gap-6">
           {scopedActiveShipments.length > 0 && (
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: isMobile ? '12px' : '16px' }}>
                 <Radio className="text-orange-500 animate-pulse" style={{ width: isMobile ? '16px' : '20px', height: isMobile ? '16px' : '20px' }} />
-                <h2 style={{ fontWeight: '600', color: darkMode ? '#fff' : '#111827', fontSize: isMobile ? '16px' : '18px' }}>
+                <h2 className="font-semibold tracking-tight" style={{ color: darkMode ? '#fff' : '#111827', fontSize: '18px' }}>
                   Active Shipments
                 </h2>
               </div>
-              <div style={{
-                display: 'grid',
+              <div className="grid gap-3 lg:gap-6" style={{
                 gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fill, minmax(350px, 1fr))',
-                gap: isMobile ? '12px' : '24px',
               }}>
                 {scopedActiveShipments.map((shipment) => (
                   <ShipmentCard key={shipment.id} shipment={shipment} />
@@ -567,14 +566,12 @@ export function TrackingView({
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: isMobile ? '12px' : '16px' }}>
                 <Package className="text-green-500" style={{ width: isMobile ? '16px' : '20px', height: isMobile ? '16px' : '20px' }} />
-                <h2 style={{ fontWeight: '600', color: darkMode ? '#fff' : '#111827', fontSize: isMobile ? '16px' : '18px' }}>
+                <h2 className="font-semibold tracking-tight" style={{ color: darkMode ? '#fff' : '#111827', fontSize: '18px' }}>
                   Delivered
                 </h2>
               </div>
-              <div style={{
-                display: 'grid',
+              <div className="grid gap-3 lg:gap-6" style={{
                 gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fill, minmax(350px, 1fr))',
-                gap: isMobile ? '12px' : '24px',
               }}>
                 {scopedDeliveredShipments.map((shipment) => (
                   <ShipmentCard key={shipment.id} shipment={shipment} />
@@ -613,6 +610,7 @@ export function TrackingView({
           }}
         />
       )}
+      </div>
     </main>
   );
 }

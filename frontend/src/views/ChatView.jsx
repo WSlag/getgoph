@@ -113,9 +113,10 @@ export function ChatView({
 
   return (
     <main className={cn("flex-1 bg-gray-50 dark:bg-gray-950 overflow-y-auto")} style={{ padding: isMobile ? '16px' : '24px', paddingBottom: isMobile ? 'calc(100px + env(safe-area-inset-bottom, 0px))' : '24px' }}>
+      <div className="mx-auto w-full max-w-7xl px-4 lg:px-6">
       {/* Header */}
       <div style={{ marginBottom: isMobile ? '16px' : '24px' }}>
-        <h2 style={{ fontSize: isMobile ? '20px' : '28px', fontWeight: 'bold', color: darkMode ? '#fff' : '#111827', marginBottom: '8px' }}>
+        <h2 className="font-bold tracking-tight" style={{ fontSize: isMobile ? '20px' : '24px', color: darkMode ? '#fff' : '#111827', marginBottom: '8px', lineHeight: '1.2', letterSpacing: '-0.025em' }}>
           Messages
         </h2>
         <p style={{ fontSize: isMobile ? '13px' : '14px', color: '#6b7280' }}>
@@ -167,7 +168,7 @@ export function ChatView({
           </div>
         </div>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '12px' : '16px' }}>
+        <div className="flex flex-col gap-3 lg:gap-6">
           {scopedConversations.map((conversation) => {
             const listingType = resolveBidListingType(conversation) || 'cargo';
             const Icon = listingType === 'cargo' ? Package : Truck;
@@ -178,7 +179,7 @@ export function ChatView({
               <button
                 key={conversation.id}
                 onClick={() => handleConversationClick(conversation)}
-                className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm hover:shadow-md transition-all text-left w-full hover:border-orange-300 dark:hover:border-orange-700"
+                className="bg-white dark:bg-gray-900 rounded-2xl border border-border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm hover:shadow-md transition-all text-left w-full hover:border-orange-300 dark:hover:border-orange-700"
               >
                 {/* Header */}
                 <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-800" style={{ padding: isMobile ? '12px 16px' : '16px 20px' }}>
@@ -208,7 +209,7 @@ export function ChatView({
                         </span>
                         {conversation.status && statusConfig[conversation.status] && (
                           <span style={{
-                            fontSize: '10px',
+                            fontSize: '11px',
                             fontWeight: '600',
                             padding: '1px 7px',
                             borderRadius: '999px',
@@ -341,6 +342,7 @@ export function ChatView({
           })}
         </div>
       )}
+      </div>
     </main>
   );
 }

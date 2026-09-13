@@ -23,7 +23,7 @@ function SettingCard({ title, description, children, icon: Icon }) {
     <AppCard className="p-4 lg:p-6">
       <div className="flex items-start gap-4">
         {Icon && (
-          <div className="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-orange-100 dark:bg-orange-900/30">
+          <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-orange-100 dark:bg-orange-900/30">
             <Icon className="size-6 text-orange-600 dark:text-orange-400" />
           </div>
         )}
@@ -257,10 +257,10 @@ export function SystemSettings() {
   };
 
   return (
-    <div className="flex flex-col gap-5 lg:gap-7">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 lg:gap-6 lg:px-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         {error ? (
-          <div className="rounded-[14px] border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
+          <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-300">
             {error}
           </div>
         ) : <div />}
@@ -429,7 +429,7 @@ export function SystemSettings() {
           />
         </div>
         {maintenanceMode && (
-          <div className="mt-4 rounded-[14px] border border-yellow-200 bg-yellow-50 p-4 dark:border-yellow-800 dark:bg-yellow-900/20">
+          <div className="mt-4 rounded-2xl border border-yellow-200 bg-yellow-50 p-4 dark:border-yellow-800 dark:bg-yellow-900/20">
             <p className="text-sm text-yellow-700 dark:text-yellow-300">
               Warning: Maintenance mode is enabled. Regular users cannot access the platform.
             </p>

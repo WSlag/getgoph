@@ -57,7 +57,7 @@ function StatusBadge({ status }) {
   const label = status?.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase()) || 'Pending';
 
   return (
-    <span className={cn('inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium', bg, text)}>
+    <span className={cn('inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold', bg, text)}>
       <Icon className={cn('size-3.5', status === 'processing' && 'animate-spin')} />
       {label}
     </span>
@@ -82,7 +82,7 @@ function FraudFlagBadge({ flag, score }) {
 
   return (
     <span className={cn(
-      'inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium',
+      'inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold',
       flagColors[flag] || 'bg-gray-100 text-gray-600'
     )}>
       <Flag className="size-3" />
@@ -154,7 +154,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
         <DialogHeader>
           <div className="flex items-center gap-3">
             <div className={cn(
-              'size-12 rounded-xl flex items-center justify-center',
+              'size-12 rounded-2xl flex items-center justify-center',
               submission.status === 'manual_review'
                 ? 'bg-primary'
                 : 'bg-blue-600'
@@ -177,7 +177,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
             <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
               Payment Screenshot
             </h3>
-            <div className="relative rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+            <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
               {submission.screenshotUrl ? (
                 <img
                   src={submission.screenshotUrl}
@@ -201,7 +201,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
 
             {/* Image Analysis */}
             {submission.imageAnalysis && (
-              <div className="mt-4 p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+              <div className="mt-4 p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
                 <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Image Analysis
                 </h4>
@@ -238,7 +238,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
             </div>
 
             {/* Order Details */}
-            <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+            <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
               <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                 Order Details
               </h4>
@@ -279,7 +279,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
 
             {/* OCR Extracted Data */}
             {submission.extractedData && (
-              <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+              <div className="p-4 rounded-2xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
                 <h4 className="text-sm font-medium text-blue-700 dark:text-blue-300 mb-3">
                   OCR Extracted Data
                 </h4>
@@ -339,7 +339,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
 
             {/* Fraud Flags */}
             {submission.fraudFlags && submission.fraudFlags.length > 0 && (
-              <div className="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+              <div className="p-4 rounded-2xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
                 <h4 className="text-sm font-medium text-red-700 dark:text-red-300 mb-3 flex items-center gap-2">
                   <AlertTriangle className="size-4" />
                   Fraud Flags ({submission.fraudFlags.length})
@@ -354,7 +354,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
 
             {/* Validation Results */}
             {submission.validationResults && (
-              <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+              <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
                 <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                   Validation Results
                 </h4>
@@ -384,7 +384,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Add any notes about this review..."
                 rows={2}
-                className="w-full px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-2 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
 
@@ -415,14 +415,14 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
                     </Button>
                   </div>
                 ) : (
-                  <div className="space-y-3 p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+                  <div className="space-y-3 p-4 rounded-2xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
                     <label className="block text-sm font-medium text-red-700 dark:text-red-300">
                       Rejection Reason (required)
                     </label>
                     <select
                       value={rejectionReason}
                       onChange={(e) => setRejectionReason(e.target.value)}
-                      className="w-full px-4 py-2 rounded-xl border border-red-200 dark:border-red-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-500"
+                      className="w-full px-4 py-2 rounded-2xl border border-red-200 dark:border-red-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-500"
                     >
                       <option value="">Select a reason...</option>
                       <option value="invalid_screenshot">Invalid Screenshot</option>
@@ -577,7 +577,7 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
 
   return (
     <main
-      className={cn('flex-1 bg-gray-50 dark:bg-gray-950 overflow-y-auto', className)}
+      className={cn('mx-auto w-full max-w-7xl flex-1 bg-gray-50 px-4 lg:px-6 dark:bg-gray-950 overflow-y-auto', className)}
       style={{
         padding: isMobile ? '16px 14px' : '32px',
         paddingBottom: isMobile ? 'calc(100px + env(safe-area-inset-bottom, 0px))' : '32px',
@@ -634,7 +634,7 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
           style={{ marginBottom: isMobile ? '16px' : '32px' }}
         >
           <div className={cn(
-            "rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm",
+            "rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm",
             isMobile ? "p-3" : "p-4"
           )}>
             <div className="flex items-center gap-3">
@@ -655,7 +655,7 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
           </div>
 
           <div className={cn(
-            "rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm",
+            "rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm",
             isMobile ? "p-3" : "p-4"
           )}>
             <div className="flex items-center gap-3">
@@ -676,7 +676,7 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
           </div>
 
           <div className={cn(
-            "rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm",
+            "rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm",
             isMobile ? "p-3" : "p-4"
           )}>
             <div className="flex items-center gap-3">
@@ -697,7 +697,7 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
           </div>
 
           <div className={cn(
-            "rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm",
+            "rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm",
             isMobile ? "p-3" : "p-4"
           )}>
             <div className="flex items-center gap-3">
@@ -734,7 +734,7 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={isMobile ? "Search..." : "Search by order ID, user ID, or reference..."}
             className={cn(
-              "w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent",
+              "w-full rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent",
               isMobile ? "pl-9 pr-3 py-2 text-sm" : "pl-10 pr-4 py-2.5"
             )}
           />
@@ -752,8 +752,8 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
               key={status}
               onClick={() => setFilter(status)}
               className={cn(
-                'rounded-xl font-medium transition-all duration-300 active:scale-95 whitespace-nowrap',
-                isMobile ? 'text-xs' : 'text-sm hover:scale-105',
+                'rounded-full font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-95 whitespace-nowrap',
+                isMobile ? 'text-[11px]' : 'text-[11px] hover:scale-105',
                 filter === status
                   ? 'bg-primary text-white shadow-lg shadow-primary/20'
                   : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700'
@@ -768,7 +768,7 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
 
       {/* Error State */}
       {error && (
-        <div className="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 mb-6">
+        <div className="p-4 rounded-2xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 mb-6">
           <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
             <AlertCircle className="size-5" />
             <span>{error}</span>
@@ -784,7 +784,7 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
         </div>
       ) : filteredSubmissions.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 text-center">
-          <div className="size-16 rounded-xl bg-muted dark:dark:bg-stone-800 flex items-center justify-center mb-4 shadow-lg">
+          <div className="size-16 rounded-2xl bg-muted dark:dark:bg-stone-800 flex items-center justify-center mb-4 shadow-lg">
             <CheckCircle2 className="size-8 text-gray-400" />
           </div>
           <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-1">
@@ -803,7 +803,7 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
             <div
               key={submission.id}
               onClick={() => handleViewDetails(submission)}
-              className="p-4 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm active:scale-[0.98] transition-transform cursor-pointer"
+              className="p-4 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm active:scale-[0.98] transition-transform cursor-pointer"
             >
               <div className="flex items-start justify-between mb-3">
                 <div>
@@ -820,7 +820,7 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className={cn(
-                    'px-2 py-1 rounded-lg text-xs font-bold',
+                    'px-2 py-1 rounded-full text-[11px] font-bold',
                     submission.fraudScore > 70 ? 'bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400' :
                     submission.fraudScore > 10 ? 'bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400' :
                     'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400'
@@ -828,7 +828,7 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
                     Score: {submission.fraudScore || 0}
                   </span>
                   {submission.fraudFlags?.length > 0 && (
-                    <span className="px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg text-xs">
+                    <span className="px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-full text-[11px]">
                       {submission.fraudFlags.length} flag{submission.fraudFlags.length > 1 ? 's' : ''}
                     </span>
                   )}
@@ -842,7 +842,7 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
         </div>
       ) : (
         /* Desktop Table Layout */
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
@@ -925,13 +925,13 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
                         {submission.fraudFlags?.slice(0, 2).map((flag, idx) => (
                           <span
                             key={idx}
-                            className="px-1.5 py-0.5 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded text-xs"
+                            className="px-1.5 py-0.5 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-full text-[11px]"
                           >
                             {flag.rule?.replace(/_/g, ' ').slice(0, 12)}
                           </span>
                         ))}
                         {submission.fraudFlags?.length > 2 && (
-                          <span className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-500 rounded text-xs">
+                          <span className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-500 rounded-full text-[11px]">
                             +{submission.fraudFlags.length - 2}
                           </span>
                         )}

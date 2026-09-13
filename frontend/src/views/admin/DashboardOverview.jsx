@@ -150,7 +150,7 @@ export function DashboardOverview({ badges, onNavigate }) {
   ];
 
   return (
-    <div className="flex flex-col gap-4 lg:gap-6">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 lg:gap-6 lg:px-6">
       {/* Stats Grid */}
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-6">
         {loading ? (
@@ -274,12 +274,12 @@ export function DashboardOverview({ badges, onNavigate }) {
                   size="md"
                   onClick={() => onNavigate(action.section)}
                   className={cn(
-                    'h-auto w-full min-h-32 flex-col items-start justify-between rounded-[14px] p-3 text-left',
+                    'h-auto w-full min-h-32 flex-col items-start justify-between rounded-2xl border-border p-3 text-left shadow-sm',
                     'whitespace-normal hover:border-orange-200 hover:bg-slate-100 dark:hover:border-orange-700 dark:hover:bg-slate-800/90'
                   )}
                 >
                   <div className="flex w-full items-start gap-3">
-                    <div className={cn('flex size-10 shrink-0 items-center justify-center rounded-[10px]', action.iconClassName)}>
+                    <div className={cn('flex size-10 shrink-0 items-center justify-center rounded-2xl', action.iconClassName)}>
                       <Icon className="size-5" />
                     </div>
                     <span className="text-sm font-semibold leading-snug text-slate-900 dark:text-white">
@@ -312,7 +312,7 @@ export function DashboardOverview({ badges, onNavigate }) {
           <div className="space-y-3">
             {recentActivity.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-8 text-center">
-                <div className="mb-3 flex size-12 items-center justify-center rounded-[10px] bg-slate-100 dark:bg-slate-800">
+                <div className="mb-3 flex size-12 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-800">
                   <Clock className="size-6 text-slate-400 dark:text-slate-500" />
                 </div>
                 <p className="text-sm text-slate-500 dark:text-slate-400">No recent activity</p>
@@ -324,9 +324,9 @@ export function DashboardOverview({ badges, onNavigate }) {
                 return (
                   <div
                     key={idx}
-                    className="flex items-center gap-3 rounded-[10px] border border-slate-200/80 bg-slate-50/80 p-3 dark:border-slate-800 dark:bg-slate-900/50"
+                    className="flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-slate-50/80 p-3 dark:border-slate-800 dark:bg-slate-900/50"
                   >
-                    <div className={cn('flex size-10 shrink-0 items-center justify-center rounded-[10px]', activity.iconClassName)}>
+                    <div className={cn('flex size-10 shrink-0 items-center justify-center rounded-2xl', activity.iconClassName)}>
                       <Icon className="size-5" />
                     </div>
                     <div className="min-w-0 flex-1">

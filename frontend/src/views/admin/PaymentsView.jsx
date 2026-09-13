@@ -51,7 +51,7 @@ function StatusBadge({ status }) {
   const label = status?.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase()) || 'Pending';
 
   return (
-    <StatusChip variant={variant} className="text-xs font-medium">
+    <StatusChip variant={variant} className="text-[11px] font-semibold">
       <Icon className={cn('size-3.5', status === 'processing' && 'animate-spin')} />
       {label}
     </StatusChip>
@@ -74,7 +74,7 @@ function FraudFlagBadge({ flag, score }) {
   };
 
   return (
-    <StatusChip variant={flagVariants[flag] || 'neutral'} className="px-2 py-0.5 text-[11px] font-medium">
+    <StatusChip variant={flagVariants[flag] || 'neutral'} className="rounded-full px-2 py-0.5 text-[11px] font-semibold">
       <Flag className="size-3" />
       {flag?.replace(/_/g, ' ')}
       {score && <span className="opacity-70">(+{score})</span>}
@@ -212,7 +212,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
       <div className="mb-4 flex items-center gap-3">
         <div
           className={cn(
-            'flex size-12 items-center justify-center rounded-[10px]',
+            'flex size-12 items-center justify-center rounded-2xl',
             submission.status === 'manual_review'
               ? 'bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300'
               : 'bg-blue-100 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300'
@@ -228,7 +228,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
             <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
               Payment Screenshot
             </h3>
-            <div className="relative rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+            <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
               {submission.screenshotUrl ? (
                 <img
                   src={submission.screenshotUrl}
@@ -252,7 +252,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
 
             {/* Image Analysis */}
             {submission.imageAnalysis && (
-              <div className="mt-4 p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+              <div className="mt-4 p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
                 <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Image Analysis
                 </h4>
@@ -283,7 +283,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
             </div>
 
             {/* Order Details */}
-            <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+            <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
               <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                 Order Details
               </h4>
@@ -317,7 +317,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
 
             {/* OCR Extracted Data */}
             {submission.extractedData && (
-              <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+              <div className="p-4 rounded-2xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
                 <h4 className="text-sm font-medium text-blue-700 dark:text-blue-300 mb-3">
                   OCR Extracted Data
                 </h4>
@@ -358,7 +358,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
 
             {/* Fraud Flags */}
             {submission.fraudFlags && submission.fraudFlags.length > 0 && (
-              <div className="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+              <div className="p-4 rounded-2xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
                 <h4 className="text-sm font-medium text-red-700 dark:text-red-300 mb-3 flex items-center gap-2">
                   <AlertTriangle className="size-4" />
                   Fraud Flags ({submission.fraudFlags.length})
@@ -412,7 +412,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
                     </AppButton>
                   </div>
                 ) : (
-                  <div className="space-y-3 p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+                  <div className="space-y-3 p-4 rounded-2xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
                     <AppSelect
                       label="Rejection Reason (required)"
                       value={rejectionReason}
@@ -685,7 +685,7 @@ export function PaymentsView({ className }) {
             <FraudFlagBadge key={idx} flag={normalizeFraudFlag(flag).label} />
           ))}
           {row.fraudFlags?.length > 2 && (
-            <StatusChip variant="neutral" className="px-1.5 py-0.5 text-xs font-medium">
+            <StatusChip variant="neutral" className="rounded-full px-1.5 py-0.5 text-[11px] font-semibold">
               +{row.fraudFlags.length - 2}
             </StatusChip>
           )}
@@ -789,7 +789,7 @@ export function PaymentsView({ className }) {
           unknown: 'neutral',
         };
         return (
-          <StatusChip variant={config[due.state] || config.unknown} className="text-xs font-medium">
+          <StatusChip variant={config[due.state] || config.unknown} className="rounded-full text-[11px] font-semibold">
             {due.label}
           </StatusChip>
         );
@@ -801,7 +801,7 @@ export function PaymentsView({ className }) {
       render: (_, row) => (
         <StatusChip
           variant={row.truckerAccountStatus === 'suspended' ? 'cancelled' : 'transit'}
-          className="text-xs font-medium"
+          className="rounded-full text-[11px] font-semibold"
         >
           {row.truckerAccountStatus === 'suspended' ? 'Suspended' : 'Active'}
         </StatusChip>
@@ -849,7 +849,7 @@ export function PaymentsView({ className }) {
   );
 
   return (
-    <div className={cn('flex flex-col gap-4 lg:gap-6', className)}>
+    <div className={cn('mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 lg:gap-6 lg:px-6', className)}>
       {/* Stats Cards */}
       {stats && (
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-6">
@@ -882,7 +882,7 @@ export function PaymentsView({ className }) {
 
       {/* Error State */}
       {error && (
-        <div className="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+        <div className="p-4 rounded-2xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
           <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
             <AlertCircle className="size-5" />
             <span>{error}</span>
@@ -950,7 +950,7 @@ export function PaymentsView({ className }) {
         </div>
 
         {outstandingError && (
-          <div className="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+          <div className="p-4 rounded-2xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
             <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
               <AlertCircle className="size-5" />
               <span>{outstandingError}</span>

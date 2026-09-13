@@ -74,7 +74,6 @@ export function CargoCard({
   estimatedTime,
   time,
   category = 'CARGO',
-  gradientClass,
   className,
   compact = false, // New prop for condensed mobile view
 }) {
@@ -85,15 +84,6 @@ export function CargoCard({
     negotiating: 'bg-amber-50 text-amber-700 border border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-900',
     'in-progress': 'bg-blue-50 text-blue-700 border border-blue-200 dark:bg-blue-950/40 dark:text-blue-300 dark:border-blue-900',
     delivered: 'bg-green-50 text-green-700 border border-green-200 dark:bg-green-950/40 dark:text-green-300 dark:border-green-900',
-  };
-
-  // Price pill — single ember solid (AA-compliant), no per-status rainbow
-  const gradientColors = {
-    open: 'bg-primary',
-    waiting: 'bg-primary',
-    negotiating: 'bg-primary',
-    'in-progress': 'bg-primary',
-    delivered: 'bg-primary',
   };
 
   const formatPrice = (priceValue) => {
@@ -113,7 +103,6 @@ export function CargoCard({
   const displayOrigin = sanitizeMessage(origin || '');
   const displayDestination = sanitizeMessage(destination || '');
   const displayDescription = sanitizeMessage(description || '');
-  const currentGradient = gradientClass || gradientColors[status] || gradientColors.open;
 
   // Compact status badge styles for mobile — flat, stone-aware
   const compactStatusStyles = {

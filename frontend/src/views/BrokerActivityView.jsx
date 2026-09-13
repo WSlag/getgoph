@@ -251,14 +251,14 @@ export function BrokerActivityView({
   );
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="mx-auto w-full max-w-7xl px-4 lg:px-6 flex flex-col gap-6">
       {/* Filters */}
       <div className="flex items-center gap-3">
         <Select value={activeTypeFilter} onValueChange={setTypeFilter}>
-          <SelectTrigger className={cn("h-12 flex-1 rounded-[8px] border-gray-200 bg-white text-sm font-semibold dark:border-gray-700 dark:bg-gray-800")}>
+          <SelectTrigger className={cn("h-12 flex-1 rounded-full border-gray-200 bg-white text-sm font-semibold dark:border-gray-700 dark:bg-gray-800")}>
             <SelectValue placeholder="Type" />
           </SelectTrigger>
-          <SelectContent className="rounded-[8px]">
+          <SelectContent className="rounded-2xl">
             {typeFilters.map((filter) => (
               <SelectItem key={filter.id} value={filter.id}>{filter.label}</SelectItem>
             ))}
@@ -266,10 +266,10 @@ export function BrokerActivityView({
         </Select>
 
         <Select value={activeStatusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className={cn("h-12 flex-1 rounded-[8px] border-gray-200 bg-white text-sm font-semibold dark:border-gray-700 dark:bg-gray-800")}>
+          <SelectTrigger className={cn("h-12 flex-1 rounded-full border-gray-200 bg-white text-sm font-semibold dark:border-gray-700 dark:bg-gray-800")}>
             <SelectValue placeholder="Status" />
           </SelectTrigger>
-          <SelectContent className="rounded-[8px]">
+          <SelectContent className="rounded-2xl">
             {statusFilters.map((filter) => (
               <SelectItem key={filter.id} value={filter.id}>{filter.label}</SelectItem>
             ))}
@@ -280,7 +280,7 @@ export function BrokerActivityView({
           type="button"
           onClick={handleBackfill}
           disabled={backfilling}
-          className="shrink-0 h-12 px-3 inline-flex items-center gap-1.5 rounded-[8px] text-[13px] font-semibold border border-gray-200 bg-white text-gray-600 hover:border-orange-300 hover:text-orange-500 transition-all duration-200 active:scale-95 disabled:opacity-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+          className="shrink-0 h-12 px-5 min-h-10 inline-flex items-center gap-1.5 rounded-full text-[13px] font-semibold border border-gray-200 bg-white text-gray-600 hover:border-orange-300 hover:text-orange-500 transition-all duration-200 active:scale-95 disabled:opacity-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
         >
           {backfilling ? <Loader2 className="size-3.5 animate-spin" /> : <RefreshCw className="size-3.5" />}
           Backfill
@@ -332,7 +332,7 @@ export function BrokerActivityView({
           <div className="divide-y divide-gray-100 dark:divide-gray-800">
             {items.map((item) => {
               const canOpen = Boolean(onOpenListing && isOpenableListing(item));
-              const rowClass = 'w-full text-left px-4 py-3.5 transition-colors hover:bg-orange-50 dark:hover:bg-orange-950/20 active:bg-orange-100 dark:active:bg-orange-950/30';
+              const rowClass = 'w-full text-left px-4 py-3.5 rounded-2xl transition-colors hover:bg-orange-50 dark:hover:bg-orange-950/20 active:bg-orange-100 dark:active:bg-orange-950/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2';
               const body = renderItemBody(item);
               if (canOpen) {
                 return (
@@ -368,7 +368,7 @@ export function BrokerActivityView({
             <button
               type="button"
               onClick={() => loadActivity({ append: true, cursorValue: cursor })}
-              className="w-full py-2.5 rounded-xl text-sm font-semibold text-orange-500 border border-orange-200 dark:border-orange-800 hover:bg-orange-50 dark:hover:bg-orange-950/30 transition-colors"
+              className="w-full py-2.5 rounded-full text-sm font-semibold text-orange-500 border border-orange-200 dark:border-orange-800 hover:bg-orange-50 dark:hover:bg-orange-950/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               Load more
             </button>

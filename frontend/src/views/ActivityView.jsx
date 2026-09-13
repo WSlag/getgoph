@@ -56,14 +56,15 @@ export default function ActivityView({
         paddingBottom: isMobile ? 'calc(100px + env(safe-area-inset-bottom, 0px))' : '24px'
       }}
     >
+      <div className="mx-auto w-full max-w-7xl px-4 lg:px-6">
       <div style={{ marginBottom: isMobile ? '20px' : '24px' }}>
-        <h1 style={{
-          fontWeight: 900,
-          fontSize: isMobile ? '24px' : '28px',
+        <h1 className="font-bold tracking-tight" style={{
+          fontSize: isMobile ? '20px' : '24px',
           color: darkMode ? '#fff' : '#111827',
           marginBottom: '4px',
           fontFamily: 'Outfit, sans-serif',
-          letterSpacing: '-0.01em',
+          letterSpacing: '-0.025em',
+          lineHeight: '1.2',
         }}>
           {isBrokerWorkspace ? 'Broker Activity' : `${workspaceLabel} Activity`}
         </h1>
@@ -120,6 +121,7 @@ export default function ActivityView({
             onStatusFilterChange={(value) => setWorkspaceFilter('shipper', 'statusFilter', value)}
           />
         )}
+      </div>
       </div>
     </main>
   );

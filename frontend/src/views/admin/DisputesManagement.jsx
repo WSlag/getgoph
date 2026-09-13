@@ -36,7 +36,7 @@ function StatusBadge({ status }) {
   const label = status?.charAt(0).toUpperCase() + status?.slice(1) || 'Open';
 
   return (
-    <span className={cn('inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium', bg, text)}>
+    <span className={cn('inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold', bg, text)}>
       <Icon className="size-3.5" />
       {label}
     </span>
@@ -60,7 +60,7 @@ function DisputeDetailModal({ open, onClose, dispute, onResolve, loading }) {
       <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           <div className="flex items-center gap-3">
-            <div className="size-12 rounded-xl bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center">
+            <div className="size-12 rounded-2xl bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center">
               <AlertTriangle className="size-6 text-white" />
             </div>
             <div>
@@ -87,20 +87,20 @@ function DisputeDetailModal({ open, onClose, dispute, onResolve, loading }) {
           </div>
 
           {/* Reason */}
-          <div className="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+          <div className="p-4 rounded-2xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
             <h4 className="text-sm font-semibold text-red-700 dark:text-red-300 mb-2">Dispute Reason</h4>
             <p className="text-sm text-red-600 dark:text-red-400">{dispute.reason || 'No reason provided'}</p>
           </div>
 
           {/* Parties */}
           <div className="grid grid-cols-2" style={{ gap: '16px' }}>
-            <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+            <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
               <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-2">
                 <User className="size-4" /> Shipper
               </h4>
               <p className="text-sm text-gray-900 dark:text-white">{dispute.shipperName || 'N/A'}</p>
             </div>
-            <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+            <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
               <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-2">
                 <User className="size-4" /> Trucker
               </h4>
@@ -110,7 +110,7 @@ function DisputeDetailModal({ open, onClose, dispute, onResolve, loading }) {
 
           {/* Description */}
           {dispute.description && (
-            <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+            <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
               <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Description</h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">{dispute.description}</p>
             </div>
@@ -118,12 +118,12 @@ function DisputeDetailModal({ open, onClose, dispute, onResolve, loading }) {
 
           {/* Resolution (if open) */}
           {dispute.status === 'open' && (
-            <div className="space-y-3 p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+            <div className="space-y-3 p-4 rounded-2xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
               <h4 className="text-sm font-semibold text-blue-700 dark:text-blue-300">Resolve Dispute</h4>
               <select
                 value={resolution}
                 onChange={(e) => setResolution(e.target.value)}
-                className="w-full px-4 py-2 rounded-xl border border-blue-200 dark:border-blue-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                className="w-full px-4 py-2 rounded-2xl border border-blue-200 dark:border-blue-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
               >
                 <option value="">Select resolution...</option>
                 <option value="favor_shipper">In favor of Shipper</option>
@@ -136,7 +136,7 @@ function DisputeDetailModal({ open, onClose, dispute, onResolve, loading }) {
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Resolution notes..."
                 rows={3}
-                className="w-full px-4 py-2 rounded-xl border border-blue-200 dark:border-blue-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder:text-gray-400"
+                className="w-full px-4 py-2 rounded-2xl border border-blue-200 dark:border-blue-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder:text-gray-400"
               />
               <Button
                 onClick={handleResolve}
@@ -151,7 +151,7 @@ function DisputeDetailModal({ open, onClose, dispute, onResolve, loading }) {
 
           {/* Resolution info (if resolved) */}
           {dispute.status === 'resolved' && (
-            <div className="p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+            <div className="p-4 rounded-2xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
               <h4 className="text-sm font-semibold text-green-700 dark:text-green-300 mb-2">Resolution</h4>
               <p className="text-sm text-green-600 dark:text-green-400">{dispute.resolution || 'Resolved'}</p>
               {dispute.resolutionNotes && (
@@ -312,9 +312,9 @@ export function DisputesManagement() {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: isDesktop ? '28px' : '20px' }}>
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 lg:gap-6 lg:px-6">
       {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4" style={{ gap: isDesktop ? '24px' : '12px' }}>
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-6">
         <StatCard
           title="Total Disputes"
           value={stats.total}

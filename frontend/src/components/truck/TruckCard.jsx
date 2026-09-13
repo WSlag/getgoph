@@ -90,15 +90,6 @@ export function TruckCard({
     offline: 'OFFLINE',
   };
 
-  // Price pill — single ember solid (no rainbow)
-  const gradientColors = {
-    available: 'bg-primary',
-    'in-transit': 'bg-primary',
-    booked: 'bg-primary',
-    offline: 'bg-stone-500',
-  };
-
-  const currentGradient = gradientColors[displayStatus] || gradientColors.available;
   const displayTrucker = sanitizePublicName(trucker, 'Unknown');
   const displayOrigin = sanitizeMessage(origin || '');
   const displayDestination = sanitizeMessage(destination || '');

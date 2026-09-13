@@ -45,7 +45,7 @@ function StatusBadge({ status }) {
   const label = status?.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase()) || 'Draft';
 
   return (
-    <span className={cn('inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium', bg, text)}>
+    <span className={cn('inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold', bg, text)}>
       <Icon className="size-3.5" />
       {label}
     </span>
@@ -241,9 +241,9 @@ export function ContractsView() {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: isDesktop ? '28px' : '20px' }}>
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 lg:gap-6 lg:px-6">
       {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4" style={{ gap: isDesktop ? '24px' : '12px' }}>
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-6">
         <StatCard
           title="Total Contracts"
           value={stats.total}
@@ -320,7 +320,7 @@ export function ContractsView() {
           </DialogHeader>
 
           <div className="space-y-4">
-            <div className="rounded-lg border border-border bg-muted/50 p-4">
+            <div className="rounded-2xl border border-border bg-muted/50 p-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <p className="font-mono text-sm font-semibold text-foreground">
                   {viewTarget?.contractNumber || viewTarget?.id}
@@ -330,39 +330,39 @@ export function ContractsView() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className="rounded-lg border border-border p-3">
+              <div className="rounded-2xl border border-border p-3">
                 <p className="text-xs text-muted-foreground">Agreed Price</p>
                 <p className="text-sm font-semibold text-foreground">
                   PHP {formatPrice(viewTarget?.agreedPrice)}
                 </p>
               </div>
-              <div className="rounded-lg border border-border p-3">
+              <div className="rounded-2xl border border-border p-3">
                 <p className="text-xs text-muted-foreground">Platform Fee</p>
                 <p className="text-sm font-semibold text-foreground">
                   PHP {formatPrice(viewTarget?.platformFee)}
                 </p>
               </div>
-              <div className="rounded-lg border border-border p-3">
+              <div className="rounded-2xl border border-border p-3">
                 <p className="text-xs text-muted-foreground">Created</p>
                 <p className="text-sm text-foreground flex items-center gap-1.5">
                   <Calendar className="size-3.5 text-muted-foreground" />
                   {formatDate(viewTarget?.createdAt)}
                 </p>
               </div>
-              <div className="rounded-lg border border-border p-3">
+              <div className="rounded-2xl border border-border p-3">
                 <p className="text-xs text-muted-foreground">Updated</p>
                 <p className="text-sm text-foreground flex items-center gap-1.5">
                   <Calendar className="size-3.5 text-muted-foreground" />
                   {formatDate(viewTarget?.updatedAt)}
                 </p>
               </div>
-              <div className="rounded-lg border border-border p-3">
+              <div className="rounded-2xl border border-border p-3">
                 <p className="text-xs text-muted-foreground">Shipper</p>
                 <p className="text-sm text-foreground">
                   {viewTarget?.listingOwnerName || viewTarget?.listingOwnerId || 'N/A'}
                 </p>
               </div>
-              <div className="rounded-lg border border-border p-3">
+              <div className="rounded-2xl border border-border p-3">
                 <p className="text-xs text-muted-foreground">Trucker</p>
                 <p className="text-sm text-foreground">
                   {viewTarget?.bidderName || viewTarget?.bidderId || 'N/A'}
@@ -370,7 +370,7 @@ export function ContractsView() {
               </div>
             </div>
 
-            <div className="rounded-lg border border-border p-3">
+            <div className="rounded-2xl border border-border p-3">
               <p className="text-xs text-muted-foreground mb-1">Route</p>
               <p className="text-sm text-foreground">
                 {viewTarget?.pickupAddress || 'N/A'} to {viewTarget?.deliveryAddress || 'N/A'}
@@ -380,7 +380,7 @@ export function ContractsView() {
             {(viewTarget?.specialInstructions || viewTarget?.cancellationReason) && (
               <div className="space-y-3">
                 {viewTarget?.specialInstructions && (
-                  <div className="rounded-lg border border-border p-3">
+                  <div className="rounded-2xl border border-border p-3">
                     <p className="text-xs text-muted-foreground mb-1">Special Instructions</p>
                     <p className="text-sm text-foreground whitespace-pre-wrap">
                       {viewTarget.specialInstructions}
@@ -388,7 +388,7 @@ export function ContractsView() {
                   </div>
                 )}
                 {viewTarget?.cancellationReason && (
-                  <div className="rounded-lg border border-red-200 bg-red-50 dark:bg-red-900/20 dark:border-red-900/40 p-3">
+                  <div className="rounded-2xl border border-red-200 bg-red-50 dark:bg-red-900/20 dark:border-red-900/40 p-3">
                     <p className="text-xs text-red-700 dark:text-red-300 mb-1">Cancellation Reason</p>
                     <p className="text-sm text-red-700 dark:text-red-300 whitespace-pre-wrap">
                       {viewTarget.cancellationReason}
@@ -436,7 +436,7 @@ export function ContractsView() {
           </DialogHeader>
 
           <div className="space-y-3">
-            <div className="rounded-lg border border-border bg-muted/50 p-3">
+            <div className="rounded-2xl border border-border bg-muted/50 p-3">
               <p className="text-sm font-medium text-foreground">
                 {cancelTarget?.contractNumber || cancelTarget?.id}
               </p>

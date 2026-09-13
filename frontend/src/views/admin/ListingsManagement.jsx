@@ -41,7 +41,7 @@ function StatusBadge({ status }) {
   const label = status?.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase()) || 'Open';
 
   return (
-    <span className={cn('inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium', bg, text)}>
+    <span className={cn('inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-semibold', bg, text)}>
       {label}
     </span>
   );
@@ -52,7 +52,7 @@ function TypeBadge({ type }) {
   const isCargo = type === 'cargo';
   return (
     <span className={cn(
-      'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium',
+      'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold',
       isCargo
         ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400'
         : 'bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400'
@@ -84,7 +84,7 @@ function ListingDetailModal({ open, onClose, listing, onDeactivate, loading }) {
         </DialogHeader>
 
         <div className="space-y-4">
-          <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+          <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
             <div className="flex flex-wrap items-center gap-2 mb-2">
               <TypeBadge type={listing.type} />
               <StatusBadge status={listing.status} />
@@ -94,26 +94,26 @@ function ListingDetailModal({ open, onClose, listing, onDeactivate, loading }) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="p-3 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="p-3 rounded-2xl border border-gray-200 dark:border-gray-700">
               <p className="text-xs text-gray-500 dark:text-gray-400">Listing ID</p>
               <p className="text-sm font-medium text-gray-900 dark:text-white break-all">{listing.id}</p>
             </div>
-            <div className="p-3 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="p-3 rounded-2xl border border-gray-200 dark:border-gray-700">
               <p className="text-xs text-gray-500 dark:text-gray-400">Owner</p>
               <p className="text-sm font-medium text-gray-900 dark:text-white">{owner}</p>
             </div>
-            <div className="p-3 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="p-3 rounded-2xl border border-gray-200 dark:border-gray-700">
               <p className="text-xs text-gray-500 dark:text-gray-400">Price</p>
               <p className="text-sm font-semibold text-gray-900 dark:text-white">PHP {formatPrice(listing.askingPrice)}</p>
             </div>
-            <div className="p-3 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="p-3 rounded-2xl border border-gray-200 dark:border-gray-700">
               <p className="text-xs text-gray-500 dark:text-gray-400">Posted</p>
               <p className="text-sm font-medium text-gray-900 dark:text-white flex items-center gap-1.5">
                 <Calendar className="size-3.5 text-gray-400" />
                 {formatDate(listing.createdAt)}
               </p>
             </div>
-            <div className="p-3 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="p-3 rounded-2xl border border-gray-200 dark:border-gray-700">
               <p className="text-xs text-gray-500 dark:text-gray-400">{isCargo ? 'Weight' : 'Capacity'}</p>
               <p className="text-sm font-medium text-gray-900 dark:text-white">
                 {isCargo
@@ -121,7 +121,7 @@ function ListingDetailModal({ open, onClose, listing, onDeactivate, loading }) {
                   : `${listing.capacity ?? 'N/A'} ${listing.capacityUnit || 'kg'}`}
               </p>
             </div>
-            <div className="p-3 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="p-3 rounded-2xl border border-gray-200 dark:border-gray-700">
               <p className="text-xs text-gray-500 dark:text-gray-400">{isCargo ? 'Cargo Type' : 'Vehicle Type'}</p>
               <p className="text-sm font-medium text-gray-900 dark:text-white">
                 {isCargo ? (listing.cargoType || 'N/A') : (listing.vehicleType || 'N/A')}
@@ -130,7 +130,7 @@ function ListingDetailModal({ open, onClose, listing, onDeactivate, loading }) {
           </div>
 
           {listing.specialInstructions && (
-            <div className="p-3 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="p-3 rounded-2xl border border-gray-200 dark:border-gray-700">
               <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Special Instructions</p>
               <p className="text-sm text-gray-900 dark:text-white whitespace-pre-wrap">{listing.specialInstructions}</p>
             </div>
@@ -347,9 +347,9 @@ export function ListingsManagement() {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: isDesktop ? '28px' : '20px' }}>
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 lg:gap-6 lg:px-6">
       {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4" style={{ gap: isDesktop ? '24px' : '12px' }}>
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-6">
         <StatCard
           title="Total Cargo"
           value={stats.cargo}

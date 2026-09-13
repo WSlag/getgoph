@@ -46,7 +46,7 @@ function RoleBadge({ role }) {
   const label = role?.charAt(0).toUpperCase() + role?.slice(1) || 'User';
 
   return (
-    <span className={cn('inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium', bg, text)}>
+    <span className={cn('inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold', bg, text)}>
       <Icon className="size-3.5" />
       {label}
     </span>
@@ -57,7 +57,7 @@ function RoleBadge({ role }) {
 function StatusBadge({ isActive, isVerified }) {
   if (!isActive) {
     return (
-      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400">
+      <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400">
         <Ban className="size-3" />
         Suspended
       </span>
@@ -65,14 +65,14 @@ function StatusBadge({ isActive, isVerified }) {
   }
   if (isVerified) {
     return (
-      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400">
+      <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400">
         <CheckCircle2 className="size-3" />
         Verified
       </span>
     );
   }
   return (
-    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400">
+    <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400">
       <XCircle className="size-3" />
       Unverified
     </span>
@@ -117,7 +117,7 @@ function UserDetailModal({
 
         <div className="space-y-4 mt-4">
           {/* Contact Info */}
-          <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+          <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
             <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Contact Information</h4>
             <div className="space-y-2">
               <div className="flex items-center gap-3 text-sm">
@@ -137,7 +137,7 @@ function UserDetailModal({
 
           {/* Admin Info */}
           {user.isAdmin && (
-            <div className="p-4 rounded-xl bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800">
+            <div className="p-4 rounded-2xl bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800">
               <h4 className="text-sm font-semibold text-orange-700 dark:text-orange-300 mb-2 flex items-center gap-2">
                 <Shield className="size-4" />
                 Administrator
@@ -150,7 +150,7 @@ function UserDetailModal({
           )}
 
           {user.role === 'trucker' && (
-            <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+            <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
               <h4 className="text-sm font-semibold text-amber-700 dark:text-amber-300 mb-3 flex items-center gap-2">
                 <RefreshCw className={cn('size-4', cancellationStatusLoading ? 'animate-spin' : '')} />
                 Cancellation Abuse Status
@@ -522,7 +522,7 @@ export function UserManagement() {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: isDesktop ? '28px' : '20px' }}>
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 lg:gap-6 lg:px-6">
       {/* Tab switcher */}
       <div className="flex gap-2 border-b border-gray-200 dark:border-gray-800 pb-0">
         <button
@@ -574,7 +574,7 @@ export function UserManagement() {
               {reviewQueue.map(item => (
                 <div
                   key={item.uid}
-                  className="rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-900/10 p-4 flex flex-col gap-3"
+                  className="rounded-2xl border border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-900/10 p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>

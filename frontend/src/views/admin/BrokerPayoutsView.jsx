@@ -160,7 +160,7 @@ export function BrokerPayoutsView({ onRequestsUpdated }) {
             : status === 'rejected'
               ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300'
               : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300';
-        return <span className={`px-2 py-1 rounded-full text-xs font-medium ${cls}`}>{status || 'pending'}</span>;
+        return <span className={`rounded-full px-2 py-1 text-[11px] font-semibold ${cls}`}>{status || 'pending'}</span>;
       },
     },
     {
@@ -192,14 +192,14 @@ export function BrokerPayoutsView({ onRequestsUpdated }) {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: isDesktop ? '28px' : '20px' }}>
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 lg:gap-6 lg:px-6">
       {error && (
-        <div className="rounded-xl border border-red-200 bg-red-50 text-red-700 dark:bg-red-900/20 dark:border-red-800 dark:text-red-300 px-4 py-3 text-sm">
+        <div className="rounded-2xl border border-border bg-red-50 px-4 py-3 text-sm shadow-sm text-red-700 dark:bg-red-900/20 dark:border-red-800 dark:text-red-300">
           {error}
         </div>
       )}
 
-      <div className="grid grid-cols-2 lg:grid-cols-4" style={{ gap: isDesktop ? '24px' : '12px' }}>
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-6">
         <StatCard
           title="Pending Requests"
           value={stats.pending}

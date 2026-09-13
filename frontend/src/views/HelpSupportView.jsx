@@ -164,7 +164,7 @@ function FAQSection({ onBack }) {
     <>
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+        className="flex items-center gap-2 rounded-full text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
         style={{ marginBottom: '16px' }}
       >
         <ArrowLeft className="size-4" />
@@ -180,7 +180,7 @@ function FAQSection({ onBack }) {
             <HelpCircle className="size-5 text-blue-600 dark:text-blue-400" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-[18px] font-bold text-gray-900 dark:text-white">
               Frequently Asked Questions
             </h1>
             <p className="text-sm text-gray-500 dark:text-gray-400" style={{ marginTop: '2px' }}>
@@ -198,7 +198,7 @@ function FAQSection({ onBack }) {
             style={{ padding: '20px 24px' }}
           >
             <h2
-              className="text-base font-semibold text-gray-900 dark:text-white"
+              className="text-sm font-semibold text-gray-900 dark:text-white"
               style={{ marginBottom: '12px' }}
             >
               {cat.label}
@@ -211,7 +211,7 @@ function FAQSection({ onBack }) {
                   <div key={key}>
                     <button
                       onClick={() => toggle(key)}
-                      className="w-full flex items-center justify-between text-left rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+                      className="w-full flex items-center justify-between text-left rounded-full hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                       style={{ padding: '12px' }}
                     >
                       <span className="text-sm font-medium text-gray-800 dark:text-gray-200 pr-4">
@@ -247,7 +247,7 @@ function GettingStartedSection({ onBack, onShowOnboardingGuide }) {
     <>
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+        className="flex items-center gap-2 rounded-full text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
         style={{ marginBottom: '16px' }}
       >
         <ArrowLeft className="size-4" />
@@ -263,7 +263,7 @@ function GettingStartedSection({ onBack, onShowOnboardingGuide }) {
             <BookOpen className="size-5 text-orange-600 dark:text-orange-400" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-900 dark:text-white">Getting Started</h1>
+            <h1 className="text-[18px] font-bold text-gray-900 dark:text-white">Getting Started</h1>
             <p className="text-sm text-gray-500 dark:text-gray-400" style={{ marginTop: '2px' }}>
               Learn how to use GetGo
             </p>
@@ -290,7 +290,7 @@ function GettingStartedSection({ onBack, onShowOnboardingGuide }) {
         style={{ padding: '20px 24px', marginBottom: '16px' }}
       >
         <h2
-          className="text-base font-semibold text-gray-900 dark:text-white"
+          className="text-sm font-semibold text-gray-900 dark:text-white"
           style={{ marginBottom: '16px' }}
         >
           For Shippers
@@ -318,7 +318,7 @@ function GettingStartedSection({ onBack, onShowOnboardingGuide }) {
         style={{ padding: '20px 24px' }}
       >
         <h2
-          className="text-base font-semibold text-gray-900 dark:text-white"
+          className="text-sm font-semibold text-gray-900 dark:text-white"
           style={{ marginBottom: '16px' }}
         >
           For Truckers
@@ -348,7 +348,7 @@ function ContactSection({ onBack }) {
     <>
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+        className="flex items-center gap-2 rounded-full text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
         style={{ marginBottom: '16px' }}
       >
         <ArrowLeft className="size-4" />
@@ -364,7 +364,7 @@ function ContactSection({ onBack }) {
             <MessageCircle className="size-5 text-green-600 dark:text-green-400" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-900 dark:text-white">Contact Support</h1>
+            <h1 className="text-[18px] font-bold text-gray-900 dark:text-white">Contact Support</h1>
             <p className="text-sm text-gray-500 dark:text-gray-400" style={{ marginTop: '2px' }}>
               Get help from our team
             </p>
@@ -591,7 +591,7 @@ function ChatAdminSection({ onBack }) {
       <>
         <button
           onClick={() => setShowNewForm(false)}
-          className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+          className="flex items-center gap-2 rounded-full text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           style={{ marginBottom: '16px' }}
         >
           <ArrowLeft className="size-4" />
@@ -607,7 +607,7 @@ function ChatAdminSection({ onBack }) {
               <MessageCircle className="size-5 text-purple-600 dark:text-purple-400" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900 dark:text-white">New Message</h1>
+              <h1 className="text-[18px] font-bold text-gray-900 dark:text-white">New Message</h1>
               <p className="text-sm text-gray-500 dark:text-gray-400" style={{ marginTop: '2px' }}>
                 Start a conversation with support
               </p>
@@ -689,7 +689,7 @@ function ChatAdminSection({ onBack }) {
       <>
         <button
           onClick={() => setSelectedConversation(null)}
-          className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+          className="flex items-center gap-2 rounded-full text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           style={{ marginBottom: '16px' }}
         >
           <ArrowLeft className="size-4" />
@@ -819,7 +819,7 @@ function ChatAdminSection({ onBack }) {
     <>
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+        className="flex items-center gap-2 rounded-full text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
         style={{ marginBottom: '16px' }}
       >
         <ArrowLeft className="size-4" />
@@ -836,7 +836,7 @@ function ChatAdminSection({ onBack }) {
               <MessageCircle className="size-5 text-purple-600 dark:text-purple-400" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900 dark:text-white">Chat Admin</h1>
+              <h1 className="text-[18px] font-bold text-gray-900 dark:text-white">Chat Admin</h1>
               <p className="text-sm text-gray-500 dark:text-gray-400" style={{ marginTop: '2px' }}>
                 Message our support team
               </p>
@@ -871,7 +871,7 @@ function ChatAdminSection({ onBack }) {
             <button
               key={conv.id}
               onClick={() => setSelectedConversation(conv)}
-              className="w-full bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md hover:border-gray-300 dark:hover:border-gray-700 transition-all text-left"
+              className="w-full bg-white dark:bg-gray-900 rounded-2xl border border-border dark:border-gray-800 shadow-sm hover:shadow-md hover:border-gray-300 dark:hover:border-gray-700 transition-all text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               style={{ padding: '16px' }}
             >
               <div className="flex items-start justify-between gap-2">
@@ -1034,7 +1034,7 @@ export function HelpSupportView({ onBack, onShowOnboardingGuide }) {
       {onBack && (
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+          className="flex items-center gap-2 rounded-full text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           style={{ marginBottom: '16px' }}
         >
           <ArrowLeft className="size-4" />
@@ -1052,7 +1052,7 @@ export function HelpSupportView({ onBack, onShowOnboardingGuide }) {
             <HelpCircle className="size-6 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-900 dark:text-white">Help & Support</h1>
+            <h1 className="text-[18px] font-bold text-gray-900 dark:text-white">Help & Support</h1>
             <p className="text-sm text-gray-500 dark:text-gray-400" style={{ marginTop: '2px' }}>
               How can we help you today?
             </p>
@@ -1068,7 +1068,7 @@ export function HelpSupportView({ onBack, onShowOnboardingGuide }) {
             <button
               key={item.id}
               onClick={() => setActiveSection(item.id)}
-              className="w-full flex items-center justify-between bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-200 group text-left"
+              className="w-full flex items-center justify-between bg-white dark:bg-gray-900 rounded-2xl border border-border dark:border-gray-800 shadow-sm hover:shadow-md hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-200 group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               style={{ padding: '16px 20px' }}
             >
               <div className="flex items-center gap-3">
@@ -1099,7 +1099,7 @@ function Wrapper({ isMobile, children }) {
         paddingBottom: isMobile ? 'calc(100px + env(safe-area-inset-bottom, 0px))' : '24px',
       }}
     >
-      <div className="max-w-2xl mx-auto">{children}</div>
+      <div className="mx-auto w-full max-w-7xl px-4 lg:px-6">{children}</div>
     </main>
   );
 }

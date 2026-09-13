@@ -27,7 +27,7 @@ function TransactionTypeBadge({ type }) {
   const label = type?.charAt(0).toUpperCase() + type?.slice(1) || 'Transaction';
 
   return (
-    <span className={cn('inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium', bg, text)}>
+    <span className={cn('inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold', bg, text)}>
       <Icon className="size-3.5" />
       {label}
     </span>
@@ -134,9 +134,9 @@ export function FinancialOverview() {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: isDesktop ? '28px' : '20px' }}>
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 lg:gap-6 lg:px-6">
       {/* Revenue Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4" style={{ gap: isDesktop ? '24px' : '12px' }}>
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-6">
         <StatCard
           title="Today's Revenue"
           value={`PHP ${formatPrice(stats.todayRevenue)}`}
@@ -164,7 +164,7 @@ export function FinancialOverview() {
       </div>
 
       {/* Wallet Stats */}
-      <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: isDesktop ? '24px' : '12px' }}>
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-6">
         <StatCard
           title="Total Wallet Balances"
           value={`PHP ${formatPrice(stats.totalWalletBalance)}`}

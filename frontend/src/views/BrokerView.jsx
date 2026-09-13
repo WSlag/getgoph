@@ -383,7 +383,7 @@ export function BrokerView({
         className="flex-1 bg-gray-50 dark:bg-gray-950 overflow-y-auto"
         style={{ padding: isMobile ? '16px' : '24px', paddingBottom: isMobile ? 'calc(100px + env(safe-area-inset-bottom, 0px))' : '24px' }}
       >
-        <div className="max-w-3xl mx-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm overflow-hidden">
+        <div className="mx-auto w-full max-w-7xl px-4 lg:px-6 bg-white dark:bg-gray-900 border border-border dark:border-gray-800 rounded-2xl shadow-sm overflow-hidden">
           {/* Top accent bar */}
           <div className="h-1 w-full bg-green-600" />
 
@@ -404,32 +404,32 @@ export function BrokerView({
 
             {/* Stat cards */}
             <div className="grid sm:grid-cols-3" style={{ gap: isMobile ? '10px' : '12px', marginBottom: isMobile ? '20px' : '24px' }}>
-              <div className="rounded-xl bg-gray-50 dark:bg-gray-800/60 border border-gray-100 dark:border-gray-700" style={{ padding: isMobile ? '12px 14px' : '14px 16px' }}>
+              <div className="rounded-2xl bg-gray-50 dark:bg-gray-800/60 border border-border dark:border-gray-700 shadow-sm" style={{ padding: isMobile ? '12px 14px' : '14px 16px' }}>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="size-6 rounded-lg bg-green-100 dark:bg-green-900/40 flex items-center justify-center">
                     <TrendingUp className="size-3.5 text-green-600 dark:text-green-400" />
                   </span>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Commission Base</p>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 font-medium">Commission Base</p>
                 </div>
-                <p className="font-bold text-green-600 dark:text-green-400" style={{ fontSize: isMobile ? '14px' : '15px' }}>Platform Fee</p>
+                <p className="font-bold text-green-600 dark:text-green-400 text-[14px]">Platform Fee</p>
               </div>
-              <div className="rounded-xl bg-gray-50 dark:bg-gray-800/60 border border-gray-100 dark:border-gray-700" style={{ padding: isMobile ? '12px 14px' : '14px 16px' }}>
+              <div className="rounded-2xl bg-gray-50 dark:bg-gray-800/60 border border-border dark:border-gray-700 shadow-sm" style={{ padding: isMobile ? '12px 14px' : '14px 16px' }}>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="size-6 rounded-lg bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
                     <Percent className="size-3.5 text-orange-500 dark:text-orange-400" />
                   </span>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Commission Tiers</p>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 font-medium">Commission Tiers</p>
                 </div>
-                <p className="font-bold text-orange-600 dark:text-orange-400" style={{ fontSize: isMobile ? '14px' : '15px' }}>3% to 6%</p>
+                <p className="font-bold text-orange-600 dark:text-orange-400 text-[14px]">3% to 6%</p>
               </div>
-              <div className="rounded-xl bg-gray-50 dark:bg-gray-800/60 border border-gray-100 dark:border-gray-700" style={{ padding: isMobile ? '12px 14px' : '14px 16px' }}>
+              <div className="rounded-2xl bg-gray-50 dark:bg-gray-800/60 border border-border dark:border-gray-700 shadow-sm" style={{ padding: isMobile ? '12px 14px' : '14px 16px' }}>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="size-6 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
                     <ShieldCheck className="size-3.5 text-blue-500 dark:text-blue-400" />
                   </span>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Payout Policy</p>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 font-medium">Payout Policy</p>
                 </div>
-                <p className="font-bold text-gray-900 dark:text-white" style={{ fontSize: isMobile ? '14px' : '15px' }}>Admin Approved</p>
+                <p className="font-bold text-gray-900 dark:text-white text-[14px]">Admin Approved</p>
               </div>
             </div>
 
@@ -474,7 +474,7 @@ export function BrokerView({
       className="flex-1 bg-gray-50 dark:bg-gray-950 overflow-y-auto"
       style={{ padding: isMobile ? '16px' : '24px', paddingBottom: isMobile ? 'calc(100px + env(safe-area-inset-bottom, 0px))' : '24px' }}
     >
-      <div className="mx-auto w-full max-w-5xl" style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '16px' : '24px' }}>
+      <div className="mx-auto w-full max-w-7xl px-4 lg:px-6" style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '16px' : '24px' }}>
         {/* Header */}
         <div style={{ marginBottom: isMobile ? '8px' : '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
@@ -506,85 +506,73 @@ export function BrokerView({
         )}
 
         <div className="grid grid-cols-2 lg:grid-cols-4" style={{ gap: isMobile ? '12px' : '16px' }}>
-          <div className="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700" style={{ padding: isMobile ? '14px' : '16px' }}>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Available Balance</p>
-            <p className="text-lg font-bold text-green-600 dark:text-green-400">{currency(broker?.availableBalance)}</p>
+          <div className="rounded-2xl bg-white dark:bg-gray-800 border border-border dark:border-gray-700 shadow-sm" style={{ padding: isMobile ? '14px' : '16px' }}>
+            <p className="text-[11px] text-gray-500 dark:text-gray-400">Available Balance</p>
+            <p className="text-[18px] font-bold text-green-600 dark:text-green-400">{currency(broker?.availableBalance)}</p>
           </div>
-          <div className="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700" style={{ padding: isMobile ? '14px' : '16px' }}>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Pending Earnings</p>
-            <p className="text-lg font-bold text-amber-600 dark:text-amber-400">{currency(broker?.pendingEarnings)}</p>
+          <div className="rounded-2xl bg-white dark:bg-gray-800 border border-border dark:border-gray-700 shadow-sm" style={{ padding: isMobile ? '14px' : '16px' }}>
+            <p className="text-[11px] text-gray-500 dark:text-gray-400">Pending Earnings</p>
+            <p className="text-[18px] font-bold text-amber-600 dark:text-amber-400">{currency(broker?.pendingEarnings)}</p>
           </div>
-          <div className="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700" style={{ padding: isMobile ? '14px' : '16px' }}>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Total Earnings</p>
-            <p className="text-lg font-bold text-gray-900 dark:text-white">{currency(broker?.totalEarnings)}</p>
+          <div className="rounded-2xl bg-white dark:bg-gray-800 border border-border dark:border-gray-700 shadow-sm" style={{ padding: isMobile ? '14px' : '16px' }}>
+            <p className="text-[11px] text-gray-500 dark:text-gray-400">Total Earnings</p>
+            <p className="text-[18px] font-bold text-gray-900 dark:text-white">{currency(broker?.totalEarnings)}</p>
           </div>
-          <div className="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700" style={{ padding: isMobile ? '14px' : '16px' }}>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Total Referrals</p>
-            <p className="text-lg font-bold text-gray-900 dark:text-white">{Number(broker?.totalReferrals || 0)}</p>
+          <div className="rounded-2xl bg-white dark:bg-gray-800 border border-border dark:border-gray-700 shadow-sm" style={{ padding: isMobile ? '14px' : '16px' }}>
+            <p className="text-[11px] text-gray-500 dark:text-gray-400">Total Referrals</p>
+            <p className="text-[18px] font-bold text-gray-900 dark:text-white">{Number(broker?.totalReferrals || 0)}</p>
           </div>
         </div>
 
-        <div className="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700" style={{ padding: isMobile ? '16px' : '20px' }}>
+        <div className="rounded-2xl bg-white dark:bg-gray-800 border border-border dark:border-gray-700 shadow-sm" style={{ padding: isMobile ? '16px' : '20px' }}>
           <div className="flex items-center justify-between gap-3" style={{ marginBottom: isMobile ? '12px' : '14px' }}>
             <div>
               <h3 className="font-semibold text-gray-900 dark:text-white">Listing Referral Activity</h3>
               <p className="text-xs text-gray-500 dark:text-gray-400">Broker-referred cargo and truck posts summary</p>
             </div>
             <div className="flex flex-col items-end gap-2 flex-shrink-0">
-              <button
+              <Button
                 type="button"
+                size="sm"
                 onClick={() => setShowOnboarding(true)}
-                className="inline-flex items-center gap-1.5 rounded-xl text-xs font-bold text-white transition-all active:scale-95 hover:opacity-90"
-                style={{
-                  padding: '7px 13px',
-                  background: '#15803d',
-                  boxShadow: '0 3px 10px rgba(34,197,94,0.35)',
-                  fontFamily: 'Outfit, sans-serif',
-                  letterSpacing: '0.01em',
-                }}
+                className="rounded-full text-[13px] px-5 min-h-10 bg-green-700 hover:bg-green-800 text-white font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 <TrendingUp width="13" height="13" />
                 Earn as Broker
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
+                size="sm"
                 onClick={() => onOpenBrokerActivity?.()}
-                className="inline-flex items-center gap-1.5 rounded-xl text-xs font-bold text-white transition-all active:scale-95 hover:opacity-90"
-                style={{
-                  padding: '7px 13px',
-                  background: '#c2410c',
-                  boxShadow: '0 3px 10px rgba(249,115,22,0.35)',
-                  fontFamily: 'Outfit, sans-serif',
-                  letterSpacing: '0.01em',
-                }}
+                className="rounded-full text-[13px] px-5 min-h-10 bg-primary hover:opacity-90 text-white font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/>
                 </svg>
                 Open Broker Activity
-              </button>
+              </Button>
             </div>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-5" style={{ gap: isMobile ? '8px' : '12px', marginBottom: isMobile ? '12px' : '14px' }}>
-            <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-3 py-2">
-              <p className="text-xs text-gray-500 dark:text-gray-400">Sent (24h)</p>
+            <div className="rounded-2xl border border-border dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-sm px-3 py-2">
+              <p className="text-[11px] text-gray-500 dark:text-gray-400">Sent (24h)</p>
               <p className="text-sm font-semibold text-gray-900 dark:text-white">{Number(referralSummary?.sent24h || 0)}</p>
             </div>
-            <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-3 py-2">
-              <p className="text-xs text-gray-500 dark:text-gray-400">Sent (7d)</p>
+            <div className="rounded-2xl border border-border dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-sm px-3 py-2">
+              <p className="text-[11px] text-gray-500 dark:text-gray-400">Sent (7d)</p>
               <p className="text-sm font-semibold text-gray-900 dark:text-white">{Number(referralSummary?.sent7d || 0)}</p>
             </div>
-            <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-3 py-2">
-              <p className="text-xs text-gray-500 dark:text-gray-400">Opened</p>
+            <div className="rounded-2xl border border-border dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-sm px-3 py-2">
+              <p className="text-[11px] text-gray-500 dark:text-gray-400">Opened</p>
               <p className="text-sm font-semibold text-gray-900 dark:text-white">{Number(referralSummary?.opened || 0)}</p>
             </div>
-            <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-3 py-2">
-              <p className="text-xs text-gray-500 dark:text-gray-400">Acted</p>
+            <div className="rounded-2xl border border-border dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-sm px-3 py-2">
+              <p className="text-[11px] text-gray-500 dark:text-gray-400">Acted</p>
               <p className="text-sm font-semibold text-gray-900 dark:text-white">{Number(referralSummary?.acted || 0)}</p>
             </div>
-            <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-3 py-2">
-              <p className="text-xs text-gray-500 dark:text-gray-400">Expired</p>
+            <div className="rounded-2xl border border-border dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-sm px-3 py-2">
+              <p className="text-[11px] text-gray-500 dark:text-gray-400">Expired</p>
               <p className="text-sm font-semibold text-gray-900 dark:text-white">{Number(referralSummary?.expired || 0)}</p>
             </div>
           </div>
@@ -601,7 +589,7 @@ export function BrokerView({
           ) : (
             <div className="space-y-2">
               {referralItems.map((item) => (
-                <div key={item.id} className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-3 py-2">
+                <div key={item.id} className="rounded-2xl border border-border dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-sm px-3 py-2">
                   <div className="flex items-start justify-between gap-2">
                     <div>
                       <p className="text-sm font-medium text-gray-900 dark:text-white">
@@ -636,16 +624,16 @@ export function BrokerView({
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: isMobile ? '12px' : '16px' }}>
-          <div className="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 overflow-hidden min-w-0" style={{ padding: isMobile ? '16px' : '20px', display: 'flex', flexDirection: 'column', gap: isMobile ? '12px' : '16px' }}>
+          <div className="rounded-2xl bg-white dark:bg-gray-800 border border-border dark:border-gray-700 shadow-sm overflow-hidden min-w-0" style={{ padding: isMobile ? '16px' : '20px', display: 'flex', flexDirection: 'column', gap: isMobile ? '12px' : '16px' }}>
             <div className="flex items-center gap-2">
               <Link2 className="size-4 text-orange-500" />
               <h3 className="font-semibold text-gray-900 dark:text-white">Referral Link</h3>
             </div>
-            <div className="rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-2">
+            <div className="rounded-2xl bg-gray-50 dark:bg-gray-900 border border-border dark:border-gray-700 shadow-sm px-3 py-2">
               <p className="text-xs text-gray-500 dark:text-gray-400">Referral Code</p>
               <p className="font-mono font-semibold text-gray-900 dark:text-white break-all">{referralCode || '-'}</p>
             </div>
-            <div className="rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-3 py-2 break-all">
+            <div className="rounded-2xl bg-gray-50 dark:bg-gray-900 border border-border dark:border-gray-700 shadow-sm px-3 py-2 break-all">
               <p className="text-xs text-gray-500 dark:text-gray-400">Share Link</p>
               <p className="text-sm text-gray-900 dark:text-white" data-testid="broker-share-link">{referralLink || '-'}</p>
             </div>
@@ -683,7 +671,7 @@ export function BrokerView({
             </div>
           </div>
 
-          <div className="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700" style={{ padding: isMobile ? '16px' : '20px', display: 'flex', flexDirection: 'column', gap: isMobile ? '10px' : '12px' }}>
+          <div className="rounded-2xl bg-white dark:bg-gray-800 border border-border dark:border-gray-700 shadow-sm" style={{ padding: isMobile ? '16px' : '20px', display: 'flex', flexDirection: 'column', gap: isMobile ? '10px' : '12px' }}>
             <div className="flex items-center gap-2">
               <Wallet className="size-4 text-green-500" />
               <h3 className="font-semibold text-gray-900 dark:text-white">Request Payout</h3>
@@ -697,7 +685,7 @@ export function BrokerView({
                   value={payoutAmount}
                   onChange={(e) => setPayoutAmount(e.target.value)}
                   placeholder={`Amount (min ${MIN_PAYOUT})`}
-                  className="w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-3 py-2 text-sm"
+                  className="w-full rounded-2xl border border-border dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-sm px-3 py-2 text-sm"
                 />
               </div>
               <div className="space-y-1">
@@ -705,7 +693,7 @@ export function BrokerView({
                 <select
                   value={payoutMethod}
                   onChange={(e) => setPayoutMethod(e.target.value)}
-                  className="w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-3 py-2 text-sm"
+                  className="w-full rounded-2xl border border-border dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-sm px-3 py-2 text-sm"
                 >
                   <option value="gcash">GCash</option>
                   <option value="bank">Bank Transfer</option>
@@ -718,7 +706,7 @@ export function BrokerView({
                   value={accountName}
                   onChange={(e) => setAccountName(e.target.value)}
                   placeholder="Account Name"
-                  className="w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-3 py-2 text-sm"
+                  className="w-full rounded-2xl border border-border dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-sm px-3 py-2 text-sm"
                 />
               </div>
               <div className="space-y-1">
@@ -728,7 +716,7 @@ export function BrokerView({
                   value={accountNumber}
                   onChange={(e) => setAccountNumber(e.target.value)}
                   placeholder="Account Number"
-                  className="w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-3 py-2 text-sm"
+                  className="w-full rounded-2xl border border-border dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-sm px-3 py-2 text-sm"
                 />
               </div>
             </div>
@@ -746,7 +734,7 @@ export function BrokerView({
         </div>
 
         {isMobile ? (
-          <div className="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div className="rounded-2xl bg-white dark:bg-gray-800 border border-border dark:border-gray-700 shadow-sm" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
             <div className="flex items-center gap-2">
               <TrendingUp className="size-4 text-orange-500" />
               <h3 className="font-semibold text-gray-900 dark:text-white">Commissions</h3>
@@ -763,7 +751,7 @@ export function BrokerView({
             ) : (
               <div className="space-y-2">
                 {commissions.map((row) => (
-                  <div key={row.id || `${row.createdAt}-${row.commissionAmount}`} className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-3">
+                  <div key={row.id || `${row.createdAt}-${row.commissionAmount}`} className="rounded-2xl border border-border dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-sm p-3">
                     <p className="text-xs text-gray-500 dark:text-gray-400">{formatDateTime(row.createdAt)}</p>
                     <div className="mt-1 grid grid-cols-2 gap-2 text-sm">
                       <p className="text-gray-600 dark:text-gray-400">Platform Fee</p>
@@ -789,7 +777,7 @@ export function BrokerView({
         )}
 
         {isMobile ? (
-          <div className="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div className="rounded-2xl bg-white dark:bg-gray-800 border border-border dark:border-gray-700 shadow-sm" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
             <div className="flex items-center gap-2">
               <Clock3 className="size-4 text-orange-500" />
               <h3 className="font-semibold text-gray-900 dark:text-white">Payout Requests</h3>
@@ -812,7 +800,7 @@ export function BrokerView({
             ) : (
               <div className="space-y-2">
                 {payouts.map((row) => (
-                  <div key={row.id || `${row.createdAt}-${row.amount}`} className="rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-3">
+                  <div key={row.id || `${row.createdAt}-${row.amount}`} className="rounded-2xl border border-border dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-sm p-3">
                     <div className="flex items-start justify-between gap-2">
                       <p className="text-xs text-gray-500 dark:text-gray-400">{formatDateTime(row.createdAt || row.requestedAt)}</p>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getPayoutStatusClass(row.status)}`}>
@@ -848,7 +836,7 @@ export function BrokerView({
           />
         )}
 
-        <div className="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700" style={{ padding: isMobile ? '16px' : '20px' }}>
+        <div className="rounded-2xl bg-white dark:bg-gray-800 border border-border dark:border-gray-700 shadow-sm" style={{ padding: isMobile ? '16px' : '20px' }}>
           <div className="flex items-center gap-2">
             <CheckCircle2 className="size-4 text-green-500" />
             <p className="text-sm text-gray-700 dark:text-gray-300">
