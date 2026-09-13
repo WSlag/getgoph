@@ -438,7 +438,7 @@ export function TrackingView({
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '10px' }}>
               {formatDate(shipment.pickupDate) && (
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '11px', padding: '3px 8px', borderRadius: '999px', background: darkMode ? '#1f2937' : '#fff', border: `1px solid ${darkMode ? '#374151' : '#e5e7eb'}`, color: darkMode ? '#d1d5db' : '#374151' }}>
-                  <Calendar style={{ width: '10px', height: '10px', color: '#f97316' }} />
+                  <Calendar style={{ width: '10px', height: '10px', color: '#c2410c' }} />
                   Pickup: {formatDate(shipment.pickupDate)}
                 </span>
               )}
@@ -460,7 +460,7 @@ export function TrackingView({
             {shipment.agreedPrice > 0 && (
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <p style={{ fontSize: '11px', color: '#9ca3af' }}>Contract Value</p>
-                <p style={{ fontSize: isMobile ? '14px' : '15px', fontWeight: '700', color: '#f97316', fontFamily: 'Outfit, sans-serif' }}>
+                <p style={{ fontSize: isMobile ? '14px' : '15px', fontWeight: '700', color: '#c2410c', fontFamily: 'Outfit, sans-serif' }}>
                   PHP {Number(shipment.agreedPrice).toLocaleString()}
                 </p>
               </div>
@@ -494,7 +494,7 @@ export function TrackingView({
                 setShowFullMap(true);
               }}
               style={{ padding: '14px 16px', fontSize: '15px', fontWeight: 'bold' }}
-              className="flex-1 min-w-[140px] bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+              className="flex-1 min-w-[140px] bg-primary text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
             >
               <MapPinned className="size-4" />
               Track Live
@@ -530,7 +530,7 @@ export function TrackingView({
           Shipment Tracking
         </h1>
         <p style={{ color: darkMode ? '#9ca3af' : '#6b7280', fontSize: isMobile ? '14px' : '16px' }}>
-          <span style={{ fontWeight: '600', color: '#f97316' }}>
+          <span style={{ fontWeight: '600', color: '#c2410c' }}>
             {scopedActiveShipments.length} active
           </span>
           {' '}{scopedActiveShipments.length === 1 ? 'shipment' : 'shipments'} in progress for {getWorkspaceLabel(activeWorkspace)} workspace
@@ -585,7 +585,7 @@ export function TrackingView({
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center py-20 text-center">
-          <div className="size-16 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center mb-4 shadow-lg">
+          <div className="size-16 rounded-xl bg-muted dark:dark:bg-stone-800 flex items-center justify-center mb-4 shadow-lg">
             <Truck className="size-8 text-gray-400" />
           </div>
           <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-1">

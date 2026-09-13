@@ -12,7 +12,7 @@ export function EmptyState({
   return (
     <div className={cn("flex flex-col items-center justify-center py-20 text-center", className)}>
       {Icon && (
-        <div className="size-16 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center mb-4 shadow-lg">
+        <div className="size-16 rounded-xl bg-muted dark:dark:bg-stone-800 flex items-center justify-center mb-4 shadow-lg">
           <Icon className="size-8 text-gray-400" />
         </div>
       )}

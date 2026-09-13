@@ -124,13 +124,13 @@ function typeIcon(item) {
 
 function iconStyle(item) {
   if (item.source === 'contract' || item.typeBuckets?.includes('contracts'))
-    return { background: 'linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%)', border: '1px solid #c7d2fe', color: '#6366f1' };
+    return { background: '#f5f5f4', border: '1px solid #e7e5e4', color: '#78716c' };
   if (item.source === 'truck_booking' || item.typeBuckets?.includes('shipment') || item.typeBuckets?.includes('delivery'))
-    return { background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', border: '1px solid #bbf7d0', color: '#22c55e' };
+    return { background: '#f5f5f4', border: '1px solid #e7e5e4', color: '#78716c' };
   if (item.source === 'bid' || item.typeBuckets?.includes('bids'))
-    return { background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', border: '1px solid #bfdbfe', color: '#3b82f6' };
+    return { background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', border: '1px solid #bfdbfe', color: '#78716c' };
   // cargo default — orange
-  return { background: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', border: '1px solid #fed7aa', color: '#f97316' };
+  return { background: '#fff7ed', border: '1px solid #e7e5e4', color: '#c2410c' };
 }
 
 function matchesTypeFilter(item, activeTypeFilter) {
@@ -377,12 +377,12 @@ export function ShipperActivityView({
   }, [normalizedItems, activeTypeFilter, activeStatusFilter]);
 
   const statCards = [
-    { label: 'Total', value: summary.total, iconEl: <TrendingUp className="size-3.5 text-orange-500" />, iconBg: 'bg-orange-100 dark:bg-orange-950/40' },
-    { label: 'Cargo', value: summary.cargo, iconEl: <Package className="size-3.5 text-blue-500" />, iconBg: 'bg-blue-100 dark:bg-blue-950/40' },
-    { label: 'Bids', value: summary.bids, iconEl: <Truck className="size-3.5 text-purple-500" />, iconBg: 'bg-purple-100 dark:bg-purple-950/40' },
-    { label: 'Bookings', value: summary.truck_bookings, iconEl: <Truck className="size-3.5 text-green-500" />, iconBg: 'bg-green-100 dark:bg-green-950/40' },
-    { label: 'Contracts', value: summary.contracts, iconEl: <FileText className="size-3.5 text-indigo-500" />, iconBg: 'bg-indigo-100 dark:bg-indigo-950/40' },
-    { label: 'Completed', value: summary.completed, iconEl: <TrendingUp className="size-3.5 text-green-500" />, iconBg: 'bg-green-100 dark:bg-green-950/40' },
+    { label: 'Total', value: summary.total, iconEl: <TrendingUp className="size-3.5 text-muted-foreground" />, iconBg: 'bg-muted border border-border' },
+    { label: 'Cargo', value: summary.cargo, iconEl: <Package className="size-3.5 text-muted-foreground" />, iconBg: 'bg-muted border border-border' },
+    { label: 'Bids', value: summary.bids, iconEl: <Truck className="size-3.5 text-muted-foreground" />, iconBg: 'bg-muted border border-border' },
+    { label: 'Bookings', value: summary.truck_bookings, iconEl: <Truck className="size-3.5 text-muted-foreground" />, iconBg: 'bg-muted border border-border' },
+    { label: 'Contracts', value: summary.contracts, iconEl: <FileText className="size-3.5 text-muted-foreground" />, iconBg: 'bg-muted border border-border' },
+    { label: 'Completed', value: summary.completed, iconEl: <TrendingUp className="size-3.5 text-muted-foreground" />, iconBg: 'bg-muted border border-border' },
   ];
 
   return (
@@ -421,7 +421,7 @@ export function ShipperActivityView({
             style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.04)', padding: '10px 10px 10px 12px', minHeight: '76px' }}
           >
             {idx === 0 && (
-              <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl" style={{ background: 'linear-gradient(180deg, #FF9A56, #FF6B35)' }} />
+              <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl" style={{ background: '#c2410c' }} />
             )}
             <div className={`size-6 rounded-lg ${iconBg} flex items-center justify-center mb-1.5 shrink-0`}>
               {iconEl}
@@ -450,7 +450,7 @@ export function ShipperActivityView({
           <div className="py-14 flex flex-col items-center justify-center gap-4 text-center px-6">
             <div
               className="size-14 rounded-2xl flex items-center justify-center"
-              style={{ background: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', border: '1px solid #fed7aa' }}
+              style={{ background: '#fff7ed', border: '1px solid #e7e5e4' }}
             >
               <TrendingUp className="size-6 text-orange-400" />
             </div>
@@ -465,7 +465,7 @@ export function ShipperActivityView({
               </button>
               <button type="button" onClick={onCreateListing}
                 className="h-9 px-4 rounded-xl text-sm font-bold text-white transition-all active:scale-95 hover:opacity-90"
-                style={{ background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)', boxShadow: '0 4px 12px rgba(249,115,22,0.35)' }}>
+                style={{ background: '#c2410c', boxShadow: '0 4px 12px rgba(249,115,22,0.35)' }}>
                 Post Cargo
               </button>
               <button type="button" onClick={onOpenMessages}

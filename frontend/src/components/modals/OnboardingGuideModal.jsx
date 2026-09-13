@@ -7,7 +7,7 @@ const SHIPPER_STEPS = [
   {
     icon: Package,
     iconGradient: 'from-orange-400 to-orange-600',
-    iconShadow: 'shadow-orange-500/30',
+    iconShadow: 'shadow-primary/20',
     title: 'Welcome to GetGo!',
     subtitle: 'Your Cargo Marketplace',
     description: 'GetGo connects shippers like you with trusted truckers across the Philippines - no middlemen, no hassle.',
@@ -20,7 +20,7 @@ const SHIPPER_STEPS = [
   {
     icon: MapPin,
     iconGradient: 'from-blue-400 to-blue-600',
-    iconShadow: 'shadow-blue-500/30',
+    iconShadow: 'shadow-blue-600/20',
     title: 'Post Your Cargo',
     subtitle: 'Step 1 of 3',
     description: 'Create a cargo listing to let truckers find and bid on your shipment.',
@@ -34,7 +34,7 @@ const SHIPPER_STEPS = [
   {
     icon: MessageSquare,
     iconGradient: 'from-purple-400 to-purple-600',
-    iconShadow: 'shadow-purple-500/30',
+    iconShadow: 'shadow-violet-600/20',
     title: 'Browse Bids & Chat',
     subtitle: 'Step 2 of 3',
     description: 'Once posted, truckers will bid on your cargo. Review their profiles, ratings, and prices - then chat to negotiate.',
@@ -48,7 +48,7 @@ const SHIPPER_STEPS = [
   {
     icon: CreditCard,
     iconGradient: 'from-green-400 to-emerald-600',
-    iconShadow: 'shadow-green-500/30',
+    iconShadow: 'shadow-green-600/20',
     title: 'Contracts & Delivery',
     subtitle: 'Step 3 of 3',
     description: 'Accept a bid to generate a digital contract. Track your shipment in real-time and confirm delivery when done.',
@@ -65,7 +65,7 @@ const TRUCKER_STEPS = [
   {
     icon: Truck,
     iconGradient: 'from-emerald-400 to-emerald-600',
-    iconShadow: 'shadow-emerald-500/30',
+    iconShadow: 'shadow-green-600/20',
     title: 'Welcome to GetGo!',
     subtitle: 'Your Cargo Marketplace',
     description: 'GetGo connects truckers like you with shippers who need cargo moved - find backloads and maximize every trip.',
@@ -78,7 +78,7 @@ const TRUCKER_STEPS = [
   {
     icon: Search,
     iconGradient: 'from-blue-400 to-blue-600',
-    iconShadow: 'shadow-blue-500/30',
+    iconShadow: 'shadow-blue-600/20',
     title: 'Find Cargo Listings',
     subtitle: 'Step 1 of 3',
     description: 'Browse open cargo listings from shippers across the Philippines. Filter by route, weight, and price.',
@@ -92,7 +92,7 @@ const TRUCKER_STEPS = [
   {
     icon: MessageSquare,
     iconGradient: 'from-purple-400 to-purple-600',
-    iconShadow: 'shadow-purple-500/30',
+    iconShadow: 'shadow-violet-600/20',
     title: 'Bid & Negotiate',
     subtitle: 'Step 2 of 3',
     description: 'Place a competitive bid on cargo that matches your truck and route. Chat with the shipper to agree on terms.',
@@ -106,7 +106,7 @@ const TRUCKER_STEPS = [
   {
     icon: Banknote,
     iconGradient: 'from-green-400 to-emerald-600',
-    iconShadow: 'shadow-green-500/30',
+    iconShadow: 'shadow-green-600/20',
     title: 'Complete & Earn',
     subtitle: 'Step 3 of 3',
     description: 'When your bid is accepted, a contract is generated. Complete the delivery and get paid - it is that simple.',
@@ -289,7 +289,7 @@ export function OnboardingGuideModal({
               onClick={handleNext}
               className="h-11 flex-1 flex items-center justify-center gap-2 rounded-xl text-sm font-bold text-white transition-all active:scale-95 hover:opacity-90"
               style={{
-                background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)',
+                background: '#c2410c',
                 boxShadow: '0 4px 14px rgba(249,115,22,0.35)',
                 fontFamily: 'Outfit, sans-serif',
               }}

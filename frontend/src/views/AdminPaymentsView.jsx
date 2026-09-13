@@ -156,8 +156,8 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
             <div className={cn(
               'size-12 rounded-xl flex items-center justify-center',
               submission.status === 'manual_review'
-                ? 'bg-gradient-to-br from-yellow-400 to-orange-500'
-                : 'bg-gradient-to-br from-blue-400 to-blue-600'
+                ? 'bg-primary'
+                : 'bg-blue-600'
             )}>
               <FileText className="size-6 text-white" />
             </div>
@@ -396,7 +396,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
                     <Button
                       onClick={handleApprove}
                       disabled={loading}
-                      className="flex-1 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white"
+                      className="flex-1 bg-green-600 hover:from-green-600 hover:to-green-700 text-white"
                     >
                       {loading ? (
                         <Loader2 className="size-4 animate-spin mr-2" />
@@ -755,7 +755,7 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
                 'rounded-xl font-medium transition-all duration-300 active:scale-95 whitespace-nowrap',
                 isMobile ? 'text-xs' : 'text-sm hover:scale-105',
                 filter === status
-                  ? 'bg-gradient-to-r from-orange-400 to-orange-600 text-white shadow-lg shadow-orange-500/30'
+                  ? 'bg-primary text-white shadow-lg shadow-primary/20'
                   : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700'
               )}
               style={{ padding: isMobile ? '8px 16px' : '10px 24px' }}
@@ -784,7 +784,7 @@ export function AdminPaymentsView({ darkMode = false, className, onVerifyContrac
         </div>
       ) : filteredSubmissions.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 text-center">
-          <div className="size-16 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center mb-4 shadow-lg">
+          <div className="size-16 rounded-xl bg-muted dark:dark:bg-stone-800 flex items-center justify-center mb-4 shadow-lg">
             <CheckCircle2 className="size-8 text-gray-400" />
           </div>
           <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-1">

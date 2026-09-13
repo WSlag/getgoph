@@ -195,7 +195,7 @@ export function RouteOptimizerModal({
                 onClick={handleSearch}
                 disabled={loading || !origin.trim()}
                 size={isMobile ? "default" : "lg"}
-                className="bg-gradient-to-r from-green-500 to-emerald-600 flex-1"
+                className="bg-green-600 flex-1"
                 style={{ gap: '6px' }}
               >
                 {loading ? <Loader2 style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px' }} className="animate-spin" /> : <Search style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px' }} />}
@@ -219,7 +219,7 @@ export function RouteOptimizerModal({
         {savedRoutes.length > 0 && (
           <div className="border-b border-gray-200 dark:border-gray-700" style={{ paddingTop: isMobile ? '16px' : '20px', paddingBottom: isMobile ? '16px' : '20px' }}>
             <div className="flex items-center" style={{ gap: '6px', marginBottom: isMobile ? '6px' : '8px' }}>
-              <Bookmark style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px', color: '#f97316' }} />
+              <Bookmark style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px', color: '#c2410c' }} />
               <p style={{ fontSize: isMobile ? '12px' : '13px', fontWeight: '600' }}>Saved Routes</p>
             </div>
             <div className="flex flex-wrap" style={{ gap: '8px' }}>
@@ -270,7 +270,7 @@ export function RouteOptimizerModal({
           {backloadResults ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '12px' : '16px' }}>
                 {/* Summary */}
-                <div className="rounded-lg bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20" style={{ padding: isMobile ? '10px 12px' : '12px 16px' }}>
+                <div className="rounded-lg bg-muted border border-border dark:from-green-900/20 dark:to-emerald-900/20" style={{ padding: isMobile ? '10px 12px' : '12px 16px' }}>
                   <p style={{ fontSize: isMobile ? '12px' : '14px', fontWeight: '500', color: '#047857' }} className="dark:text-green-300">
                     Found {backloadResults.totalMatches} backload opportunities within {backloadResults.maxDetourKm}km
                   </p>
@@ -293,7 +293,7 @@ export function RouteOptimizerModal({
                           <div className="flex items-center justify-between" style={{ marginBottom: isMobile ? '4px' : '6px' }}>
                             <div className="flex items-center" style={{ gap: isMobile ? '6px' : '8px', minWidth: 0, flex: 1 }}>
                               {rec.type === 'cargo' ? (
-                                <Package style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px', color: '#3b82f6', flexShrink: 0 }} />
+                                <Package style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px', color: '#78716c', flexShrink: 0 }} />
                               ) : (
                                 <Truck style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px', color: '#a78bfa', flexShrink: 0 }} />
                               )}
@@ -336,7 +336,7 @@ export function RouteOptimizerModal({
                 {backloadResults.cargo?.length > 0 && (
                   <div>
                     <h4 className="flex items-center" style={{ fontSize: isMobile ? '12px' : '14px', fontWeight: '600', marginBottom: isMobile ? '6px' : '8px', gap: '6px' }}>
-                      <Package style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px', color: '#3b82f6' }} />
+                      <Package style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px', color: '#78716c' }} />
                       Available Cargo ({backloadResults.cargo.length})
                     </h4>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '6px' : '8px' }}>
@@ -408,7 +408,7 @@ export function RouteOptimizerModal({
               /* Popular Routes */
               <div>
                 <h4 className="flex items-center" style={{ fontSize: isMobile ? '12px' : '14px', fontWeight: '600', marginBottom: isMobile ? '8px' : '12px', gap: '6px' }}>
-                  <TrendingUp style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px', color: '#f97316' }} />
+                  <TrendingUp style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px', color: '#c2410c' }} />
                   Popular Routes
                 </h4>
                 {popularRoutes.length > 0 ? (

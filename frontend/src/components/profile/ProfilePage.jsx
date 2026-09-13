@@ -293,7 +293,7 @@ export function ProfilePage({ onNavigateToActivity, onInstallApp, showInstallApp
           <div className="flex items-start" style={{ gap: '20px' }}>
             {/* Avatar */}
             <div className="relative flex-shrink-0">
-              <div className="size-24 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-3xl font-bold shadow-lg shadow-orange-500/25">
+              <div className="size-24 rounded-full bg-primary flex items-center justify-center text-white text-3xl font-bold shadow-lg shadow-orange-500/25">
                 {userProfile?.profileImage ? (
                   <img
                     src={userProfile.profileImage}
@@ -306,7 +306,7 @@ export function ProfilePage({ onNavigateToActivity, onInstallApp, showInstallApp
               </div>
               <button
                 onClick={openEditModal}
-                className="absolute -bottom-1 -right-1 size-9 rounded-full bg-orange-500 flex items-center justify-center shadow-md shadow-orange-500/40 hover:bg-orange-600 hover:scale-110 active:scale-95 transition-all duration-200 border-2 border-white dark:border-gray-900"
+                className="absolute -bottom-1 -right-1 size-9 rounded-full bg-orange-500 flex items-center justify-center shadow-md shadow-primary/20 hover:bg-orange-600 hover:scale-110 active:scale-95 transition-all duration-200 border-2 border-white dark:border-gray-900"
                 aria-label="Edit profile"
               >
                 <Edit3 className="size-4 text-white" />
@@ -835,7 +835,7 @@ export function ProfilePage({ onNavigateToActivity, onInstallApp, showInstallApp
         <DialogContent className="max-w-md backdrop-blur-sm">
           <DialogHeader>
             <div className="flex items-center gap-3">
-              <div className="size-12 rounded-xl flex items-center justify-center shadow-lg bg-gradient-to-br from-orange-400 to-orange-600 shadow-orange-500/30">
+              <div className="size-12 rounded-xl flex items-center justify-center shadow-lg bg-primary shadow-primary/20">
                 <Edit3 className="size-6 text-white" />
               </div>
               <div>

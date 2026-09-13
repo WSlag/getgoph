@@ -414,7 +414,7 @@ export function ContractModal({
               width: isMobile ? '36px' : '40px',
               height: isMobile ? '36px' : '40px',
               borderRadius: '50%',
-              background: 'linear-gradient(to bottom right, #fb923c, #ea580c)',
+              background: 'linear-gradient(to bottom right, #ea580c, #c2410c)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -741,7 +741,7 @@ export function ContractModal({
                 <div className="flex items-center" style={{ gap: '10px', minWidth: 0 }}>
                   <div style={{
                     width: 36, height: 36, borderRadius: '10px', flexShrink: 0,
-                    background: hasDriverCopy ? 'linear-gradient(135deg, #bbf7d0, #86efac)' : 'linear-gradient(135deg, #fed7aa, #fdba74)',
+                    background: hasDriverCopy ? 'linear-gradient(135deg, #e7e5e4, #86efac)' : 'linear-gradient(135deg, #e7e5e4, #fdba74)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                   }}>
                     <Upload style={{ width: 16, height: 16, color: hasDriverCopy ? '#16a34a' : '#ea580c' }} />
@@ -760,9 +760,9 @@ export function ContractModal({
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
-                        fontSize: '12px', fontWeight: '600', color: '#f97316',
+                        fontSize: '12px', fontWeight: '600', color: '#c2410c',
                         textDecoration: 'none', padding: '5px 10px',
-                        borderRadius: '8px', border: '1.5px solid #fed7aa',
+                        borderRadius: '8px', border: '1.5px solid #e7e5e4',
                         background: '#fff7ed',
                       }}
                     >
@@ -784,7 +784,7 @@ export function ContractModal({
                         fontSize: '12px', fontWeight: '700', color: '#fff',
                         background: uploadingDocType === 'driver_license'
                           ? '#fdba74'
-                          : 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)',
+                          : '#c2410c',
                         boxShadow: uploadingDocType === 'driver_license' ? 'none' : '0 2px 8px rgba(249,115,22,0.35)',
                         fontFamily: 'Outfit, sans-serif',
                         whiteSpace: 'nowrap',
@@ -802,7 +802,7 @@ export function ContractModal({
                 <div className="flex items-center" style={{ gap: '10px', minWidth: 0 }}>
                   <div style={{
                     width: 36, height: 36, borderRadius: '10px', flexShrink: 0,
-                    background: hasLtoCopy ? 'linear-gradient(135deg, #bbf7d0, #86efac)' : 'linear-gradient(135deg, #fed7aa, #fdba74)',
+                    background: hasLtoCopy ? 'linear-gradient(135deg, #e7e5e4, #86efac)' : 'linear-gradient(135deg, #e7e5e4, #fdba74)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                   }}>
                     <Upload style={{ width: 16, height: 16, color: hasLtoCopy ? '#16a34a' : '#ea580c' }} />
@@ -821,9 +821,9 @@ export function ContractModal({
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
-                        fontSize: '12px', fontWeight: '600', color: '#f97316',
+                        fontSize: '12px', fontWeight: '600', color: '#c2410c',
                         textDecoration: 'none', padding: '5px 10px',
-                        borderRadius: '8px', border: '1.5px solid #fed7aa',
+                        borderRadius: '8px', border: '1.5px solid #e7e5e4',
                         background: '#fff7ed',
                       }}
                     >
@@ -845,7 +845,7 @@ export function ContractModal({
                         fontSize: '12px', fontWeight: '700', color: '#fff',
                         background: uploadingDocType === 'lto_registration'
                           ? '#fdba74'
-                          : 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)',
+                          : '#c2410c',
                         boxShadow: uploadingDocType === 'lto_registration' ? 'none' : '0 2px 8px rgba(249,115,22,0.35)',
                         fontFamily: 'Outfit, sans-serif',
                         whiteSpace: 'nowrap',

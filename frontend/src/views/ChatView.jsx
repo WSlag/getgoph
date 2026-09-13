@@ -64,8 +64,8 @@ export function ChatView({
 
   const statusConfig = {
     pending:    { label: 'Pending',    bg: '#fef3c7', color: '#92400e', border: '#fde68a' },
-    accepted:   { label: 'Accepted',   bg: '#dcfce7', color: '#166534', border: '#bbf7d0' },
-    contracted: { label: 'Contracted', bg: '#fff7ed', color: '#9a3412', border: '#fed7aa' },
+    accepted:   { label: 'Accepted',   bg: '#dcfce7', color: '#166534', border: '#e7e5e4' },
+    contracted: { label: 'Contracted', bg: '#fff7ed', color: '#9a3412', border: '#e7e5e4' },
     rejected:   { label: 'Rejected',   bg: '#fee2e2', color: '#991b1b', border: '#fecaca' },
     withdrawn:  { label: 'Withdrawn',  bg: '#f3f4f6', color: '#6b7280', border: '#e5e7eb' },
   };
@@ -188,8 +188,8 @@ export function ChatView({
                       height: isMobile ? '40px' : '48px',
                       borderRadius: '50%',
                       background: isCargo
-                        ? 'linear-gradient(to bottom right, #fb923c, #ea580c)'
-                        : 'linear-gradient(to bottom right, #3b82f6, #2563eb)',
+                        ? 'linear-gradient(to bottom right, #ea580c, #c2410c)'
+                        : '#1d4ed8',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -322,7 +322,7 @@ export function ChatView({
                           display: 'inline-block',
                           padding: isMobile ? '5px 10px' : '6px 12px',
                           borderRadius: '8px',
-                          background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)',
+                          background: '#c2410c',
                           boxShadow: '0 2px 6px rgba(249,115,22,0.3)',
                           color: 'white',
                           fontWeight: '700',

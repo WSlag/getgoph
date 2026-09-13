@@ -177,7 +177,7 @@ export function PaymentUploadModal({
               width: '48px',
               height: '48px',
               borderRadius: '12px',
-              background: 'linear-gradient(to bottom right, #3b82f6, #2563eb)',
+              background: '#1d4ed8',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -201,7 +201,7 @@ export function PaymentUploadModal({
               width: '80px',
               height: '80px',
               borderRadius: '50%',
-              background: 'linear-gradient(to bottom right, #22c55e, #16a34a)',
+              background: '#15803d',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -363,7 +363,7 @@ export function PaymentUploadModal({
                 border: 'none',
                 background: (!file || uploading)
                   ? '#d1d5db'
-                  : 'linear-gradient(to right, #22c55e, #16a34a)',
+                  : '#15803d',
                 color: 'white',
                 fontSize: '15px',
                 fontWeight: '600',

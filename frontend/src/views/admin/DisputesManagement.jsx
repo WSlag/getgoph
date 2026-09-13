@@ -141,7 +141,7 @@ function DisputeDetailModal({ open, onClose, dispute, onResolve, loading }) {
               <Button
                 onClick={handleResolve}
                 disabled={loading || !resolution}
-                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white"
+                className="w-full bg-blue-600 hover:from-blue-600 hover:to-blue-700 text-white"
               >
                 {loading ? <Loader2 className="size-4 animate-spin mr-2" /> : <CheckCircle2 className="size-4 mr-2" />}
                 Resolve Dispute
@@ -337,7 +337,7 @@ export function DisputesManagement() {
           title="Resolved"
           value={stats.resolved}
           icon={CheckCircle2}
-          iconColor="bg-gradient-to-br from-green-400 to-green-600 shadow-green-500/30"
+          iconColor="bg-green-600 shadow-green-600/20"
         />
       </div>
       <p className="text-xs text-gray-500 dark:text-gray-400">

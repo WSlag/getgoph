@@ -385,12 +385,12 @@ export function BrokerView({
       >
         <div className="max-w-3xl mx-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm overflow-hidden">
           {/* Top accent bar */}
-          <div className="h-1 w-full bg-gradient-to-r from-green-400 to-emerald-500" />
+          <div className="h-1 w-full bg-green-600" />
 
           <div style={{ padding: isMobile ? '20px' : '24px' }}>
             {/* Header */}
             <div className="flex items-start" style={{ gap: isMobile ? '12px' : '14px', marginBottom: isMobile ? '16px' : '20px' }}>
-              <div className="size-12 rounded-xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-white shadow-lg shadow-green-500/30 shrink-0">
+              <div className="size-12 rounded-xl bg-green-600 flex items-center justify-center text-white shadow-lg shadow-green-600/20 shrink-0">
                 <Users className="size-6" />
               </div>
               <div className="min-w-0">
@@ -441,7 +441,7 @@ export function BrokerView({
               <Button
                 onClick={handleRegister}
                 disabled={registering}
-                className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white shadow-md shadow-green-500/20 font-semibold"
+                className="bg-green-600 hover:bg-green-700 text-white shadow-md shadow-green-500/20 font-semibold"
                 style={{ width: isMobile ? '100%' : 'auto' }}
               >
                 {registering ? (
@@ -478,7 +478,7 @@ export function BrokerView({
         {/* Header */}
         <div style={{ marginBottom: isMobile ? '8px' : '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-            <div className="size-12 rounded-xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30">
+            <div className="size-12 rounded-xl bg-green-600 flex items-center justify-center shadow-lg shadow-green-600/20">
               <Users className="size-6 text-white" />
             </div>
             <div>
@@ -537,7 +537,7 @@ export function BrokerView({
                 className="inline-flex items-center gap-1.5 rounded-xl text-xs font-bold text-white transition-all active:scale-95 hover:opacity-90"
                 style={{
                   padding: '7px 13px',
-                  background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+                  background: '#15803d',
                   boxShadow: '0 3px 10px rgba(34,197,94,0.35)',
                   fontFamily: 'Outfit, sans-serif',
                   letterSpacing: '0.01em',
@@ -552,7 +552,7 @@ export function BrokerView({
                 className="inline-flex items-center gap-1.5 rounded-xl text-xs font-bold text-white transition-all active:scale-95 hover:opacity-90"
                 style={{
                   padding: '7px 13px',
-                  background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)',
+                  background: '#c2410c',
                   boxShadow: '0 3px 10px rgba(249,115,22,0.35)',
                   fontFamily: 'Outfit, sans-serif',
                   letterSpacing: '0.01em',
@@ -738,7 +738,7 @@ export function BrokerView({
             <Button
               onClick={handleRequestPayout}
               disabled={submittingPayout || loading}
-              className="w-full bg-gradient-to-r from-orange-400 to-orange-600 text-white"
+              className="w-full bg-primary text-white"
             >
               {submittingPayout ? 'Submitting...' : 'Submit Payout Request'}
             </Button>

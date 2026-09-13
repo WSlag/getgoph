@@ -141,25 +141,25 @@ export function FinancialOverview() {
           title="Today's Revenue"
           value={`PHP ${formatPrice(stats.todayRevenue)}`}
           icon={PesoIcon}
-          iconColor="bg-gradient-to-br from-green-400 to-green-600 shadow-green-500/30"
+          iconColor="bg-green-600 shadow-green-600/20"
         />
         <StatCard
           title="This Week"
           value={`PHP ${formatPrice(stats.weekRevenue)}`}
           icon={TrendingUp}
-          iconColor="bg-gradient-to-br from-blue-400 to-blue-600 shadow-blue-500/30"
+          iconColor="bg-blue-600 shadow-blue-600/20"
         />
         <StatCard
           title="This Month"
           value={`PHP ${formatPrice(stats.monthRevenue)}`}
           icon={Calendar}
-          iconColor="bg-gradient-to-br from-purple-400 to-purple-600 shadow-purple-500/30"
+          iconColor="bg-violet-600 shadow-violet-600/20"
         />
         <StatCard
           title="All Time"
           value={`PHP ${formatPrice(stats.totalRevenue)}`}
           icon={PesoIcon}
-          iconColor="bg-gradient-to-br from-orange-400 to-orange-600 shadow-orange-500/30"
+          iconColor="bg-primary shadow-primary/20"
         />
       </div>
 
@@ -170,7 +170,7 @@ export function FinancialOverview() {
           value={`PHP ${formatPrice(stats.totalWalletBalance)}`}
           subtitle="Combined balance of all users"
           icon={Wallet}
-          iconColor="bg-gradient-to-br from-blue-400 to-blue-600 shadow-blue-500/30"
+          iconColor="bg-blue-600 shadow-blue-600/20"
         />
         <StatCard
           title="Pending Payouts"

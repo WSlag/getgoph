@@ -157,7 +157,7 @@ export function ReferralManagement() {
       header: 'Broker',
       render: (_, row) => (
         <div className="flex items-center gap-3">
-          <div className="size-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold">
+          <div className="size-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">
             {row.name?.charAt(0)?.toUpperCase() || '?'}
           </div>
           <div>
@@ -307,25 +307,25 @@ export function ReferralManagement() {
           title="Total Brokers"
           value={stats.total}
           icon={Users}
-          iconColor="bg-gradient-to-br from-blue-400 to-blue-600 shadow-blue-500/30"
+          iconColor="bg-blue-600 shadow-blue-600/20"
         />
         <StatCard
           title="Active Brokers"
           value={stats.activeBrokers}
           icon={TrendingUp}
-          iconColor="bg-gradient-to-br from-green-400 to-green-600 shadow-green-500/30"
+          iconColor="bg-green-600 shadow-green-600/20"
         />
         <StatCard
           title="Total Referrals"
           value={stats.totalReferrals}
           icon={Link2}
-          iconColor="bg-gradient-to-br from-purple-400 to-purple-600 shadow-purple-500/30"
+          iconColor="bg-violet-600 shadow-violet-600/20"
         />
         <StatCard
           title="Total Commissions"
           value={`PHP ${formatPrice(stats.totalEarnings)}`}
           icon={PesoIcon}
-          iconColor="bg-gradient-to-br from-orange-400 to-orange-600 shadow-orange-500/30"
+          iconColor="bg-primary shadow-primary/20"
         />
       </div>
 

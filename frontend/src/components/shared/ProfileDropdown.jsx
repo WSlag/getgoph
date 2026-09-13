@@ -87,7 +87,7 @@ export function ProfileDropdown({
         {/* Profile Header — orange gradient band */}
         <div
           className="relative overflow-hidden px-4 pt-5 pb-4"
-          style={{ background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)' }}
+          style={{ background: '#c2410c' }}
         >
           {/* Decorative rings */}
           <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full border border-white/10 pointer-events-none" />

@@ -73,7 +73,7 @@ export function AdminSidebar({
         <div className="border-b border-gray-200 dark:border-gray-800" style={{ padding: '24px' }}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="size-10 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/30">
+              <div className="size-10 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
                 <LayoutDashboard className="size-5 text-white" />
               </div>
               <div>
@@ -108,7 +108,7 @@ export function AdminSidebar({
                   className={cn(
                     'w-full flex items-center gap-3 rounded-xl text-sm font-medium transition-all duration-200',
                     isActive
-                      ? 'bg-gradient-to-r from-orange-400 to-orange-600 text-white shadow-lg shadow-orange-500/30'
+                      ? 'bg-primary text-white shadow-lg shadow-primary/20'
                       : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
                   )}
                   style={{ padding: '10px 16px' }}
@@ -144,7 +144,7 @@ export function AdminSidebar({
             className={cn(
               'w-full flex items-center gap-3 rounded-xl text-sm font-medium transition-all duration-200',
               activeSection === 'settings'
-                ? 'bg-gradient-to-r from-orange-400 to-orange-600 text-white shadow-lg shadow-orange-500/30'
+                ? 'bg-primary text-white shadow-lg shadow-primary/20'
                 : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
             )}
             style={{ padding: '10px 16px' }}

@@ -173,7 +173,7 @@ export function BrokerPayoutsView({ onRequestsUpdated }) {
             size="sm"
             disabled={row.status !== 'pending' || actingId === row.id}
             onClick={() => openReviewDialog(row, 'approve')}
-            className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white shadow-sm hover:scale-105 active:scale-95 transition-all duration-300"
+            className="bg-green-600 hover:from-green-600 hover:to-green-700 text-white shadow-sm hover:scale-105 active:scale-95 transition-all duration-300"
           >
             Approve
           </Button>
@@ -210,13 +210,13 @@ export function BrokerPayoutsView({ onRequestsUpdated }) {
           title="Pending Amount"
           value={currency(stats.pendingAmount)}
           icon={Landmark}
-          iconColor="bg-gradient-to-br from-orange-400 to-orange-600 shadow-orange-500/30"
+          iconColor="bg-primary shadow-primary/20"
         />
         <StatCard
           title="Approved"
           value={stats.approved}
           icon={CheckCircle2}
-          iconColor="bg-gradient-to-br from-green-400 to-green-600 shadow-green-500/30"
+          iconColor="bg-green-600 shadow-green-600/20"
         />
         <StatCard
           title="Rejected"

@@ -91,7 +91,7 @@ export function RatingModal({
       <DialogContent className="max-w-md backdrop-blur-sm">
         <DialogHeader>
           <div className="flex items-center gap-3">
-            <div className="size-12 rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/30">
+            <div className="size-12 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
               <Star className="size-6 text-white" />
             </div>
             <div>
@@ -106,7 +106,7 @@ export function RatingModal({
         {/* User to Rate */}
         <div className="py-4 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-800/60">
-            <div className="size-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-lg">
+            <div className="size-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg">
               {userToRate.name?.[0]?.toUpperCase() || 'U'}
             </div>
             <div>
@@ -179,7 +179,7 @@ export function RatingModal({
                   className={cn(
                     'px-3 py-1.5 rounded-full text-sm font-medium transition-all',
                     selectedTags.includes(tag.id)
-                      ? 'bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-md'
+                      ? 'bg-primary text-white shadow-md'
                       : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                   )}
                 >

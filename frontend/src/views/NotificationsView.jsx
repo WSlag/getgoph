@@ -66,7 +66,7 @@ export function NotificationsView({
       {/* Header */}
       <div style={{ marginBottom: isMobile ? '24px' : '32px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-          <div className="size-12 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/30">
+          <div className="size-12 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
             <Bell className="size-6 text-white" />
           </div>
           <div>

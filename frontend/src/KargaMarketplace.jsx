@@ -1596,7 +1596,7 @@ export default function KargaMarketplace() {
           {/* Header */}
           <div className={`p-4 border-b ${theme.borderLight} flex justify-between items-center`}>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
                 <User size={20} className="text-white" />
               </div>
               <h2 className={`text-lg font-bold ${theme.text}`}>Edit Profile</h2>
@@ -1652,7 +1652,7 @@ export default function KargaMarketplace() {
             <button
               onClick={handleSaveProfile}
               disabled={editProfileLoading}
-              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-xl font-bold shadow-lg disabled:opacity-50"
+              className="w-full bg-blue-600 text-white py-3 rounded-xl font-bold shadow-lg disabled:opacity-50"
             >
               {editProfileLoading ? 'Saving...' : 'Save Changes'}
             </button>
@@ -1846,7 +1846,7 @@ export default function KargaMarketplace() {
           <div className={`p-4 border-t ${theme.borderLight} flex-shrink-0`}>
             <button
               onClick={() => setShowTermsModal(false)}
-              className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white py-3 rounded-xl font-bold shadow-lg"
+              className="w-full bg-primary text-white py-3 rounded-xl font-bold shadow-lg"
             >
               I Understand
             </button>
@@ -1964,7 +1964,7 @@ export default function KargaMarketplace() {
             <div className="flex gap-3">
               <button onClick={onClose} className={`flex-1 py-3 rounded-xl border ${theme.border} ${theme.textSecondary} font-medium`}>Skip</button>
               <button onClick={() => onSubmit({ rating, tags, feedback })} disabled={!rating}
-                className="flex-1 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold disabled:opacity-50">
+                className="flex-1 py-3 rounded-xl bg-primary text-white font-bold disabled:opacity-50">
                 Submit
               </button>
             </div>
@@ -2218,7 +2218,7 @@ export default function KargaMarketplace() {
           <div className="flex gap-2 mt-3">
             {canBid && listing.status === 'open' && (
               <button onClick={() => { setSelectedListing(listing); setShowBidModal(true); }}
-                className="flex-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white py-2.5 rounded-xl text-sm font-bold shadow-lg hover:shadow-amber-500/30 transition">
+                className="flex-1 bg-primary text-white py-2.5 rounded-xl text-sm font-bold shadow-lg hover:shadow-amber-500/30 transition">
                 {isCargo ? '🚛 Bid as Trucker' : '📦 Bid for Space'}
               </button>
             )}
@@ -2321,7 +2321,7 @@ export default function KargaMarketplace() {
             </div>
             {shipment.needsRating ? (
               <button onClick={(e) => { e.stopPropagation(); setSelectedShipment(shipment); setShowRatingModal(true); }}
-                className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-xl text-sm font-bold">
+                className="bg-primary text-white px-4 py-2 rounded-xl text-sm font-bold">
                 <Star size={14} className="inline mr-1" /> Rate
               </button>
             ) : (
@@ -2658,7 +2658,7 @@ export default function KargaMarketplace() {
                 setNewPost({ origin: '', destination: '', askingPrice: '', description: '', weight: '', cargoType: '', vehicleNeeded: '', pickupDate: '', vehicleType: '', capacity: '', plateNo: '', availableDate: '', departureTime: '', photos: [] });
                 setShowPostModal(true);
               }}
-              className="w-full mb-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-amber-500/30 transition"
+              className="w-full mb-4 bg-primary text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-amber-500/30 transition"
             >
               <Plus size={20} /> {userRole === 'shipper' ? 'Post Cargo' : 'Post Truck'}
             </button>
@@ -2716,7 +2716,7 @@ export default function KargaMarketplace() {
               <button onClick={() => {
                 setNewPost({ origin: '', destination: '', askingPrice: '', description: '', weight: '', cargoType: '', vehicleNeeded: '', pickupDate: '', vehicleType: '', capacity: '', plateNo: '', availableDate: '', departureTime: '', photos: [] });
                 setShowPostModal(true);
-              }} className="lg:hidden w-full mb-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg">
+              }} className="lg:hidden w-full mb-4 bg-primary text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg">
                 <Plus size={20} /> {userRole === 'shipper' ? 'Post Cargo' : 'Post Truck'}
               </button>
 
@@ -2997,7 +2997,7 @@ export default function KargaMarketplace() {
                 />
               )}
 
-              <button onClick={handlePost} disabled={!newPost.origin || !newPost.destination || !newPost.askingPrice} className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white py-3 rounded-xl font-bold shadow-lg disabled:opacity-50">
+              <button onClick={handlePost} disabled={!newPost.origin || !newPost.destination || !newPost.askingPrice} className="w-full bg-primary text-white py-3 rounded-xl font-bold shadow-lg disabled:opacity-50">
                 Post {userRole === 'shipper' ? 'Cargo' : 'Truck'}
               </button>
             </div>

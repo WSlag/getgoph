@@ -863,7 +863,7 @@ export function PaymentsView({ className }) {
             title="Approved Today"
             value={resolvedStats.approvedToday || 0}
             icon={CheckCircle2}
-            iconColor="bg-gradient-to-br from-green-400 to-green-600 shadow-green-500/30"
+            iconColor="bg-green-600 shadow-green-600/20"
           />
           <StatCard
             title="Rejected Today"
@@ -875,7 +875,7 @@ export function PaymentsView({ className }) {
             title="Total Today"
             value={`PHP ${formatPrice(resolvedStats.totalAmountToday || 0)}`}
             icon={PesoIcon}
-            iconColor="bg-gradient-to-br from-blue-400 to-blue-600 shadow-blue-500/30"
+            iconColor="bg-blue-600 shadow-blue-600/20"
           />
         </div>
       )}
@@ -927,7 +927,7 @@ export function PaymentsView({ className }) {
             title="Unpaid Fees"
             value={outstandingSummary?.totalContracts || outstandingContracts.length}
             icon={Clock}
-            iconColor="bg-gradient-to-br from-blue-400 to-blue-600 shadow-blue-500/30"
+            iconColor="bg-blue-600 shadow-blue-600/20"
           />
           <StatCard
             title="Due Soon"
@@ -945,7 +945,7 @@ export function PaymentsView({ className }) {
             title="Total Outstanding"
             value={`PHP ${formatPrice(outstandingSummary?.totalOutstanding || 0)}`}
             icon={PesoIcon}
-            iconColor="bg-gradient-to-br from-purple-400 to-purple-600 shadow-purple-500/30"
+            iconColor="bg-violet-600 shadow-violet-600/20"
           />
         </div>
 

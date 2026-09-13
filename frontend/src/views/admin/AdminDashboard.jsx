@@ -115,7 +115,7 @@ export function AdminDashboard({ onBackToApp }) {
           </p>
           <button
             onClick={onBackToApp}
-            className="px-6 py-3 bg-gradient-to-r from-orange-400 to-orange-600 text-white font-medium rounded-xl shadow-lg shadow-orange-500/30 hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300"
+            className="px-6 py-3 bg-primary text-white font-medium rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300"
           >
             Go Back to App
           </button>

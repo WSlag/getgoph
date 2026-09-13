@@ -396,7 +396,7 @@ export default function AuthModal({ open, onClose, onSuccess, title = 'Sign in t
                 className={cn(
                   "w-full font-medium flex items-center justify-center transition-all duration-300",
                   phone.length >= 10 && !loading
-                    ? "bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg shadow-orange-500/30 hover:scale-[1.02] active:scale-[0.98]"
+                    ? "bg-primary text-white shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98]"
                     : "bg-gray-100 dark:bg-gray-700 text-gray-400 cursor-not-allowed"
                 )}
                 style={{ padding: '14px 20px', borderRadius: '12px', gap: '8px', fontSize: '15px' }}
@@ -521,7 +521,7 @@ export default function AuthModal({ open, onClose, onSuccess, title = 'Sign in t
                 className={cn(
                   "w-full font-medium flex items-center justify-center transition-all duration-300",
                   otp.length === 6 && !loading && otpCooldownRemaining === 0
-                    ? "bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg shadow-orange-500/30 hover:scale-[1.02] active:scale-[0.98]"
+                    ? "bg-primary text-white shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98]"
                     : "bg-gray-100 dark:bg-gray-700 text-gray-400 cursor-not-allowed"
                 )}
                 style={{ padding: '14px 20px', borderRadius: '12px', gap: '8px', fontSize: '15px', position: 'relative', zIndex: 10 }}
@@ -647,7 +647,7 @@ export default function AuthModal({ open, onClose, onSuccess, title = 'Sign in t
                 className={cn(
                   "w-full font-medium flex items-center justify-center transition-all duration-300",
                   email.trim() && !loading
-                    ? "bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg shadow-orange-500/30 hover:scale-[1.02] active:scale-[0.98]"
+                    ? "bg-primary text-white shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98]"
                     : "bg-gray-100 dark:bg-gray-700 text-gray-400 cursor-not-allowed"
                 )}
                 style={{ padding: '14px 20px', borderRadius: '12px', gap: '8px', fontSize: '15px' }}
@@ -765,7 +765,7 @@ export default function AuthModal({ open, onClose, onSuccess, title = 'Sign in t
                 className={cn(
                   "w-full font-medium flex items-center justify-center transition-all duration-300",
                   phone.length >= 10 && recoveryCode.length >= 12 && !loading
-                    ? "bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg shadow-orange-500/30 hover:scale-[1.02] active:scale-[0.98]"
+                    ? "bg-primary text-white shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98]"
                     : "bg-gray-100 dark:bg-gray-700 text-gray-400 cursor-not-allowed"
                 )}
                 style={{ padding: '14px 20px', borderRadius: '12px', gap: '8px', fontSize: '15px' }}

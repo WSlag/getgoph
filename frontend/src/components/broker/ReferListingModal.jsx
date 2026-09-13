@@ -147,7 +147,7 @@ export function ReferListingModal({
         <div style={{ padding: isMobile ? '16px' : '24px', paddingBottom: 0 }}>
           <DialogHeader>
             <div className="flex items-start gap-3">
-              <div className="size-10 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 shadow-lg shadow-orange-500/30 flex items-center justify-center flex-shrink-0">
+              <div className="size-10 rounded-xl bg-primary shadow-lg shadow-primary/20 flex items-center justify-center flex-shrink-0">
                 <Send className="size-5 text-white" />
               </div>
               <div className="min-w-0">

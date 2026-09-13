@@ -13,7 +13,7 @@ import api from '../../services/api';
 const ENROLLMENT_STEP = {
   icon: Users,
   iconGradient: 'from-green-400 to-emerald-600',
-  iconShadow: 'shadow-green-500/30',
+  iconShadow: 'shadow-green-600/20',
   title: 'Become a GetGo Broker',
   subtitle: 'Earn While You Share',
   description: 'Turn your network into income. Refer shippers and truckers to GetGo and earn commissions on every successful transaction.',
@@ -29,7 +29,7 @@ const GUIDE_STEPS = [
   {
     icon: Link2,
     iconGradient: 'from-orange-400 to-orange-600',
-    iconShadow: 'shadow-orange-500/30',
+    iconShadow: 'shadow-primary/20',
     title: 'Share Your Referral Code',
     subtitle: 'Step 1 of 5',
     description: 'Every broker gets a unique referral code. Share it with shippers and truckers so their sign-ups are attributed to you.',
@@ -43,7 +43,7 @@ const GUIDE_STEPS = [
   {
     icon: TrendingUp,
     iconGradient: 'from-blue-400 to-blue-600',
-    iconShadow: 'shadow-blue-500/30',
+    iconShadow: 'shadow-blue-600/20',
     title: 'Track Referrals & Commissions',
     subtitle: 'Step 2 of 5',
     description: 'Your Broker Dashboard shows all your referred users, active deals, and earned commissions in real time.',
@@ -71,7 +71,7 @@ const GUIDE_STEPS = [
   {
     icon: Wallet,
     iconGradient: 'from-green-400 to-emerald-600',
-    iconShadow: 'shadow-green-500/30',
+    iconShadow: 'shadow-green-600/20',
     title: 'Request Payouts',
     subtitle: 'Step 4 of 5',
     description: 'Once your available balance reaches PHP 500, you can request a payout via GCash or bank transfer.',
@@ -85,7 +85,7 @@ const GUIDE_STEPS = [
   {
     icon: ArrowUpRight,
     iconGradient: 'from-purple-400 to-purple-600',
-    iconShadow: 'shadow-purple-500/30',
+    iconShadow: 'shadow-violet-600/20',
     title: 'Refer Listings Directly',
     subtitle: 'Step 5 of 5',
     description: 'As a broker, you can refer specific cargo or truck listings directly to your attributed users - helping them find the right match faster.',
@@ -287,7 +287,7 @@ export function BrokerOnboardingGuideModal({
                   onClick={handleActivate}
                   disabled={activating}
                   className="flex-1 h-11 rounded-xl text-white text-sm font-bold flex items-center justify-center gap-2 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-                  style={{ background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)', boxShadow: '0 4px 14px rgba(249,115,22,0.35)', fontFamily: 'Outfit, sans-serif' }}
+                  style={{ background: '#c2410c', boxShadow: '0 4px 14px rgba(249,115,22,0.35)', fontFamily: 'Outfit, sans-serif' }}
                 >
                   {activating ? (
                     <><Loader2 className="size-4 animate-spin" aria-hidden="true" />Activating...</>
@@ -330,7 +330,7 @@ export function BrokerOnboardingGuideModal({
                   type="button"
                   onClick={handleNext}
                   className="h-11 flex-1 flex items-center justify-center gap-2 rounded-xl text-sm font-bold text-white transition-all active:scale-95 hover:opacity-90"
-                  style={{ background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)', boxShadow: '0 4px 14px rgba(249,115,22,0.35)', fontFamily: 'Outfit, sans-serif' }}
+                  style={{ background: '#c2410c', boxShadow: '0 4px 14px rgba(249,115,22,0.35)', fontFamily: 'Outfit, sans-serif' }}
                 >
                   {isLastGuideStep ? (
                     <>Get Started <ArrowRight className="size-4" aria-hidden="true" /></>

@@ -166,9 +166,9 @@ export default function TrackingMap({
 
   const statusColors = {
     pending_pickup: { color: '#64748b', label: 'Awaiting Pickup', pulse: false },
-    picked_up: { color: '#3b82f6', label: 'Picked Up', pulse: true },
+    picked_up: { color: '#78716c', label: 'Picked Up', pulse: true },
     in_transit: { color: '#f59e0b', label: 'In Transit', pulse: true },
-    delivered: { color: '#22c55e', label: 'Delivered', pulse: false },
+    delivered: { color: '#78716c', label: 'Delivered', pulse: false },
   };
   const currentStatus = statusColors[shipment.status] || statusColors.in_transit;
   const truckIcon = createTruckIcon(currentStatus.color);
@@ -345,7 +345,7 @@ export default function TrackingMap({
             <Polyline
               positions={completedRoute}
               pathOptions={{
-                color: '#22c55e',
+                color: '#78716c',
                 weight: 5,
                 opacity: 0.9,
               }}
@@ -517,7 +517,7 @@ export default function TrackingMap({
 
           <Polyline
             positions={completedRoute}
-            pathOptions={{ color: '#22c55e', weight: 3 }}
+            pathOptions={{ color: '#78716c', weight: 3 }}
           />
 
           <Polyline

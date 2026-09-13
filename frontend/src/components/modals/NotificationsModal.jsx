@@ -22,7 +22,7 @@ const notificationIcons = {
 };
 
 const notificationColors = {
-  bid: 'linear-gradient(to bottom right, #fb923c, #ea580c)',
+  bid: 'linear-gradient(to bottom right, #ea580c, #c2410c)',
   message: 'linear-gradient(to bottom right, #60a5fa, #2563eb)',
   shipment: 'linear-gradient(to bottom right, #4ade80, #16a34a)',
   rating: 'linear-gradient(to bottom right, #facc15, #ca8a04)',
@@ -180,7 +180,7 @@ export function NotificationsModal({
                 width: '48px',
                 height: '48px',
                 borderRadius: '12px',
-                background: 'linear-gradient(to bottom right, #fb923c, #ea580c)',
+                background: 'linear-gradient(to bottom right, #ea580c, #c2410c)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',

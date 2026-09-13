@@ -6,7 +6,7 @@ export function StatCard({
   value,
   subtitle,
   icon: Icon,
-  iconColor = 'bg-gradient-to-br from-blue-400 to-blue-600 shadow-blue-500/30',
+  iconColor = 'bg-blue-600 shadow-blue-600/20',
   trend,
   trendLabel,
   onClick,

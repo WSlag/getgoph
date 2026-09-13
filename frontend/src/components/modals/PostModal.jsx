@@ -181,8 +181,8 @@ export function PostModal({
             <div className={cn(
               "size-12 rounded-xl flex items-center justify-center shadow-lg",
               isShipper
-                ? "bg-gradient-to-br from-orange-400 to-orange-600 shadow-orange-500/30"
-                : "bg-gradient-to-br from-blue-400 to-blue-600 shadow-blue-500/30"
+                ? "bg-primary shadow-primary/20"
+                : "bg-blue-600 shadow-blue-600/20"
             )}>
               {isShipper ? (
                 <Package className="size-6 text-white" />

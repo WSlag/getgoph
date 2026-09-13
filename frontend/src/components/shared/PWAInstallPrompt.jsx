@@ -17,7 +17,7 @@ function InstallBanner({ onInstall, onDismiss }) {
       {/* Outer glow ring */}
       <div
         className="rounded-2xl p-px"
-        style={{ background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)' }}
+        style={{ background: '#c2410c' }}
       >
         <div className="flex items-center gap-3 rounded-2xl bg-white dark:bg-gray-900 px-4 py-3 shadow-xl">
           <AppLogo size={42} className="shrink-0" />
@@ -33,7 +33,7 @@ function InstallBanner({ onInstall, onDismiss }) {
             onClick={onInstall}
             className="flex shrink-0 items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-bold text-white border-none transition-all active:scale-95 hover:opacity-90"
             style={{
-              background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)',
+              background: '#c2410c',
               boxShadow: '0 4px 14px rgba(249,115,22,0.4)',
             }}
           >
@@ -182,7 +182,7 @@ function InstallModal({ open, onInstall, onDismiss, installing }) {
             disabled={installing}
             className="mb-3 flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3.5 text-sm font-bold text-white border-none transition-all active:scale-[0.98] hover:opacity-90 disabled:opacity-70"
             style={{
-              background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)',
+              background: '#c2410c',
               boxShadow: '0 4px 14px rgba(249,115,22,0.4)',
             }}
           >

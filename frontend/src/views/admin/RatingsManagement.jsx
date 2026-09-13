@@ -199,7 +199,7 @@ export function RatingsManagement() {
           title="Total Ratings"
           value={stats.total}
           icon={MessageSquare}
-          iconColor="bg-gradient-to-br from-blue-400 to-blue-600 shadow-blue-500/30"
+          iconColor="bg-blue-600 shadow-blue-600/20"
         />
         <StatCard
           title="Average Rating"
@@ -211,7 +211,7 @@ export function RatingsManagement() {
           title="5-Star Ratings"
           value={stats.fiveStars}
           icon={Star}
-          iconColor="bg-gradient-to-br from-green-400 to-green-600 shadow-green-500/30"
+          iconColor="bg-green-600 shadow-green-600/20"
         />
         <StatCard
           title="Low Ratings (1-2)"

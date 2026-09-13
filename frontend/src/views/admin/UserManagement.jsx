@@ -101,7 +101,7 @@ function UserDetailModal({
       <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           <div className="flex items-center gap-4">
-            <div className="size-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-2xl font-bold">
+            <div className="size-16 rounded-full bg-primary flex items-center justify-center text-white text-2xl font-bold">
               {user.name?.charAt(0)?.toUpperCase() || '?'}
             </div>
             <div>
@@ -462,7 +462,7 @@ export function UserManagement() {
       header: 'User',
       render: (_, row) => (
         <div className="flex items-center gap-3">
-          <div className="size-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold">
+          <div className="size-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">
             {row.name?.charAt(0)?.toUpperCase() || '?'}
           </div>
           <div>

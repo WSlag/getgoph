@@ -138,7 +138,7 @@ export function InAppBrowserOverlay({ platform, browserName, onOpenBrowser }) {
           {/* Orange gradient header band */}
           <div
             className="relative flex items-center gap-2.5 overflow-hidden pl-6 pr-5 py-3.5 sm:gap-3 sm:pl-7 sm:pr-6 sm:py-4"
-            style={{ background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)' }}
+            style={{ background: '#c2410c' }}
           >
             {/* Decorative rings */}
             <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full border border-white/10 pointer-events-none" />
@@ -181,7 +181,7 @@ export function InAppBrowserOverlay({ platform, browserName, onOpenBrowser }) {
                 className="animate-overlay-enter-delay mt-4 flex w-full items-center justify-center gap-2 rounded-xl text-center text-[15px] font-bold leading-tight text-white transition-all hover:opacity-90 active:scale-[0.97] sm:mt-5 sm:rounded-2xl"
                 style={{
                   padding: '14px 16px',
-                  background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)',
+                  background: '#c2410c',
                   boxShadow: '0 6px 20px rgba(249,115,22,0.4)',
                   fontFamily: 'Outfit, sans-serif',
                 }}
@@ -199,7 +199,7 @@ export function InAppBrowserOverlay({ platform, browserName, onOpenBrowser }) {
                 className="animate-overlay-enter-delay mt-4 flex w-full items-center justify-center gap-2 rounded-xl text-center text-[14px] font-bold leading-tight text-white transition-all hover:opacity-90 active:scale-[0.97] sm:mt-5 sm:rounded-2xl sm:text-[15px]"
                 style={{
                   padding: '14px 16px',
-                  background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)',
+                  background: '#c2410c',
                   boxShadow: '0 6px 20px rgba(249,115,22,0.4)',
                   fontFamily: 'Outfit, sans-serif',
                 }}
@@ -222,7 +222,7 @@ export function InAppBrowserOverlay({ platform, browserName, onOpenBrowser }) {
                   <li key={`${platform}-${index}`} className="flex items-start gap-3 sm:gap-3.5">
                     <span
                       className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white sm:h-6 sm:w-6 sm:text-xs"
-                      style={{ background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)' }}
+                      style={{ background: '#c2410c' }}
                     >
                       {index + 1}
                     </span>

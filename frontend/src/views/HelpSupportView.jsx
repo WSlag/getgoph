@@ -745,7 +745,7 @@ function ChatAdminSection({ onBack }) {
                         padding: '12px 16px',
                         borderRadius: '16px',
                         background: isUser
-                          ? 'linear-gradient(to bottom right, #fb923c, #ea580c)'
+                          ? 'linear-gradient(to bottom right, #ea580c, #c2410c)'
                           : '#f3f4f6 dark:bg-gray-800',
                         color: isUser ? 'white' : '#111827',
                       }}
@@ -1048,7 +1048,7 @@ export function HelpSupportView({ onBack, onShowOnboardingGuide }) {
         style={{ padding: '24px', marginBottom: '24px' }}
       >
         <div className="flex items-center gap-3">
-          <div className="size-12 rounded-xl flex items-center justify-center shadow-lg bg-gradient-to-br from-orange-400 to-orange-600 shadow-orange-500/30">
+          <div className="size-12 rounded-xl flex items-center justify-center shadow-lg bg-primary shadow-primary/20">
             <HelpCircle className="size-6 text-white" />
           </div>
           <div>

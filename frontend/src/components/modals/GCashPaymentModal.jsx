@@ -315,7 +315,7 @@ export function GCashPaymentModal({
         justifyContent: 'space-between',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <MapPin style={{ width: '16px', height: '16px', color: '#22c55e' }} />
+          <MapPin style={{ width: '16px', height: '16px', color: '#78716c' }} />
           <span style={{ fontSize: '14px', color: '#6b7280' }}>Route</span>
         </div>
         <span style={{ fontSize: '14px', fontWeight: '600', color: '#111827' }}>
@@ -575,7 +575,7 @@ export function GCashPaymentModal({
             padding: '12px 20px',
             borderRadius: '10px',
             border: 'none',
-            background: 'linear-gradient(to right, #22c55e, #16a34a)',
+            background: '#15803d',
             color: 'white',
             fontSize: '14px',
             fontWeight: '600',
@@ -728,7 +728,7 @@ export function GCashPaymentModal({
             padding: '12px 20px',
             borderRadius: '10px',
             border: 'none',
-            background: (uploading || !file) ? '#d1d5db' : 'linear-gradient(to right, #3b82f6, #2563eb)',
+            background: (uploading || !file) ? '#d1d5db' : '#1d4ed8',
             color: 'white',
             fontSize: '14px',
             fontWeight: '600',
@@ -763,17 +763,17 @@ export function GCashPaymentModal({
         case 'pending':
         case 'processing':
           return {
-            icon: <Loader2 style={{ width: '48px', height: '48px', color: '#3b82f6', animation: 'spin 1s linear infinite' }} />,
+            icon: <Loader2 style={{ width: '48px', height: '48px', color: '#78716c', animation: 'spin 1s linear infinite' }} />,
             title: 'Verifying Payment',
             message: 'Please wait while we verify your GCash screenshot. This usually takes 10-30 seconds...',
-            color: '#3b82f6',
+            color: '#78716c',
           };
         case 'approved':
           return {
-            icon: <CheckCircle2 style={{ width: '48px', height: '48px', color: '#22c55e' }} />,
+            icon: <CheckCircle2 style={{ width: '48px', height: '48px', color: '#78716c' }} />,
             title: 'Payment Verified!',
             message: 'Your payment has been approved and your platform fee is now recorded. You will be redirected shortly.',
-            color: '#22c55e',
+            color: '#78716c',
           };
         case 'rejected':
           return {
@@ -845,7 +845,7 @@ export function GCashPaymentModal({
                 padding: '12px 20px',
                 borderRadius: '10px',
                 border: 'none',
-                background: 'linear-gradient(to right, #3b82f6, #2563eb)',
+                background: '#1d4ed8',
                 color: 'white',
                 fontSize: '14px',
                 fontWeight: '600',

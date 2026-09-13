@@ -18,7 +18,7 @@ export function CallButton({ onCall, disabled, title, className, iconClassName }
         'inline-flex items-center justify-center rounded-xl transition-all duration-200',
         'w-9 h-9 shrink-0',
         'bg-gradient-to-br from-green-500 to-emerald-600',
-        'text-white shadow-md shadow-green-500/30',
+        'text-white shadow-md shadow-green-600/20',
         'hover:from-green-400 hover:to-emerald-500 hover:shadow-green-400/40 hover:scale-105',
         'active:scale-95',
         'disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:shadow-none',

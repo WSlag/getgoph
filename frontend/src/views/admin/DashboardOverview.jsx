@@ -167,7 +167,7 @@ export function DashboardOverview({ badges, onNavigate }) {
               value={stats?.totalUsers || 0}
               subtitle={`${stats?.shippers || 0} shippers, ${stats?.truckers || 0} truckers`}
               icon={Users}
-              iconColor="bg-gradient-to-br from-blue-400 to-blue-600 shadow-blue-500/30"
+              iconColor="bg-blue-600 shadow-blue-600/20"
               onClick={() => onNavigate('users')}
             />
             <StatCard
@@ -175,7 +175,7 @@ export function DashboardOverview({ badges, onNavigate }) {
               value={stats?.totalListings || 0}
               subtitle={`${stats?.openCargo || 0} cargo, ${stats?.availableTrucks || 0} trucks`}
               icon={Package}
-              iconColor="bg-gradient-to-br from-green-400 to-green-600 shadow-green-500/30"
+              iconColor="bg-green-600 shadow-green-600/20"
               onClick={() => onNavigate('listings')}
             />
             <StatCard
@@ -183,7 +183,7 @@ export function DashboardOverview({ badges, onNavigate }) {
               value={stats?.totalContracts || 0}
               subtitle={`${stats?.activeContracts || 0} active`}
               icon={FileText}
-              iconColor="bg-gradient-to-br from-purple-400 to-purple-600 shadow-purple-500/30"
+              iconColor="bg-violet-600 shadow-violet-600/20"
               onClick={() => onNavigate('contracts')}
             />
             <StatCard
@@ -191,7 +191,7 @@ export function DashboardOverview({ badges, onNavigate }) {
               value={`PHP ${(stats?.totalAmountToday || 0).toLocaleString()}`}
               subtitle={`${stats?.approvedToday || 0} approved`}
               icon={CreditCard}
-              iconColor="bg-gradient-to-br from-orange-400 to-orange-600 shadow-orange-500/30"
+              iconColor="bg-primary shadow-primary/20"
               onClick={() => onNavigate('financial')}
             />
           </>
@@ -208,7 +208,7 @@ export function DashboardOverview({ badges, onNavigate }) {
           value={`${(kpiSummary?.feeRecoveryRate || 0).toFixed(1)}%`}
           subtitle={`PHP ${(kpiSummary?.feesCollected || 0).toLocaleString()} collected`}
           icon={TrendingUp}
-          iconColor="bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-emerald-500/30"
+          iconColor="bg-green-600 shadow-green-600/20"
         />
         <StatCard
           title="Overdue Fees (8w)"
@@ -222,7 +222,7 @@ export function DashboardOverview({ badges, onNavigate }) {
           value={`${(kpiSummary?.repeatTruckerRate || 0).toFixed(1)}%`}
           subtitle={`${kpiSummary?.contractsCompleted || 0} completed contracts`}
           icon={Truck}
-          iconColor="bg-gradient-to-br from-indigo-400 to-indigo-600 shadow-indigo-500/30"
+          iconColor="bg-violet-600 shadow-indigo-500/30"
         />
         <StatCard
           title="Dispute Rate (8w)"
@@ -246,7 +246,7 @@ export function DashboardOverview({ badges, onNavigate }) {
           title="Approved Today"
           value={stats?.approvedToday || 0}
           icon={CheckCircle2}
-          iconColor="bg-gradient-to-br from-green-400 to-green-600 shadow-green-500/30"
+          iconColor="bg-green-600 shadow-green-600/20"
         />
         <StatCard
           title="Rejected Today"

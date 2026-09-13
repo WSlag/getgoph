@@ -330,7 +330,7 @@ export function SupportMessagesView() {
       <section className="rounded-sm border border-gray-200/80 bg-white/90 p-4 shadow-sm dark:border-gray-800/80 dark:bg-gray-900/80 lg:p-5">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-start gap-3">
-            <div className="flex size-10 items-center justify-center rounded-[3px] bg-gradient-to-br from-orange-400 to-orange-600 shadow-lg shadow-orange-500/30">
+            <div className="flex size-10 items-center justify-center rounded-[3px] bg-primary shadow-lg shadow-primary/20">
               <Sparkles className="size-5 text-white" />
             </div>
             <div>
@@ -420,7 +420,7 @@ export function SupportMessagesView() {
                         className={cn(
                           'whitespace-nowrap rounded-[3px] px-3.5 py-1.5 text-xs font-semibold transition-all duration-200',
                           isActive
-                            ? 'bg-gradient-to-r from-orange-400 to-orange-600 text-white shadow-lg shadow-orange-500/30'
+                            ? 'bg-primary text-white shadow-lg shadow-primary/20'
                             : 'border border-gray-200 bg-white text-gray-600 hover:border-orange-200 hover:text-orange-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-orange-700 dark:hover:text-orange-300'
                         )}
                       >
@@ -475,7 +475,7 @@ export function SupportMessagesView() {
                             <div className={cn(
                               'mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-[3px] text-sm font-bold',
                               isSelected
-                                ? 'bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg shadow-orange-500/30'
+                                ? 'bg-primary text-white shadow-lg shadow-primary/20'
                                 : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-200'
                             )}>
                               {userInitial}
@@ -608,7 +608,7 @@ export function SupportMessagesView() {
                                 className={cn(
                                   'max-w-[88%] rounded-[3px] px-4 py-3 shadow-sm sm:max-w-[75%] break-words [overflow-wrap:anywhere]',
                                   isAdmin
-                                    ? 'bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-orange-500/20'
+                                    ? 'bg-primary text-white shadow-orange-500/20'
                                     : 'border border-gray-200 bg-white text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100'
                                 )}
                               >

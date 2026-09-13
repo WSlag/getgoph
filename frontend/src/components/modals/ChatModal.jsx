@@ -498,7 +498,7 @@ export function ChatModal({
                 flexShrink: 0,
                 borderRadius: '12px',
                 background: isCargo
-                  ? 'linear-gradient(to bottom right, #fb923c, #ea580c)'
+                  ? 'linear-gradient(to bottom right, #ea580c, #c2410c)'
                   : 'linear-gradient(to bottom right, #a78bfa, #7c3aed)',
                 display: 'flex',
                 alignItems: 'center',
@@ -516,7 +516,7 @@ export function ChatModal({
               <div style={{ minWidth: 0 }}>
                 <DialogTitle>Chat with {otherPartyName}</DialogTitle>
                 <DialogDescription style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <MapPin style={{ width: '12px', height: '12px', color: '#22c55e' }} />
+                  <MapPin style={{ width: '12px', height: '12px', color: '#78716c' }} />
                   <span>{listing.origin}</span>
                   <span style={{ color: '#9ca3af', margin: '0 4px' }}>{'->'}</span>
                   <MapPin style={{ width: '12px', height: '12px', color: '#ef4444' }} />
@@ -777,7 +777,7 @@ export function ChatModal({
           }}>
             {messagesLoading ? (
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-                <Loader2 style={{ width: '24px', height: '24px', color: '#3b82f6', animation: 'spin 1s linear infinite' }} />
+                <Loader2 style={{ width: '24px', height: '24px', color: '#78716c', animation: 'spin 1s linear infinite' }} />
               </div>
             ) : messages.length === 0 ? (
               <div style={{
@@ -799,7 +799,7 @@ export function ChatModal({
                   justifyContent: 'center',
                   marginBottom: '12px'
                 }}>
-                  <MessageSquare style={{ width: '28px', height: '28px', color: '#3b82f6' }} />
+                  <MessageSquare style={{ width: '28px', height: '28px', color: '#78716c' }} />
                 </div>
                 <p style={{ color: '#4b5563', fontWeight: '500' }}>
                   Start the conversation!
@@ -868,7 +868,7 @@ export function ChatModal({
                         padding: '10px 16px',
                         boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
                         background: isSent
-                          ? 'linear-gradient(to bottom right, #fb923c, #ea580c)'
+                          ? 'linear-gradient(to bottom right, #ea580c, #c2410c)'
                           : 'white',
                         color: isSent ? 'white' : '#111827',
                         borderRadius: isSent ? '16px 16px 4px 16px' : '16px 16px 16px 4px',

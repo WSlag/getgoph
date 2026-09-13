@@ -115,7 +115,7 @@ export function AdminHeader({
             {/* User Profile */}
             {userProfile && (
               <div className="hidden sm:flex items-center gap-3 pl-3 border-l border-slate-200 dark:border-slate-700">
-                <div className="size-9 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-sm">
+                <div className="size-9 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm">
                   {userProfile.name?.charAt(0)?.toUpperCase() || 'A'}
                 </div>
                 <div className="hidden lg:block">

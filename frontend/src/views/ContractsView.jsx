@@ -306,12 +306,13 @@ export function ContractsView({
   }, [contractCounts, workspaceRole]);
 
   return (
-    <div className={cn("flex-1", !embedded && "bg-gray-50 dark:bg-gray-950 overflow-y-auto")} style={!embedded ? { padding: isMobile ? '16px' : '24px', paddingBottom: isMobile ? 'calc(100px + env(safe-area-inset-bottom, 0px))' : '24px' } : {}}>
+    <div className={cn("flex-1", !embedded && "bg-gray-50 dark:bg-gray-950 overflow-y-auto")}>
+      <div className={cn(!embedded && "mx-auto w-full max-w-7xl px-4 lg:px-6 py-6", isMobile && "pb-[calc(100px+env(safe-area-inset-bottom,0px))]")}>
       {/* Header - Only show when not embedded */}
       {!embedded && (
         <div style={{ marginBottom: isMobile ? '24px' : '32px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-            <div className="size-12 rounded-xl bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+            <div className="size-12 rounded-xl bg-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/30">
               <FileText className="size-6 text-white" />
             </div>
             <div>

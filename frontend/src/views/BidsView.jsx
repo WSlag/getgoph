@@ -76,6 +76,7 @@ export function BidsView({
 
   return (
     <main className={cn("flex-1", !embedded && "bg-gray-50 dark:bg-gray-950 overflow-y-auto")} style={!embedded ? { padding: isMobile ? '16px' : '24px', paddingBottom: isMobile ? 'calc(100px + env(safe-area-inset-bottom, 0px))' : '24px' } : {}}>
+      <div className={cn(!embedded && "mx-auto w-full max-w-7xl px-4 lg:px-6")}>
       {/* Header - Only show when not embedded */}
       {!embedded && (
         <div style={{ marginBottom: isMobile ? '16px' : '24px' }}>
@@ -158,8 +159,8 @@ export function BidsView({
                       height: isMobile ? '36px' : '40px',
                       borderRadius: '50%',
                       background: listingType === 'cargo'
-                        ? 'linear-gradient(to bottom right, #fb923c, #ea580c)'
-                        : 'linear-gradient(to bottom right, #3b82f6, #2563eb)',
+                        ? 'linear-gradient(to bottom right, #ea580c, #c2410c)'
+                        : '#1d4ed8',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -249,8 +250,9 @@ export function BidsView({
               </div>
             );
           })}
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </main>
   );
 }

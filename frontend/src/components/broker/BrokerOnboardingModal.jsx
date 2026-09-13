@@ -54,7 +54,7 @@ export default function BrokerOnboardingModal({ open, onClose, onActivate, userR
         <div className="p-6">
           {/* Header */}
           <div className="flex items-center gap-3 mb-4">
-            <div className="size-14 rounded-xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center shadow-lg">
+            <div className="size-14 rounded-xl bg-green-600 flex items-center justify-center shadow-lg">
               <Users className="size-7 text-white" />
             </div>
             <div>
@@ -101,7 +101,7 @@ export default function BrokerOnboardingModal({ open, onClose, onActivate, userR
             <button
               onClick={handleActivate}
               disabled={loading}
-              className="flex-1 px-4 py-3 rounded-lg bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold hover:from-green-600 hover:to-emerald-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-green-500/30"
+              className="flex-1 px-4 py-3 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-green-600/20"
             >
               {loading ? (
                 'Activating...'

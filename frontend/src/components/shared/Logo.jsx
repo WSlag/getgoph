@@ -12,11 +12,12 @@ export function Logo({ className = "", showText = true, size = "default" }) {
   return (
     <div className={cn("flex items-center gap-3", className)}>
       <img
-        src="/icons/icon-192x192.png"
+        src="/icons/getgo-mark.svg"
         alt="GetGo"
         width={currentSize.img}
         height={currentSize.img}
-        className="drop-shadow-lg rounded-xl"
+        className="rounded-[22%] shadow-sm"
+        style={{ borderRadius: `${Math.round(currentSize.img * 0.22)}px` }}
       />
       {showText && (
         <div className="flex flex-col">
@@ -28,17 +29,17 @@ export function Logo({ className = "", showText = true, size = "default" }) {
               Get
             </span>
             <span
-              className={cn("font-black tracking-tight text-gray-900 dark:text-white", currentSize.text)}
+              className={cn("font-black tracking-tight text-foreground", currentSize.text)}
               style={{ fontFamily: 'Outfit, sans-serif' }}
             >
               Go
             </span>
           </div>
           <p
-            className="text-[10px] text-gray-500 dark:text-gray-400 tracking-wide font-medium"
+            className="text-[10px] text-muted-foreground tracking-[0.18em] font-semibold uppercase"
             style={{ marginTop: '-2px' }}
           >
-            YOUR CARGO MARKETPLACE
+            Cargo Marketplace
           </p>
         </div>
       )}

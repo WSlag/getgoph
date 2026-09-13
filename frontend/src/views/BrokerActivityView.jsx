@@ -320,7 +320,7 @@ export function BrokerActivityView({
           </div>
         ) : items.length === 0 ? (
           <div className="py-14 flex flex-col items-center justify-center gap-3">
-            <div className="size-14 rounded-2xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #FF9A56 0%, #FF6B35 100%)', boxShadow: '0 4px 16px rgba(249,115,22,0.3)' }}>
+            <div className="size-14 rounded-2xl flex items-center justify-center" style={{ background: '#c2410c', boxShadow: '0 4px 16px rgba(249,115,22,0.3)' }}>
               <TrendingUp className="size-6 text-white" />
             </div>
             <div className="text-center">

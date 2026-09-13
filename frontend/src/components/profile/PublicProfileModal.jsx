@@ -196,7 +196,7 @@ function ReviewCard({ review }) {
     <div className="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-4">
       <div className="flex items-start justify-between mb-2">
         <div className="flex items-center gap-2">
-          <div className="size-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-xs font-bold">
+          <div className="size-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
             {getInitials(review.raterName || 'U')}
           </div>
           <div>

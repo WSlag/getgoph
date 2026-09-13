@@ -74,7 +74,7 @@ function ProgressBar({ progress }) {
       </div>
       <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
         <div
-          className="h-full bg-gradient-to-r from-orange-400 to-orange-600 rounded-full transition-all duration-300"
+          className="h-full bg-primary rounded-full transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -264,19 +264,19 @@ export function ShipmentsView() {
           title="Total Shipments"
           value={stats.total}
           icon={Package}
-          iconColor="bg-gradient-to-br from-blue-400 to-blue-600 shadow-blue-500/30"
+          iconColor="bg-blue-600 shadow-blue-600/20"
         />
         <StatCard
           title="In Transit"
           value={stats.inTransit}
           icon={Truck}
-          iconColor="bg-gradient-to-br from-purple-400 to-purple-600 shadow-purple-500/30"
+          iconColor="bg-violet-600 shadow-violet-600/20"
         />
         <StatCard
           title="Delivered"
           value={stats.delivered}
           icon={CheckCircle2}
-          iconColor="bg-gradient-to-br from-green-400 to-green-600 shadow-green-500/30"
+          iconColor="bg-green-600 shadow-green-600/20"
         />
       </div>
 

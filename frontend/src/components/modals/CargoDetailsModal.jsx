@@ -188,15 +188,15 @@ export function CargoDetailsModal({
 
   // Status badge styles
   const statusStyles = {
-    open: 'bg-gradient-to-br from-green-400 to-green-600 text-white shadow-lg',
-    waiting: 'bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg',
+    open: 'bg-green-600 text-white shadow-lg',
+    waiting: 'bg-primary text-white shadow-lg',
     negotiating: 'bg-gradient-to-br from-yellow-400 to-yellow-600 text-white shadow-lg',
-    'in-progress': 'bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg',
-    delivered: 'bg-gradient-to-br from-purple-400 to-purple-600 text-white shadow-lg',
+    'in-progress': 'bg-blue-600 text-white shadow-lg',
+    delivered: 'bg-violet-600 text-white shadow-lg',
   };
 
   const gradientColors = {
-    open: 'bg-gradient-to-r from-orange-400 to-orange-600',
+    open: 'bg-primary',
     waiting: 'bg-gradient-to-r from-yellow-400 to-orange-500',
     negotiating: 'bg-gradient-to-r from-yellow-400 to-yellow-600',
     'in-progress': 'bg-gradient-to-r from-blue-400 to-blue-600',
@@ -251,7 +251,7 @@ export function CargoDetailsModal({
                 width: isMobile ? '40px' : '48px',
                 height: isMobile ? '40px' : '48px',
                 borderRadius: '12px',
-                background: 'linear-gradient(to bottom right, #fb923c, #ea580c)',
+                background: 'linear-gradient(to bottom right, #ea580c, #c2410c)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -372,7 +372,7 @@ export function CargoDetailsModal({
             </div>
 
             <div className="flex flex-col items-center" style={{ gap: '4px', padding: isMobile ? '0 6px' : '0 16px', flexShrink: 0 }}>
-              <Navigation style={{ width: isMobile ? '16px' : '20px', height: isMobile ? '16px' : '20px', color: '#f97316' }} />
+              <Navigation style={{ width: isMobile ? '16px' : '20px', height: isMobile ? '16px' : '20px', color: '#c2410c' }} />
               <div style={{ height: '2px', width: isMobile ? '40px' : '64px', background: 'linear-gradient(to right, #fb923c, #ea580c)', borderRadius: '9999px' }} />
             </div>
 
@@ -401,7 +401,7 @@ export function CargoDetailsModal({
           <div className="flex items-center" style={{ gap: isMobile ? '16px' : '24px', marginTop: isMobile ? '8px' : '12px', fontSize: isMobile ? '12px' : '14px', color: '#6b7280' }}>
             {cargo.distance && (
               <div className="flex items-center" style={{ gap: '6px' }}>
-                <Navigation style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px', color: '#3b82f6' }} />
+                <Navigation style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px', color: '#78716c' }} />
                 <span>{cargo.distance}</span>
               </div>
             )}
@@ -420,7 +420,7 @@ export function CargoDetailsModal({
           <div className="grid grid-cols-2" style={{ gap: isMobile ? '12px' : '16px' }}>
             {displayWeight && (
               <div className="flex items-center" style={{ gap: isMobile ? '6px' : '8px' }}>
-                <Weight style={{ width: isMobile ? '18px' : '20px', height: isMobile ? '18px' : '20px', color: '#f97316' }} />
+                <Weight style={{ width: isMobile ? '18px' : '20px', height: isMobile ? '18px' : '20px', color: '#c2410c' }} />
                 <div>
                   <p style={{ fontSize: '11px', color: '#6b7280' }}>Weight</p>
                   <p style={{ fontWeight: '500', fontSize: isMobile ? '13px' : '14px', color: darkMode ? '#fff' : '#111827' }}>{displayWeight}</p>
@@ -429,7 +429,7 @@ export function CargoDetailsModal({
             )}
             {cargo.vehicleNeeded && (
               <div className="flex items-center" style={{ gap: isMobile ? '6px' : '8px' }}>
-                <Truck style={{ width: isMobile ? '18px' : '20px', height: isMobile ? '18px' : '20px', color: '#3b82f6' }} />
+                <Truck style={{ width: isMobile ? '18px' : '20px', height: isMobile ? '18px' : '20px', color: '#78716c' }} />
                 <div>
                   <p style={{ fontSize: '11px', color: '#6b7280' }}>Vehicle Needed</p>
                   <p style={{ fontWeight: '500', fontSize: isMobile ? '13px' : '14px', color: darkMode ? '#fff' : '#111827' }}>{cargo.vehicleNeeded}</p>
@@ -546,7 +546,7 @@ export function CargoDetailsModal({
                   >
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-3">
-                        <div className="size-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold">
+                        <div className="size-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
                           {bid.bidder?.[0]?.toUpperCase() || 'T'}
                         </div>
                         <div>

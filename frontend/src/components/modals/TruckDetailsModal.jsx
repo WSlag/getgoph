@@ -159,14 +159,14 @@ export function TruckDetailsModal({
 
   // Status badge styles
   const statusStyles = {
-    available: 'bg-gradient-to-br from-green-400 to-green-600 text-white shadow-lg',
-    open: 'bg-gradient-to-br from-green-400 to-green-600 text-white shadow-lg',
-    waiting: 'bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg',
+    available: 'bg-green-600 text-white shadow-lg',
+    open: 'bg-green-600 text-white shadow-lg',
+    waiting: 'bg-primary text-white shadow-lg',
     negotiating: 'bg-gradient-to-br from-yellow-400 to-yellow-600 text-white shadow-lg',
-    'in-transit': 'bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg',
-    'in-progress': 'bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg',
-    booked: 'bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg',
-    delivered: 'bg-gradient-to-br from-purple-400 to-purple-600 text-white shadow-lg',
+    'in-transit': 'bg-primary text-white shadow-lg',
+    'in-progress': 'bg-blue-600 text-white shadow-lg',
+    booked: 'bg-blue-600 text-white shadow-lg',
+    delivered: 'bg-violet-600 text-white shadow-lg',
     offline: 'bg-gradient-to-br from-gray-400 to-gray-600 text-white shadow-lg',
   };
 
@@ -184,10 +184,10 @@ export function TruckDetailsModal({
 
   const gradientColors = {
     available: 'bg-gradient-to-r from-purple-400 to-purple-600',
-    open: 'bg-gradient-to-r from-orange-400 to-orange-600',
+    open: 'bg-primary',
     waiting: 'bg-gradient-to-r from-yellow-400 to-orange-500',
     negotiating: 'bg-gradient-to-r from-yellow-400 to-yellow-600',
-    'in-transit': 'bg-gradient-to-r from-orange-400 to-orange-600',
+    'in-transit': 'bg-primary',
     'in-progress': 'bg-gradient-to-r from-blue-400 to-blue-600',
     booked: 'bg-gradient-to-r from-blue-400 to-blue-600',
     delivered: 'bg-gradient-to-r from-purple-400 to-purple-600',
@@ -410,7 +410,7 @@ export function TruckDetailsModal({
             <div className="flex items-center" style={{ gap: isMobile ? '16px' : '24px', marginTop: isMobile ? '8px' : '12px', fontSize: isMobile ? '12px' : '14px', color: '#6b7280' }}>
               {truck.distance && (
                 <div className="flex items-center" style={{ gap: '6px' }}>
-                  <Navigation style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px', color: '#3b82f6' }} />
+                  <Navigation style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px', color: '#78716c' }} />
                   <span>{truck.distance}</span>
                 </div>
               )}
@@ -439,7 +439,7 @@ export function TruckDetailsModal({
             )}
             {truck.capacity && (
               <div className="flex items-center" style={{ gap: isMobile ? '6px' : '8px' }}>
-                <Truck style={{ width: isMobile ? '18px' : '20px', height: isMobile ? '18px' : '20px', color: '#3b82f6', flexShrink: 0 }} />
+                <Truck style={{ width: isMobile ? '18px' : '20px', height: isMobile ? '18px' : '20px', color: '#78716c', flexShrink: 0 }} />
                 <div>
                   <p style={{ fontSize: isMobile ? '11px' : '12px', color: '#6b7280' }}>Capacity</p>
                   <p style={{ fontSize: isMobile ? '13px' : '14px', fontWeight: '500', color: darkMode ? '#fff' : '#111827' }}>{truck.capacity}</p>
@@ -583,7 +583,7 @@ export function TruckDetailsModal({
                           width: isMobile ? '36px' : '40px',
                           height: isMobile ? '36px' : '40px',
                           borderRadius: '50%',
-                          background: 'linear-gradient(to bottom right, #fb923c, #ea580c)',
+                          background: 'linear-gradient(to bottom right, #ea580c, #c2410c)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',

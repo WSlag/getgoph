@@ -1,7 +1,7 @@
 export function AppLogo({ size = 48, className = '' }) {
   return (
     <img
-      src="/icons/icon-192x192.png"
+      src="/icons/getgo-mark.svg"
       alt="GetGo"
       width={size}
       height={size}

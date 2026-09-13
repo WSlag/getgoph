@@ -242,7 +242,7 @@ export default function LoginScreen({ darkMode, onSkipLogin, onOpenLegal }) {
               style={{ padding: '14px 16px' }}
               className={`w-full rounded-xl font-medium flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95
                 ${phone.length >= 10 && !loading
-                  ? 'bg-gradient-to-r from-orange-400 to-orange-600 text-white hover:from-orange-500 hover:to-orange-700 shadow-lg shadow-orange-500/30'
+                  ? 'bg-primary text-white hover:from-orange-500 hover:to-orange-700 shadow-lg shadow-primary/20'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed'
                 }`}
             >
@@ -320,7 +320,7 @@ export default function LoginScreen({ darkMode, onSkipLogin, onOpenLegal }) {
               disabled={loading || otp.length !== 6 || otpCooldownRemaining > 0}
               className={`w-full py-3 px-4 rounded-xl font-medium flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95
                 ${otp.length === 6 && !loading && otpCooldownRemaining === 0
-                  ? 'bg-gradient-to-r from-orange-400 to-orange-600 text-white hover:from-orange-500 hover:to-orange-700 shadow-lg shadow-orange-500/30'
+                  ? 'bg-primary text-white hover:from-orange-500 hover:to-orange-700 shadow-lg shadow-primary/20'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed'
                 }`}
             >
@@ -420,7 +420,7 @@ export default function LoginScreen({ darkMode, onSkipLogin, onOpenLegal }) {
               disabled={loading || phone.length < 10 || recoveryCode.length < 12}
               className={`w-full py-3 px-4 rounded-xl font-medium flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95
                 ${phone.length >= 10 && recoveryCode.length >= 12 && !loading
-                  ? 'bg-gradient-to-r from-orange-400 to-orange-600 text-white hover:from-orange-500 hover:to-orange-700 shadow-lg shadow-orange-500/30'
+                  ? 'bg-primary text-white hover:from-orange-500 hover:to-orange-700 shadow-lg shadow-primary/20'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed'
                 }`}
             >

@@ -21,14 +21,14 @@ const CONFIG = {
     sections: PRIVACY_POLICY_SECTIONS,
     icon: Shield,
     iconBg: 'from-purple-400 to-purple-600',
-    iconShadow: 'shadow-purple-500/30',
+    iconShadow: 'shadow-violet-600/20',
   },
   terms: {
     meta: TERMS_OF_SERVICE_META,
     sections: TERMS_OF_SERVICE_SECTIONS,
     icon: FileText,
     iconBg: 'from-orange-400 to-orange-600',
-    iconShadow: 'shadow-orange-500/30',
+    iconShadow: 'shadow-primary/20',
   },
 };
 

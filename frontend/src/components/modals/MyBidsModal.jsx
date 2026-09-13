@@ -135,8 +135,8 @@ export function MyBidsModal({
                       <div className={cn(
                         "size-10 rounded-xl flex items-center justify-center",
                         bid.cargoListingId
-                          ? "bg-gradient-to-br from-orange-400 to-orange-600"
-                          : "bg-gradient-to-br from-violet-400 to-violet-600"
+                          ? "bg-primary"
+                          : "bg-violet-600"
                       )}>
                         {bid.cargoListingId ? (
                           <Package className="size-5 text-white" />
