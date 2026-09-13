@@ -396,7 +396,7 @@ function PaymentDetailModal({ open, onClose, submission, onApprove, onReject, lo
                     <Button
                       onClick={handleApprove}
                       disabled={loading}
-                      className="flex-1 bg-green-600 hover:from-green-600 hover:to-green-700 text-white"
+                      className="flex-1 bg-green-600 hover:bg-green-700 text-white"
                     >
                       {loading ? (
                         <Loader2 className="size-4 animate-spin mr-2" />

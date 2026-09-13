@@ -732,6 +732,7 @@ export function ContractsView({
           })}
         </div>
       )}
+      </div>
     </div>
   );
 }

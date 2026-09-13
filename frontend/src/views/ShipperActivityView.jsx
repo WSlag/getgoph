@@ -529,7 +529,7 @@ export function ShipperActivityView({
                     <span>With: <span className="text-gray-600 dark:text-gray-300 font-semibold">{item.counterpartyName}</span></span>
                   )}
                   {formatAmount(item.amount) && (
-                    <span className="font-bold" style={{ color: '#FF6B35' }}>{formatAmount(item.amount)}</span>
+                    <span className="font-bold text-primary">{formatAmount(item.amount)}</span>
                   )}
                   {item.activityAt && (
                     <span className="flex items-center gap-1 ml-auto">
