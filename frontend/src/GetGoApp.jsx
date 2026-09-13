@@ -2106,19 +2106,20 @@ export default function GetGoApp() {
   };
 
   const handleTabChange = useCallback((nextTab) => {
+    // Unified auth guard for Activity — prevents unauthenticated desktop access (previously only mobile was guarded)
+    if (nextTab === 'activity' && !(authUser && userProfile)) {
+      requireAuth(() => setActiveTab('activity'), 'Sign in to view activity');
+      return;
+    }
     if (nextTab === 'activity' && activeWorkspace === 'broker' && activityPrimaryWorkspace !== 'broker') {
       setWorkspaceRole(activityPrimaryWorkspace);
     }
     setActiveTab(nextTab);
-  }, [activeWorkspace, activityPrimaryWorkspace, setWorkspaceRole, setActiveTab]);
+  }, [activeWorkspace, activityPrimaryWorkspace, setWorkspaceRole, setActiveTab, authUser, userProfile, requireAuth]);
 
   const handleMobileTabChange = useCallback((nextTab) => {
-    if (nextTab === 'activity' && !(authUser && userProfile)) {
-      requireAuth(() => handleTabChange('activity'), 'Sign in to view activity');
-      return;
-    }
     handleTabChange(nextTab);
-  }, [authUser, userProfile, requireAuth, handleTabChange]);
+  }, [handleTabChange]);
 
   const handleProfileClick = () => {
     requireAuth(() => setActiveTab('profile'), 'Sign in to view profile');
@@ -3030,7 +3031,7 @@ export default function GetGoApp() {
           </ErrorBoundary>
         )}
 
-        {activeTab === 'activity' && (
+        {activeTab === 'activity' && authUser && (
           <ErrorBoundary>
             <ActivityView
               currentUser={currentUser}
@@ -3061,6 +3062,23 @@ export default function GetGoApp() {
               onToast={showToast}
             />
           </ErrorBoundary>
+        )}
+
+        {activeTab === 'activity' && !authUser && (
+          <main className="flex-1 p-4 lg:p-8">
+            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              Activity
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              Please sign in to view your activity.
+            </p>
+            <button
+              onClick={() => promptSignInForTab('activity', 'Sign in to view activity')}
+              className="mt-4 px-4 py-2 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-medium transition-colors"
+            >
+              Sign in
+            </button>
+          </main>
         )}
 
         {activeTab === 'tracking' && (
@@ -3146,7 +3164,7 @@ export default function GetGoApp() {
                 if (availableWorkspaces.includes('broker')) {
                   setWorkspaceRole('broker');
                 }
-                setActiveTab('activity');
+                handleTabChange('activity');
               }}
               onBrokerRegistered={() => { void handleBrokerConverted(); }}
               onToast={showToast}
