@@ -67,3 +67,7 @@ Figma/
 karga-arch*.json
 karga-architecture*.json
 functions/scripts/push-activation-broadcast.cjs
+_archive/
+tmp/
+.kilo/
+google-cloud-cli.zip
