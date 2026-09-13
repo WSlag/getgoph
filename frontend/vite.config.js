@@ -5,6 +5,25 @@ import { VitePWA } from 'vite-plugin-pwa'
 import fs from 'fs'
 import path from 'path'
 
+// Rewrites the hardcoded hero preload URLs in index.html to their
+// content-hashed filenames (see src/generated/hero-assets.json) so the
+// preload never serves a stale cached image. No-op when the manifest
+// is missing (e.g. generate-hero-assets hasn't run yet).
+function heroPreloadCacheBust() {
+  const manifestPath = path.resolve(__dirname, 'src/generated/hero-assets.json')
+
+  return {
+    name: 'hero-preload-cache-bust',
+    transformIndexHtml(html) {
+      if (!fs.existsSync(manifestPath)) return html
+      const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'))
+      return html.replace(/\/assets\/hero\/([a-z]+-\d+\.avif)/g, (match, plain) =>
+        `/assets/hero/${manifest[plain] || plain}`,
+      )
+    },
+  }
+}
+
 function excludeDebugPagesInProd() {
   const includeDebugPages = process.env.VITE_INCLUDE_DEBUG_PAGES === 'true'
   const excludedDebugAssets = new Set([
@@ -42,6 +61,7 @@ export default defineConfig({
     __APP_BUILD_ID__: JSON.stringify(new Date().toISOString()),
   },
   plugins: [
+    heroPreloadCacheBust(),
     excludeDebugPagesInProd(),
     react(),
     tailwindcss(),

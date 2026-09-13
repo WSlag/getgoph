@@ -1,11 +1,17 @@
 ﻿import sharp from 'sharp';
 import fs from 'fs';
+import crypto from 'crypto';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const sourceDir = path.join(__dirname, '../public/assets');
 const outDir = path.join(__dirname, '../public/assets/hero');
+// Committed manifest mapping plain filenames to content-hashed filenames,
+// e.g. { "truckers-1200.jpg": "truckers-1200.a1b2c3d4.jpg" }.
+// HeroCarousel.jsx + vite.config.js resolve URLs through it so regenerated
+// images automatically bust browser/CDN caches (cache-busting filenames).
+const manifestPath = path.join(__dirname, '../src/generated/hero-assets.json');
 
 const variants = [
   { width: 480, height: 270 },
@@ -31,43 +37,55 @@ async function ensureDirectory(dirPath) {
   await fs.promises.mkdir(dirPath, { recursive: true });
 }
 
-async function buildVariant(inputPath, outputBase, { width, height }, position) {
-  const image = sharp(inputPath);
+const FORMATS = [
+  { ext: 'avif', encode: (img) => img.avif({ quality: 55, effort: 5 }) },
+  { ext: 'webp', encode: (img) => img.webp({ quality: 70, effort: 6 }) },
+  { ext: 'jpg', encode: (img) => img.jpeg({ quality: 72, mozjpeg: true, chromaSubsampling: '4:2:0' }) },
+];
 
-  await image
-    .clone()
-    .resize({ width, height, fit: 'cover', position, withoutEnlargement: false })
-    .avif({ quality: 55, effort: 5 })
-    .toFile(`${outputBase}-${width}.avif`);
+async function buildVariant(inputPath, name, { width, height }, position, manifest) {
+  for (const { ext, encode } of FORMATS) {
+    const buffer = await encode(
+      sharp(inputPath).resize({ width, height, fit: 'cover', position, withoutEnlargement: false }),
+    ).toBuffer();
+    const hash = crypto.createHash('sha256').update(buffer).digest('hex').slice(0, 8);
+    const plain = `${name}-${width}.${ext}`;
+    const hashed = `${name}-${width}.${hash}.${ext}`;
+    await fs.promises.writeFile(path.join(outDir, hashed), buffer);
+    manifest[plain] = hashed;
+  }
+}
 
-  await image
-    .clone()
-    .resize({ width, height, fit: 'cover', position, withoutEnlargement: false })
-    .webp({ quality: 70, effort: 6 })
-    .toFile(`${outputBase}-${width}.webp`);
-
-  await image
-    .clone()
-    .resize({ width, height, fit: 'cover', position, withoutEnlargement: false })
-    .jpeg({ quality: 72, mozjpeg: true, chromaSubsampling: '4:2:0' })
-    .toFile(`${outputBase}-${width}.jpg`);
+// Remove previously generated files for this image group (both legacy
+// unhashed names and old hashes) so stale variants never ship to hosting.
+async function cleanStaleVariants(name) {
+  const entries = await fs.promises.readdir(outDir).catch(() => []);
+  const stale = entries.filter((entry) =>
+    new RegExp(`^${name}-(480|768|1200)(\\.[a-f0-9]{8})?\\.(avif|webp|jpg)$`).test(entry),
+  );
+  await Promise.all(stale.map((entry) => fs.promises.rm(path.join(outDir, entry), { force: true })));
 }
 
 async function generateHeroAssets() {
   await ensureDirectory(outDir);
+  await ensureDirectory(path.dirname(manifestPath));
+  const manifest = {};
 
   for (const source of sources) {
     const inputPath = path.join(sourceDir, source.input);
-    const outputBase = path.join(outDir, source.output);
 
     if (!fs.existsSync(inputPath)) {
       throw new Error(`Missing hero source image: ${inputPath}`);
     }
 
+    await cleanStaleVariants(source.output);
     for (const width of variants) {
-      await buildVariant(inputPath, outputBase, width, source.position || 'centre');
+      await buildVariant(inputPath, source.output, width, source.position || 'centre', manifest);
     }
   }
+
+  const sorted = Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)));
+  await fs.promises.writeFile(manifestPath, `${JSON.stringify(sorted, null, 2)}\n`);
 
   console.log(`Generated hero assets in ${outDir}`);
 }

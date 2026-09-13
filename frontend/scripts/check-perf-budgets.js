@@ -77,7 +77,7 @@ function main() {
   }
 
   const heroDir = path.join(assetsDir, 'hero');
-  const hero1200 = collectByPattern(heroDir, /-1200\.(avif|webp|jpg)$/);
+  const hero1200 = collectByPattern(heroDir, /-1200(\.[a-f0-9]{8})?\.(avif|webp|jpg)$/);
   if (hero1200.length === 0) {
     fail('No generated 1200px hero assets found in dist/assets/hero.');
   } else {
