@@ -168,17 +168,6 @@ export function HeroCarousel({
   const prev = useCallback(() => goTo(current - 1), [current, goTo]);
   const next = useCallback(() => goTo(current + 1), [current, goTo]);
 
-  const togglePause = useCallback(() => {
-    setIsPaused((p) => {
-      if (p) {
-        clearTimeout(pauseTimer.current);
-        return false;
-      }
-      resumeAfterPause();
-      return true;
-    });
-  }, [resumeAfterPause]);
-
   useEffect(() => {
     if (isPaused || prefersReducedMotion) return;
     const id = setInterval(() => setCurrent((c) => (c + 1) % total), 5000);
@@ -327,20 +316,6 @@ export function HeroCarousel({
 
         <NavArrow direction="left" onClick={prev} isMobile={isMobile} />
         <NavArrow direction="right" onClick={next} isMobile={isMobile} />
-
-        <button
-          type="button"
-          aria-label={isPaused ? 'Play carousel' : 'Pause carousel'}
-          data-testid="hero-pause-toggle"
-          onClick={togglePause}
-          className="absolute top-3 right-3 z-10 size-7 lg:size-8 rounded-full bg-black/30 backdrop-blur border border-white/30 flex items-center justify-center text-white hover:bg-black/45 focus-visible:ring-2 focus-visible:ring-white transition-colors"
-        >
-          {isPaused ? (
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="white" aria-hidden="true"><polygon points="2,0 10,6 2,12" /></svg>
-          ) : (
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="white" aria-hidden="true"><rect x="2" y="0" width="3" height="12" rx="0.5" /><rect x="7" y="0" width="3" height="12" rx="0.5" /></svg>
-          )}
-        </button>
 
         <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/20 z-10 overflow-hidden" aria-hidden="true">
           {!prefersReducedMotion && !isPaused && (
