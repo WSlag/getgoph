@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" role="img" aria-labelledby="title">
+  <title id="title">GetGo — Horizontal Lockup</title>
+  <defs>
+    <linearGradient id="ember" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#c2410c"/>
+    </linearGradient>
+  </defs>
+  <!-- Mark: 144px squircle @ (8,8), glyph scaled to fit -->
+  <rect x="8" y="8" width="144" height="144" rx="32" ry="32" fill="url(#ember)"/>
+  <g fill="white">
+    <path d="M 52.4 49.6 H 97.4 A 7.9 7.9 0 0 1 105.3 57.5 V 66.5 H 89.0 V 60.4 A 2.8 2.8 0 0 0 86.2 57.6 H 60.3 A 8.4 8.4 0 0 0 51.9 65.9 V 96.3 A 8.4 8.4 0 0 0 60.3 104.7 H 86.8 A 7.9 7.9 0 0 0 94.7 97.1 V 80.6 H 73.8 L 82.3 72.1 H 105.3 V 97.1 A 16.3 16.3 0 0 1 89.0 113.4 H 60.3 A 16.3 16.3 0 0 1 44 96.3 V 65.9 A 16.3 16.3 0 0 1 52.4 49.6 Z"/>
+  </g>
+  <path d="M 85.6 76.1 L 103.2 88.0 L 85.6 99.9 Z" fill="url(#ember)"/>
+  <!-- Wordmark: Outfit ExtraBold, tight tracking -->
+  <text x="176" y="92" font-family="Outfit, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="64" letter-spacing="-1.5" fill="#1c1917">Get<tspan fill="#c2410c">Go</tspan></text>
+  <text x="178" y="118" font-family="Outfit, 'SF Pro Display', Arial, sans-serif" font-weight="600" font-size="13" letter-spacing="3.2" fill="#78716c">CARGO MARKETPLACE</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">GetGo Ember Glyph</title>
+  <defs>
+    <linearGradient id="ember" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#c2410c"/>
+    </linearGradient>
+  </defs>
+  <!-- Background: 22% radius squircle -->
+  <rect width="512" height="512" rx="112" ry="112" fill="url(#ember)"/>
+  <!-- Glyph: geometric G with forward-arrow negative space -->
+  <!-- Safe zone: glyph bounds ~ 155,125 to 362,392 fits within 80% circle -->
+  <g fill="white">
+    <!-- G body: thick geometric G -->
+    <path d="M 158 148 H 318 A 28 28 0 0 1 346 176 V 208 H 288 V 186 A 10 10 0 0 0 278 176 H 186 A 30 30 0 0 0 156 206 V 314 A 30 30 0 0 0 186 344 H 280 A 28 28 0 0 0 308 316 V 258 H 234 L 264 228 H 346 V 316 A 58 58 0 0 1 288 374 H 186 A 58 58 0 0 1 128 314 V 206 A 58 58 0 0 1 158 148 Z" fill="white"/>
+  </g>
+  <!-- Arrow knock-out: ember reveals movement -->
+  <path d="M 276 242 L 338 288 L 276 334 Z" fill="url(#ember)"/>
+  <!-- Subtle inner depth: thin ember stroke on arrow edge for crispness at small sizes -->
+  <path d="M 276 242 L 338 288 L 276 334 Z" fill="none" stroke="white" stroke-opacity="0.0"/>
+</svg>

@@ -1,31 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">GetGo — Ember Glyph</title>
+  <desc id="desc">Ember gradient squircle with geometric G and forward-arrow cut. Professional mark for PWA icon.</desc>
   <defs>
-    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FF9A56"/>
-      <stop offset="50%" stop-color="#FF6B35"/>
-      <stop offset="100%" stop-color="#FF5722"/>
+    <linearGradient id="ember" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#c2410c"/>
     </linearGradient>
   </defs>
-  <g transform="translate(32 32) scale(0.875)">
-  <!-- Rounded rectangle background -->
-  <rect width="512" height="512" rx="100" ry="100" fill="url(#bgGrad)"/>
-  <!-- "GetGo" text -->
-  <text x="256" y="175" text-anchor="middle" font-family="'Outfit', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="88" fill="white" letter-spacing="-2">GetGo</text>
-  <!-- "Your cargo marketplace" subtitle -->
-  <text x="256" y="215" text-anchor="middle" font-family="'Outfit', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="28" fill="rgba(255,255,255,0.85)" letter-spacing="0.5">Your cargo marketplace</text>
-  <!-- Truck body (trailer) -->
-  <rect x="100" y="260" width="210" height="120" rx="12" fill="white"/>
-  <!-- Truck cab -->
-  <rect x="310" y="300" width="100" height="80" rx="12" fill="white"/>
-  <!-- Cab window -->
-  <rect x="330" y="315" width="55" height="40" rx="6" fill="url(#bgGrad)" opacity="0.6"/>
-  <!-- Wheels -->
-  <circle cx="170" cy="400" r="30" fill="url(#bgGrad)" stroke="white" stroke-width="12"/>
-  <circle cx="240" cy="400" r="30" fill="url(#bgGrad)" stroke="white" stroke-width="12"/>
-  <circle cx="370" cy="400" r="30" fill="url(#bgGrad)" stroke="white" stroke-width="12"/>
-  <!-- Wheel centers -->
-  <circle cx="170" cy="400" r="8" fill="white"/>
-  <circle cx="240" cy="400" r="8" fill="white"/>
-  <circle cx="370" cy="400" r="8" fill="white"/>
+  <!-- 22% radius = 112 on 512 -->
+  <rect width="512" height="512" rx="112" ry="112" fill="url(#ember)"/>
+  <!-- Centered glyph: optimized for 16px favicon legibility, single idea -->
+  <!-- Outer safe padding 10% retained; glyph within 80% circle -->
+  <g fill="white">
+    <path d="M 158 148 H 318 A 28 28 0 0 1 346 176 V 208 H 288 V 186 A 10 10 0 0 0 278 176 H 186 A 30 30 0 0 0 156 206 V 314 A 30 30 0 0 0 186 344 H 280 A 28 28 0 0 0 308 316 V 258 H 234 L 264 228 H 346 V 316 A 58 58 0 0 1 288 374 H 186 A 58 58 0 0 1 128 314 V 206 A 58 58 0 0 1 158 148 Z"/>
   </g>
+  <!-- Forward arrow negative space: motion / logistics -->
+  <path d="M 276 242 L 338 288 L 276 334 Z" fill="url(#ember)"/>
 </svg>
