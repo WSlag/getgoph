@@ -490,7 +490,14 @@ export function HomeView({
       {/* Scrollable Content - professional gutters: max-w-7xl centered, 16px mobile / 24px desktop */}
       <div data-testid="home-scroll-content" className="mx-auto w-full max-w-7xl" style={{ padding: isMobile ? '16px 16px 0' : '0' }}>
       {/* Hero Carousel */}
-      <HeroCarousel isMobile={isMobile} onEarnAsBrokerClick={onActivateBroker} />
+      <HeroCarousel
+        isMobile={isMobile}
+        workspaceRole={activeWorkspace}
+        onEarnAsBrokerClick={onActivateBroker}
+        onPostListing={onPostListing}
+        onMarketChange={onMarketChange}
+        onRouteOptimizerClick={onRouteOptimizerClick}
+      />
       <div className="rounded-2xl border border-border bg-card" style={{ padding: isMobile ? '16px' : '20px', marginBottom: isMobile ? '16px' : '20px' }}>
         {roleKpis.length > 0 && (
           <div className="grid grid-cols-3 gap-3 mt-3">

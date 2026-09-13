@@ -14,7 +14,7 @@ const sources = [
   { input: 'warehouse-worker-phone.png', output: 'cargo' },
   { input: 'highway-sunset-truck.png', output: 'network' },
   { input: 'problem-logistics-manager.png', output: 'manage' },
-  { input: 'warehouse-worker-phone.png', output: 'solution' },
+  { input: 'trucker-phone-cab.png', output: 'solution' },
   { input: 'broker-booking.png', output: 'broker' },
 ];
 
@@ -40,7 +40,7 @@ async function buildVariant(inputPath, outputBase, width) {
   await image
     .clone()
     .resize({ width, withoutEnlargement: true })
-    .jpeg({ quality: 78, mozjpeg: true, chromaSubsampling: '4:4:4' })
+    .jpeg({ quality: 72, mozjpeg: true, chromaSubsampling: '4:2:0' })
     .toFile(`${outputBase}-${width}.jpg`);
 }
 
