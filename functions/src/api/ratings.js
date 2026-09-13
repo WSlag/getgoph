@@ -195,40 +195,82 @@ exports.getPendingRatings = functions.region('asia-southeast1').https.onCall(asy
   const userId = context.auth.uid;
   const db = admin.firestore();
 
-  // Get completed contracts where user is a participant
-  const contractsSnap = await db.collection('contracts')
-    .where('participantIds', 'array-contains', userId)
-    .where('status', '==', 'completed')
-    .get();
-
-  const pendingRatings = [];
-
-  for (const contractDoc of contractsSnap.docs) {
-    const contract = { id: contractDoc.id, ...contractDoc.data() };
-
-    // Check if user has already rated this contract
-    const ratingSnap = await db.collection('ratings')
-      .where('contractId', '==', contractDoc.id)
-      .where('raterId', '==', userId)
-      .limit(1)
+  try {
+    // Get completed contracts where user is a participant
+    // Requires composite index: contracts(participantIds CONTAINS, status ASC)
+    // See firestore.indexes.json - added to fix "internal" + CORS preflight failure
+    // when Firestore throws FAILED_PRECONDITION for missing index.
+    const contractsSnap = await db.collection('contracts')
+      .where('participantIds', 'array-contains', userId)
+      .where('status', '==', 'completed')
       .get();
 
-    if (ratingSnap.empty) {
-      // User hasn't rated this contract yet
-      const otherUserId = contract.listingOwnerId === userId ? contract.bidderId : contract.listingOwnerId;
-      const otherUserDoc = await db.collection('users').doc(otherUserId).get();
-      const otherUserName = otherUserDoc.exists ? otherUserDoc.data().name : 'Unknown';
+    const pendingRatings = [];
 
-      pendingRatings.push({
-        contractId: contractDoc.id,
-        contractNumber: contract.contractNumber,
-        otherUserId,
-        otherUserName,
-        route: `${contract.pickupAddress} -> ${contract.deliveryAddress}`,
-        completedAt: contract.updatedAt,
-      });
+    for (const contractDoc of contractsSnap.docs) {
+      const contract = { id: contractDoc.id, ...contractDoc.data() };
+
+      // Check if user has already rated this contract
+      const ratingSnap = await db.collection('ratings')
+        .where('contractId', '==', contractDoc.id)
+        .where('raterId', '==', userId)
+        .limit(1)
+        .get();
+
+      if (ratingSnap.empty) {
+        // User hasn't rated this contract yet
+        const otherUserId = contract.listingOwnerId === userId ? contract.bidderId : contract.listingOwnerId;
+        if (!otherUserId) {
+          functions.logger.warn('get_pending_ratings_skipped_missing_counterparty', {
+            contractId: contractDoc.id,
+            raterId: userId,
+          });
+          continue;
+        }
+        let otherUserName = 'Unknown';
+        try {
+          const otherUserDoc = await db.collection('users').doc(otherUserId).get();
+          otherUserName = otherUserDoc.exists ? (otherUserDoc.data().name || 'Unknown') : 'Unknown';
+        } catch (userFetchError) {
+          functions.logger.warn('get_pending_ratings_user_fetch_failed', {
+            contractId: contractDoc.id,
+            otherUserId,
+            error: userFetchError?.message || String(userFetchError),
+          });
+        }
+
+        pendingRatings.push({
+          contractId: contractDoc.id,
+          contractNumber: contract.contractNumber,
+          otherUserId,
+          otherUserName,
+          route: `${contract.pickupAddress} -> ${contract.deliveryAddress}`,
+          completedAt: contract.updatedAt,
+        });
+      }
     }
-  }
 
-  return { pendingRatings };
+    return { pendingRatings };
+  } catch (error) {
+    // Preserve HttpsErrors as-is
+    if (error instanceof functions.https.HttpsError) {
+      throw error;
+    }
+    const message = error?.message || String(error);
+    const isIndexError = message.includes('requires an index') || message.includes('FAILED_PRECONDITION') || error?.code === 9;
+    functions.logger.error('get_pending_ratings_failed', {
+      raterId: userId,
+      error: message,
+      code: error?.code || null,
+      isIndexError,
+    });
+    if (isIndexError) {
+      throw new functions.https.HttpsError(
+        'failed-precondition',
+        'Firestore index missing for getPendingRatings (participantIds CONTAINS + status ==). Deploy firestore.indexes.json or create the index in Firebase Console.',
+        { missingIndex: true }
+      );
+    }
+    throw new functions.https.HttpsError('internal', 'Failed to fetch pending ratings', { originalMessage: message });
+  }
 });
